@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Hello">Hello World, Click Me!</string>
-    <string name="ApplicationName">TasksSimplified</string>
+    <string name="actionbar_activity_not_found">Activity not found, this is no good.</string>
+    <string name="ApplicationName">Tasks Simplified</string>
 </resources>
