@@ -224,7 +224,6 @@ namespace TasksSimplified
             }
         }
 
-
         public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
         {
             switch(item.ItemId)

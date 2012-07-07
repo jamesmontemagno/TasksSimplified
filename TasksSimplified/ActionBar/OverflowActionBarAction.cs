@@ -46,6 +46,7 @@ namespace TasksSimplified.ActionBar
         {
             ActionList.Clear();
             m_StringIds.Clear();
+            m_StringIds.Add(string.Empty);//add back in first one cause we have to.
         }
 
         public Spinner OverflowSpinner
