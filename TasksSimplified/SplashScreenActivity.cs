@@ -27,14 +27,16 @@ using Android.Widget;
 
 namespace TasksSimplified
 {
-    [Activity(Label = "My Activity")]
-    public class SplashScreenActivity : Activity
+    [Activity(MainLauncher = true, Theme = "@style/Theme.Splash", Icon = "@drawable/icon", NoHistory = true, Label = "@string/ApplicationName")]
+    public class SplashActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
-            // Create your application here
+            // Start our real activity
+            
+            StartActivity(typeof(MainActivity));
         }
     }
 }

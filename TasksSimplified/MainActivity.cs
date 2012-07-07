@@ -12,22 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 */
-using System;
 
 using Android.App;
-using Android.Content;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
 
 namespace TasksSimplified
 {
-    [Activity(Label = "TasksSimplified", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "@string/ApplicationName", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/MyTheme")]
     public class MainActivity : Activity
     {
-        int count = 1;
-
+        
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);

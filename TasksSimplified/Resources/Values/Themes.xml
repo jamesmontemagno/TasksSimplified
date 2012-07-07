@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-  <style name="MyTheme" parent="@android:style/Theme.Black.NoTitleBar">
+  <style name="MyTheme" parent="@android:style/Theme.Light.NoTitleBar">
     <!-- Any customizations for your app running on devices with Theme.Holo here -->
+  </style>
+  <style name="Theme.Splash" parent="android:Theme">
+    <item name="android:windowBackground">@drawable/icon</item>
+    <item name="android:windowNoTitle">true</item>
   </style>
 </resources>

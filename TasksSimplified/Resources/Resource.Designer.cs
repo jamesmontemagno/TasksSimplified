@@ -278,6 +278,9 @@ namespace TasksSimplified
 			// aapt resource value: 0x7f070006
 			public const int MyTheme = 2131165190;
 			
+			// aapt resource value: 0x7f070007
+			public const int Theme_Splash = 2131165191;
+			
 			private Style()
 			{
 			}
