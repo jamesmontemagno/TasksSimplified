@@ -64,6 +64,12 @@
     <Compile Include="ActionBar\MyActionBarAction.cs" />
     <Compile Include="ActionBar\OverflowActionBarAction.cs" />
     <Compile Include="ActionBar\ScrollingTextView.cs" />
+    <Compile Include="BusinessLayer\Contracts\BusinessEntityBase.cs" />
+    <Compile Include="BusinessLayer\Contracts\IBusinessEntity.cs" />
+    <Compile Include="BusinessLayer\TaskModel.cs" />
+    <Compile Include="DataAccessLayer\DataManager.cs" />
+    <Compile Include="DataLayer\SQLite.cs" />
+    <Compile Include="DataLayer\TaskDatabase.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
