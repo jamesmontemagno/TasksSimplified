@@ -300,6 +300,25 @@ namespace TasksSimplified.ActionBar
             }
         }
 
+        public bool HasId(int id)
+        {
+            for (var i = 0; i < m_ActionsView.ChildCount; i++)
+            {
+                var view = m_ActionsView.GetChildAt(i);
+
+                if (view == null) continue;
+
+                var tag = view.Tag;
+                var actionBarAction = tag as MenuItemActionBarAction;
+
+                if (actionBarAction == null || id != actionBarAction.MenuItemId) continue;
+
+                return true;
+            }
+
+            return false;
+        }
+
         public int ActionCount
         {
             get

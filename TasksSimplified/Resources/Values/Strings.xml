@@ -7,4 +7,5 @@
   <string name="menu_string_delete">Delete</string>
   <string name="menu_string_cancel">Cancel</string>
   <string name="menu_string_about">About</string>
+  <string name="menu_string_delete_all">Delete All</string>
 </resources>

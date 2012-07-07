@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-  <taskssimplified.ActionBar
+  <taskssimplified.actionbar.ActionBar
  android:id="@+id/actionbar"
  style="@style/ActionBar"/>
 
@@ -28,16 +28,18 @@
 
   <LinearLayout
       android:layout_width="fill_parent"
-      android:layout_height="wrap_content">
+      android:layout_height="wrap_content" 
+      android:layout_margin="6dp">
 
     <ImageButton
-        android:id="@+id/button_add_task"
-        style="@style/ActionBarItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/button_microphone"
+        style="@style/ClearButton"
         android:layout_centerVertical="true"
+        android:layout_height="@dimen/actionbar_item_height"
+        android:layout_width="wrap_content"
+        android:layout_marginRight="6dp"
         android:singleLine="true"
-        android:background="@drawable/ic_action_microphone"/>
+        android:src="@drawable/ic_action_microphone"/>
     
     <EditText
       android:id="@+id/edit_text_new_task"
@@ -50,11 +52,12 @@
 
     <ImageButton
         android:id="@+id/button_add_task"
-        style="@style/ActionBarItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/ClearButton"
         android:layout_centerVertical="true"
+        android:layout_height="@dimen/actionbar_item_height"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="6dp"
         android:singleLine="true"
-        android:background="@drawable/ic_action_add"/>
+        android:src="@drawable/ic_action_add"/>
   </LinearLayout>
 </LinearLayout>

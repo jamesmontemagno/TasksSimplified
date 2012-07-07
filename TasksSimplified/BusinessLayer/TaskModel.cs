@@ -10,5 +10,8 @@ namespace TasksSimplified.BusinessLayer
 
         [XmlElement("d")]
         public DateTime DateCreated { get; set; }
+
+        public bool Checked { get; set; }
+
     }
 }

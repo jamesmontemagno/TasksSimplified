@@ -64,6 +64,7 @@
     <Compile Include="ActionBar\MyActionBarAction.cs" />
     <Compile Include="ActionBar\OverflowActionBarAction.cs" />
     <Compile Include="ActionBar\ScrollingTextView.cs" />
+    <Compile Include="Adapter\TaskAdapter.cs" />
     <Compile Include="BusinessLayer\Contracts\BusinessEntityBase.cs" />
     <Compile Include="BusinessLayer\Contracts\IBusinessEntity.cs" />
     <Compile Include="BusinessLayer\TaskModel.cs" />
@@ -78,7 +79,9 @@
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\Layout\ActionBar.axml" />
+    <AndroidResource Include="Resources\Layout\ActionBar.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\Layout\ActionBar_Item.axml" />
     <AndroidResource Include="Resources\Layout\BlankSpinner.axml" />
     <AndroidResource Include="Resources\Layout\BottomActionBar.axml" />
@@ -86,9 +89,14 @@
     <AndroidResource Include="Resources\Layout\Other.axml" />
     <AndroidResource Include="Resources\Layout\OverflowActionBar_Item.axml" />
     <AndroidResource Include="Resources\Layout\SpinnerItem.axml" />
+    <AndroidResource Include="Resources\Layout\CheckedListItem.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Layout\Main.axml" />
+    <AndroidResource Include="Resources\Layout\Main.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Values\Strings.xml" />
@@ -101,7 +109,9 @@
     <AndroidResource Include="Resources\Values\Attrs.xml" />
     <AndroidResource Include="Resources\Values\Colors.xml" />
     <AndroidResource Include="Resources\Values\Dimens.xml" />
-    <AndroidResource Include="Resources\Values\Styles.xml" />
+    <AndroidResource Include="Resources\Values\Styles.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\Values\Themes.xml" />
     <AndroidResource Include="Resources\Values-land\Dimens.xml" />
     <AndroidResource Include="Resources\Values-large-land\Dimens.xml" />
@@ -141,6 +151,10 @@
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_add.png" />
     <AndroidResource Include="Resources\Menu\MainMenu.xml" />
     <AndroidResource Include="Resources\Menu\MainMenuEdit.xml" />
+    <AndroidResource Include="Resources\Drawable-hdpi\ic_menu_delete_all.png" />
+    <AndroidResource Include="Resources\Drawable-mdpi\ic_menu_delete_all.png" />
+    <AndroidResource Include="Resources\Drawable-xhdpi\ic_menu_delete_all.png" />
+    <AndroidResource Include="Resources\Drawable\clearbutton.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Drawable-land\" />
