@@ -1,18 +1,4 @@
-Tasks Simplified
-===============
-
-Simple and adorable Task app for Android
-
-http://www.TasksSimplified.com
-
-## Screenshots
-
-
-## TODO
-All of it
-
-## License
-COpyright (C) 2012 - James Montemagno - Refractored LLC - Tasks Simplified
+Copyright 2012 (C) James Montemagno - Refractored LLC - Tasks Simplified
 
 Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
