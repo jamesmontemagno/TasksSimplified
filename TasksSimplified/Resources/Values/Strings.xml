@@ -2,4 +2,9 @@
 <resources>
     <string name="actionbar_activity_not_found">Activity not found, this is no good.</string>
     <string name="ApplicationName">Tasks Simplified</string>
+    <string name="loading">Loading...</string>
+  <string name="new_task_hint">Enter new task...</string>
+  <string name="menu_string_delete">Delete</string>
+  <string name="menu_string_cancel">Cancel</string>
+  <string name="menu_string_about">About</string>
 </resources>
