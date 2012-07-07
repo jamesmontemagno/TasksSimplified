@@ -42,6 +42,12 @@ namespace TasksSimplified.ActionBar
 
         public List<ActionBarAction> ActionList { get; set; }
 
+        public void ClearActions()
+        {
+            ActionList.Clear();
+            m_StringIds.Clear();
+        }
+
         public Spinner OverflowSpinner
         {
             get { return m_OverflowSpinner; }

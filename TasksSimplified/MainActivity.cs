@@ -15,12 +15,17 @@
 
 using System.Collections.Generic;
 using Android.App;
+using Android.Content;
 using Android.OS;
+using Android.Runtime;
+using Android.Speech;
+using Android.Views;
 using Android.Widget;
 using TasksSimplified.ActionBarBase;
 using TasksSimplified.ActionBar;
 using TasksSimplified.Adapter;
 using TasksSimplified.BusinessLayer;
+using System.Collections.ObjectModel;
 
 namespace TasksSimplified
 {
@@ -29,7 +34,9 @@ namespace TasksSimplified
     {
         string[] items = new string[]{"lorem","ipsum", "dolor", "sit", "amet",
         "consectetuer", "adipisc", "jklfe", "morbi", "vel",
-        "ligula", "vitae", "carcu", "aliequet"};
+        "ligula", "vitae", "carcu", "aliequet", "this is a crazy crazy long entry into the list so i can check this out to see if it wraps."};
+
+        private JavaList<TaskModel> m_Items;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -50,16 +57,85 @@ namespace TasksSimplified
 
             SetupMainActionBar();
 
-            List<TaskModel> tasks = new List<TaskModel>();
+            m_Items = new JavaList<TaskModel>();
             foreach(var item in items)
-                tasks.Add(new TaskModel(){Task = item});
+                m_Items.Add(new TaskModel() { Task = item });
 
-            ListAdapter = new TaskAdapter(this, tasks);
+            
          
             ListView.ChoiceMode = ChoiceMode.Multiple;
-            // Get our button from the layout resource,
-            // and attach an event to it
 
+            var add = FindViewById<ImageButton>(Resource.Id.button_add_task);
+            var microphone = FindViewById<ImageButton>(Resource.Id.button_microphone);
+
+            //add.SetBackgroundResource(Android.Resource.Color.Transparent);
+            //microphone.SetBackgroundResource(Android.Resource.Color.Transparent);
+
+            add.Click += (sender, args) =>
+                             {
+                                 var text = FindViewById<EditText>(Resource.Id.edit_text_new_task);
+                                 var newTask = text.Text.Trim();
+
+                                 text.Text = string.Empty;
+
+                                 if (string.IsNullOrWhiteSpace(newTask))
+                                     return;
+
+
+
+                                 m_Items.Add(new TaskModel() {Task = newTask});
+                                 RunOnUiThread(() =>
+                                 {
+                                     ((TaskAdapter)ListAdapter).NotifyDataSetChanged();
+                                     ListView.SetSelection(m_Items.Count - 1);
+                                 });
+                             };
+
+            // remove speech if it doesn't exist
+            var activities =PackageManager.QueryIntentActivities(new Intent(RecognizerIntent.ActionRecognizeSpeech), 0);
+            if (activities.Count == 0)
+            {
+                microphone.Visibility = ViewStates.Gone;
+            }
+            else
+            {
+                microphone.Click += (sender, args) =>
+                                        {
+                                            StartVoiceRecognitionActivity();
+                                        };
+            }
+
+            RunOnUiThread(()=>ListAdapter = new TaskAdapter(this, m_Items));
+
+        }
+
+        private void StartVoiceRecognitionActivity()
+        {
+            Intent intent = new Intent(RecognizerIntent.ActionRecognizeSpeech);
+            intent.PutExtra(RecognizerIntent.ExtraLanguageModel,
+                    RecognizerIntent.LanguageModelFreeForm);
+            intent.PutExtra(RecognizerIntent.ExtraPrompt, "Speak new task...");
+            StartActivityForResult(intent, 0);
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            if (requestCode == 0 && resultCode == Result.Ok)
+            {
+                // Populate the wordsList with the String values the recognition engine thought it heard
+                var matches = data.GetStringArrayListExtra(RecognizerIntent.ExtraResults);
+
+                string newTask = string.Empty;
+                foreach(var match in matches)
+                {
+                    newTask += match + " ";
+                }
+                var text = FindViewById<EditText>(Resource.Id.edit_text_new_task);
+                text.Text = newTask;
+
+            }
+            
+            base.OnActivityResult(requestCode, resultCode, data);
         }
 
         private void SetupMainActionBar()
@@ -79,6 +155,9 @@ namespace TasksSimplified
                                                      Resource.String.menu_string_about);
             action.ActionType = ActionType.Never;
             ActionBar.AddAction(action);
+
+            DarkMenuId = Resource.Menu.MainMenu;
+            MenuId = Resource.Menu.MainMenu;
         }
 
         private void SetupEditActionBar()
@@ -99,15 +178,29 @@ namespace TasksSimplified
             action.ActionType = ActionType.Always;
             ActionBar.AddAction(action);
 
+            DarkMenuId = Resource.Menu.MainMenuEdit;
+            MenuId = Resource.Menu.MainMenuEdit;
+
         }
 
         protected override void OnListItemClick(ListView l, Android.Views.View v, int position, long id)
         {
             base.OnListItemClick(l, v, position, id);
 
-            if(ListView.GetCheckItemIds().Length > 0)
+            if (ListView.GetCheckItemIds().Length > 0)
+            {
                 SetupEditActionBar();
+            }
+            else
+            {
+                SetupMainActionBar();
+            }
 
+            m_Items[position].Checked = l.IsItemChecked(position);
+            RunOnUiThread(() =>
+                              {
+                                  ((TaskAdapter) ListAdapter).NotifyDataSetChanged();
+                              });
 
         }
 

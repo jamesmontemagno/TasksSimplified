@@ -259,6 +259,7 @@ namespace TasksSimplified.ActionBar
         public void RemoveAllActions()
         {
             m_ActionsView.RemoveAllViews();
+            m_OverflowAction.ClearActions();
             MenuItemsToHide.Clear();
         }
 

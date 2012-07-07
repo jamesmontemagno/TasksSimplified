@@ -1,6 +1,6 @@
-using System.Collections.Generic;
 using System.Linq;
 using Android.App;
+using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using TasksSimplified.BusinessLayer;
@@ -17,11 +17,11 @@ namespace TasksSimplified.Adapter
 
 
         private readonly Activity m_Context;
-        private readonly IEnumerable<TaskModel> m_Tasks;
+        private readonly JavaList<TaskModel> m_Tasks;
 
 
 
-        public TaskAdapter(Activity context, IEnumerable<TaskModel> tasks)
+        public TaskAdapter(Activity context, JavaList<TaskModel> tasks)
         {
             m_Context = context;
             m_Tasks = tasks;
@@ -32,25 +32,36 @@ namespace TasksSimplified.Adapter
             if (position < 0)
                 return null;
 
-            var task = m_Tasks.ElementAt(position);
-
-            View view = null;
-
-            if (task.Checked)
-            {
-                view = m_Context.LayoutInflater.Inflate(Resource.Layout.CheckedListItem, parent, false);
-            }
-            else
-            {
-                view = m_Context.LayoutInflater.Inflate(Android.Resource.Layout.SimpleListItemMultipleChoice, parent, false);
-            }
+            var view = (convertView
+                            ?? m_Context.LayoutInflater.Inflate(
+                                    Resource.Layout.CheckedListItem, parent, false)
+                        );
 
             if (view == null)
                 return null;
 
-            var taskTitle = view.FindViewById<CheckedTextView>(Android.Resource.Id.Text1);
+            var wrapper = view.Tag as TaskAdapterWrapper;
+            if (wrapper == null)
+            {
+                wrapper = new TaskAdapterWrapper();
+                wrapper.Title = view.FindViewById<CheckedTextView>(Android.Resource.Id.Text1);
+                view.Tag = wrapper;
+            }
 
-            taskTitle.Text = task.Task;
+            var task = m_Tasks[position];
+
+            wrapper.Title.Text = task.Task;
+
+            if (task.Checked)
+            {
+                wrapper.Title.SetTextColor(m_Context.Resources.GetColor(Resource.Color.pop));
+                wrapper.Title.PaintFlags |= Android.Graphics.PaintFlags.StrikeThruText;
+            }
+            else
+            {
+                wrapper.Title.SetTextColor(m_Context.Resources.GetColor(Resource.Color.gray));
+                wrapper.Title.PaintFlags &= ~Android.Graphics.PaintFlags.StrikeThruText;
+            }
 
 
             return view;

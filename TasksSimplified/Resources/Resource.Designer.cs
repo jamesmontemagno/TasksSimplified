@@ -66,7 +66,7 @@ namespace TasksSimplified
 			public const int bottomactionbar_title = 2130968586;
 			
 			// aapt resource value: 0x7f040000
-			public const int clearcolor = 2130968576;
+			public const int gray = 2130968576;
 			
 			// aapt resource value: 0x7f040002
 			public const int pop = 2130968578;

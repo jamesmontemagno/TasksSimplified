@@ -3,4 +3,5 @@
   <uses-sdk android:targetSdkVersion="15" />
   <application android:label="Tasks Simplified">
   </application>
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>
