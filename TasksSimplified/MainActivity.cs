@@ -204,6 +204,27 @@ namespace TasksSimplified
 
         }
 
+
+        private void DeleteAll()
+        {
+
+        }
+
+        private void DeleteSelected()
+        {
+
+        }
+
+        private void Cancel()
+        {
+            for(int i = 0; i < m_Items.Count; i++)
+            {
+                if(ListView.IsItemChecked(i))
+                    ListView.SetItemChecked(i, false);
+            }
+        }
+
+
         public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
         {
             switch(item.ItemId)
@@ -211,10 +232,17 @@ namespace TasksSimplified
                 case Resource.Id.menu_about:
                     break;
                 case Resource.Id.menu_cancel:
+                    Cancel();
                     break;
                 case Resource.Id.menu_delete:
+                    DeleteSelected();
                     break;
                 case Resource.Id.menu_delete_all:
+                    Util.ShowOKCancelPopup(this, Resource.String.confirm_delete_title, Resource.String.confirm_delete, (delete) =>
+                                                                                                                           {
+                                                                                                                               if(delete)
+                                                                                                                                   DeleteAll();
+                                                                                                                           });
                     break;
             }
 

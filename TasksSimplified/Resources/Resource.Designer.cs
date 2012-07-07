@@ -299,6 +299,15 @@ namespace TasksSimplified
 			// aapt resource value: 0x7f060000
 			public const int actionbar_activity_not_found = 2131099648;
 			
+			// aapt resource value: 0x7f060009
+			public const int cancel = 2131099657;
+			
+			// aapt resource value: 0x7f06000a
+			public const int confirm_delete = 2131099658;
+			
+			// aapt resource value: 0x7f06000b
+			public const int confirm_delete_title = 2131099659;
+			
 			// aapt resource value: 0x7f060002
 			public const int loading = 2131099650;
 			
@@ -316,6 +325,9 @@ namespace TasksSimplified
 			
 			// aapt resource value: 0x7f060003
 			public const int new_task_hint = 2131099651;
+			
+			// aapt resource value: 0x7f060008
+			public const int ok = 2131099656;
 			
 			private String()
 			{
