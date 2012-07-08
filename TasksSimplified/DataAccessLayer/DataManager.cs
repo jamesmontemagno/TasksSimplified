@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TasksSimplified.BusinessLayer;
 
 namespace TasksSimplified.DataAccessLayer
@@ -8,7 +9,7 @@ namespace TasksSimplified.DataAccessLayer
         #region Devices
         public static IEnumerable<TaskModel> GetTasks()
         {
-            return DataLayer.TaskDatabase.GetItems<TaskModel>();
+            return DataLayer.TaskDatabase.GetItems<TaskModel>().OrderBy(t => t.DateCreated);
         }
 
         public static void DeleteTasks()

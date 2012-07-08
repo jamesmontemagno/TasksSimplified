@@ -94,7 +94,7 @@ namespace TasksSimplified
 
                                  try
                                  {
-                                     newTask.ID = DataManager.SaveTask(newTask);
+                                     DataManager.SaveTask(newTask);
                                      m_AllTasks.Add(newTask);
                                      text.Text = string.Empty;
                                      
@@ -285,7 +285,7 @@ namespace TasksSimplified
             }
 
 
-#if DEBUG
+#if DEBUG2
             if(m_AllTasks.Count == 0)
             {
                 m_AllTasks = new JavaList<TaskModel>();
