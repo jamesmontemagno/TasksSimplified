@@ -17,6 +17,7 @@ using Android.App;
 using Android.Content;
 using Android.Views;
 using TasksSimplified.ActionBar;
+using TasksSimplified.Helpers;
 
 namespace TasksSimplified.ActionBarBase
 {
@@ -52,8 +53,22 @@ namespace TasksSimplified.ActionBarBase
             var homeIntent = new Intent(this, typeof(MainActivity));
             homeIntent.AddFlags(ActivityFlags.ClearTop);
             homeIntent.AddFlags(ActivityFlags.NewTask);
-            ActionBar.SetHomeAction(new MyActionBarAction(this, homeIntent, Resource.Drawable.Icon));
+            ActionBar.SetHomeAction(new MyActionBarAction(this, homeIntent, Resource.Drawable.ic_launcher));
             ActionBar.SetDisplayHomeAsUpEnabled(true);
         }
+
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+            FlurryAgent.OnStartSession(this, "TNGK6T6P75ZRSBV82QVF");
+        }
+
+        protected override void OnStop()
+        {
+            base.OnStop();
+            FlurryAgent.OnEndSession(this);
+        }
+
     }
 }

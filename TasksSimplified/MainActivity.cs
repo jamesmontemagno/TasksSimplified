@@ -13,56 +13,65 @@
  * limitations under the License.
 */
 
-using System.Collections.Generic;
+using System;
+using System.Linq;
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Speech;
+using Android.Speech.Tts;
 using Android.Views;
 using Android.Widget;
 using TasksSimplified.ActionBarBase;
 using TasksSimplified.ActionBar;
 using TasksSimplified.Adapter;
 using TasksSimplified.BusinessLayer;
-using System.Collections.ObjectModel;
+using TasksSimplified.DataAccessLayer;
+using TasksSimplified.Helpers;
 
 namespace TasksSimplified
 {
-    [Activity(Label = "@string/ApplicationName", Icon = "@drawable/icon", Theme = "@style/MyTheme")]
-    public class MainActivity : ActionBarListActivity
+    internal class SaveState :Java.Lang.Object
     {
-        string[] items = new string[]{"lorem","ipsum", "dolor", "sit", "amet",
+        public TaskModel[] Tasks { get; set; }
+        public string NewTaskText { get; set; }
+        public int LastPosition { get; set; }
+    }
+
+    [Activity(Label = "@string/ApplicationName", Icon = "@drawable/ic_launcher", Theme = "@style/MyTheme")]
+    public class MainActivity : ActionBarListActivity, TextToSpeech.IOnInitListener
+    {
+        readonly string[] m_FakeData = new[]{"lorem","ipsum", "dolor", "sit", "amet",
         "consectetuer", "adipisc", "jklfe", "morbi", "vel",
         "ligula", "vitae", "carcu", "aliequet", "this is a crazy crazy long entry into the list so i can check this out to see if it wraps."};
 
-        private JavaList<TaskModel> m_Items;
-        protected override void OnCreate(Bundle bundle)
+        private TextToSpeech m_TextToSpeech;
+
+        private JavaList<TaskModel> m_AllTasks;
+        protected override void OnCreate(Bundle bundle) 
         {
             base.OnCreate(bundle);
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            Window.SetSoftInputMode(Android.Views.SoftInput.StateAlwaysHidden);
+            Window.SetSoftInputMode(SoftInput.StateAlwaysHidden);
 
             DarkMenuId = Resource.Menu.MainMenu;
             MenuId = Resource.Menu.MainMenu;
 
+            m_AllTasks = new JavaList<TaskModel>();
+
             ActionBar = FindViewById<ActionBar.ActionBar>(Resource.Id.actionbar);
             ActionBar.SetTitle("Tasks");
             ActionBar.CurrentActivity = this;
-            ActionBar.SetHomeLogo(Resource.Drawable.Icon);
+            ActionBar.SetHomeLogo(Resource.Drawable.ic_launcher);
             RegisterForContextMenu(ListView);
+
 
             SetupMainActionBar();
 
-            m_Items = new JavaList<TaskModel>();
-            foreach(var item in items)
-                m_Items.Add(new TaskModel() { Task = item });
-
-            
-         
             ListView.ChoiceMode = ChoiceMode.Multiple;
 
             var add = FindViewById<ImageButton>(Resource.Id.button_add_task);
@@ -74,21 +83,33 @@ namespace TasksSimplified
             add.Click += (sender, args) =>
                              {
                                  var text = FindViewById<EditText>(Resource.Id.edit_text_new_task);
-                                 var newTask = text.Text.Trim();
+                                 var task = text.Text.Trim();
 
-                                 text.Text = string.Empty;
+                                
 
-                                 if (string.IsNullOrWhiteSpace(newTask))
+                                 if (string.IsNullOrWhiteSpace(task))
                                      return;
 
+                                 var newTask = new TaskModel {Task = task};
 
-
-                                 m_Items.Add(new TaskModel() {Task = newTask});
-                                 RunOnUiThread(() =>
+                                 try
                                  {
-                                     ((TaskAdapter)ListAdapter).NotifyDataSetChanged();
-                                     ListView.SetSelection(m_Items.Count - 1);
-                                 });
+                                     newTask.ID = DataManager.SaveTask(newTask);
+                                     m_AllTasks.Add(newTask);
+                                     text.Text = string.Empty;
+                                     
+                                     RunOnUiThread(() =>
+                                     {
+                                         ((TaskAdapter)ListAdapter).NotifyDataSetChanged();
+                                         ListView.SetSelection(m_AllTasks.Count - 1);
+                                     });
+                                 }
+                                 catch (Exception)
+                                 {
+                                     RunOnUiThread(() => Toast.MakeText(this, Resource.String.unable_to_save,
+                                                                        ToastLength.Short).Show());
+                                      
+                                 }
                              };
 
             // remove speech if it doesn't exist
@@ -99,23 +120,63 @@ namespace TasksSimplified
             }
             else
             {
-                microphone.Click += (sender, args) =>
-                                        {
-                                            StartVoiceRecognitionActivity();
-                                        };
+                microphone.Click += (sender, args) => StartVoiceRecognitionActivity();
             }
 
-            RunOnUiThread(()=>ListAdapter = new TaskAdapter(this, m_Items));
+            m_TextToSpeech = new TextToSpeech(this, this);
 
+            var saveState = LastNonConfigurationInstance as SaveState;
+            if (saveState != null)
+            {
+                m_AllTasks = new JavaList<TaskModel>(saveState.Tasks);
+                RunOnUiThread(() => ListAdapter = new TaskAdapter(this, m_AllTasks));
+                RunOnUiThread(() => ListView.SetSelection(saveState.LastPosition));
+                FindViewById<EditText>(Resource.Id.edit_text_new_task).Text = saveState.NewTaskText;
+            }
+            else
+            {
+                FlurryAgent.OnPageView();
+                FlurryAgent.LogEvent("MainActivity");
+                ReloadData(0);
+            }
+
+            if (Intent.ActionSend != Intent.Action || Intent.Type == null)
+                return;
+
+            if ("text/plain" != Intent.Type)
+                return;
+
+            var sharedText = Intent.GetStringExtra(Intent.ExtraText);
+            if (!string.IsNullOrEmpty(sharedText))
+            {
+                FindViewById<EditText>(Resource.Id.edit_text_new_task).Text = sharedText;
+            }
+        }
+
+        public override Java.Lang.Object OnRetainNonConfigurationInstance()
+        {
+            return new SaveState
+                       {
+                           NewTaskText = FindViewById<EditText>(Resource.Id.edit_text_new_task).Text,
+                           Tasks = m_AllTasks.ToArray(),
+                           LastPosition = ListView.SelectedItemPosition
+                       };
         }
 
         private void StartVoiceRecognitionActivity()
         {
-            Intent intent = new Intent(RecognizerIntent.ActionRecognizeSpeech);
-            intent.PutExtra(RecognizerIntent.ExtraLanguageModel,
-                    RecognizerIntent.LanguageModelFreeForm);
+            var intent = new Intent(RecognizerIntent.ActionRecognizeSpeech);
+            intent.PutExtra(RecognizerIntent.ExtraLanguageModel,RecognizerIntent.LanguageModelFreeForm);
             intent.PutExtra(RecognizerIntent.ExtraPrompt, "Speak new task...");
             StartActivityForResult(intent, 0);
+        }
+        
+        private void Speak(string message)
+        {
+            if (m_TextToSpeech == null)
+                return;
+
+            m_TextToSpeech.Speak(message, QueueMode.Flush, null);
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
@@ -125,14 +186,18 @@ namespace TasksSimplified
                 // Populate the wordsList with the String values the recognition engine thought it heard
                 var matches = data.GetStringArrayListExtra(RecognizerIntent.ExtraResults);
 
-                string newTask = string.Empty;
-                foreach(var match in matches)
+                if(matches.Count == 0)
                 {
-                    newTask += match + " ";
+                    Speak("Heard nothing.");
                 }
-                var text = FindViewById<EditText>(Resource.Id.edit_text_new_task);
-                text.Text = newTask;
+                else
+                {
+                    var newTask = matches[0];
+                    var text = FindViewById<EditText>(Resource.Id.edit_text_new_task);
+                    text.Text = newTask;
 
+                    Speak(newTask);
+                }
             }
             
             base.OnActivityResult(requestCode, resultCode, data);
@@ -145,15 +210,15 @@ namespace TasksSimplified
             ActionBar.SetTitle("Tasks");
 
             ActionBar.RemoveAllActions();
-
+            
             var action = new MenuItemActionBarAction(this, this, Resource.Id.menu_delete_all, Resource.Drawable.ic_menu_delete_all,
-                                                     Resource.String.menu_string_delete_all);
-            action.ActionType = ActionType.Never;
+                                                     Resource.String.menu_string_delete_all)
+                             {ActionType = ActionType.Never};
+
             ActionBar.AddAction(action);
 
             action = new MenuItemActionBarAction(this, this, Resource.Id.menu_about, Resource.Drawable.ic_menu_about,
-                                                     Resource.String.menu_string_about);
-            action.ActionType = ActionType.Never;
+                                                     Resource.String.menu_string_about) {ActionType = ActionType.Never};
             ActionBar.AddAction(action);
 
             DarkMenuId = Resource.Menu.MainMenu;
@@ -169,13 +234,12 @@ namespace TasksSimplified
             ActionBar.RemoveAllActions();
 
             var action = new MenuItemActionBarAction(this, this, Resource.Id.menu_delete, Resource.Drawable.ic_action_delete_dark,
-                                                    Resource.String.menu_string_delete);
-            action.ActionType = ActionType.Always;
+                                                    Resource.String.menu_string_delete) {ActionType = ActionType.Always};
             ActionBar.AddAction(action);
 
             action = new MenuItemActionBarAction(this, this, Resource.Id.menu_cancel, Resource.Drawable.ic_action_cancel,
-                                                     Resource.String.menu_string_cancel);
-            action.ActionType = ActionType.Always;
+                                                     Resource.String.menu_string_cancel)
+                         {ActionType = ActionType.Always};
             ActionBar.AddAction(action);
 
             DarkMenuId = Resource.Menu.MainMenuEdit;
@@ -183,7 +247,7 @@ namespace TasksSimplified
 
         }
 
-        protected override void OnListItemClick(ListView l, Android.Views.View v, int position, long id)
+        protected override void OnListItemClick(ListView l, View v, int position, long id)
         {
             base.OnListItemClick(l, v, position, id);
 
@@ -196,39 +260,177 @@ namespace TasksSimplified
                 SetupMainActionBar();
             }
 
-            m_Items[position].Checked = l.IsItemChecked(position);
-            RunOnUiThread(() =>
-                              {
-                                  ((TaskAdapter) ListAdapter).NotifyDataSetChanged();
-                              });
+            m_AllTasks[position].Checked = l.IsItemChecked(position);
+            RunOnUiThread(() => ((TaskAdapter) ListAdapter).NotifyDataSetChanged());
+
+            try
+            {
+                DataManager.SaveTask(m_AllTasks[position]);
+            }
+            catch (Exception)
+            {
+                RunOnUiThread(() => Toast.MakeText(this, Resource.String.unable_to_save,
+                                                   ToastLength.Short).Show());
+
+            }
+
+        }
+
+        private void ReloadData(int startId)
+        {
+            m_AllTasks.Clear();
+            foreach(var task in DataManager.GetTasks())
+            {
+                m_AllTasks.Add(task);
+            }
+
+
+#if DEBUG
+            if(m_AllTasks.Count == 0)
+            {
+                m_AllTasks = new JavaList<TaskModel>();
+                foreach (var item in m_FakeData)
+                {
+                    var task = new TaskModel {Task = item};
+                    task.ID = DataManager.SaveTask(task);
+                    m_AllTasks.Add(task);
+                }
+            }
+#endif
+            RunOnUiThread(() => ListAdapter = new TaskAdapter(this, m_AllTasks));
+
+            for (int i = 0; i < m_AllTasks.Count; i++ )
+            {
+                ListView.SetItemChecked(i, m_AllTasks[i].Checked);
+            }
+
+            if(ListView.GetCheckItemIds().Length > 0)
+                SetupEditActionBar();
+            else
+                SetupMainActionBar();
+
+
+
+            if (startId == 0)
+                    return;
+
+            var firstTask = m_AllTasks.FirstOrDefault(t => t.ID == startId);
+            if(firstTask == null)
+                return;
+
+            var itemIndex = m_AllTasks.IndexOf(firstTask);
+            RunOnUiThread(()=> ListView.SetSelection(itemIndex));
 
         }
 
 
         private void DeleteAll()
         {
+            Util.ShowOkCancelPopup(this, Resource.String.confirm_delete_title, Resource.String.confirm_delete, delete =>
+            {
+                if (!delete)
+                    return;
 
+                try
+                {
+                    DataManager.DeleteTasks();
+                    ReloadData(0);
+                }
+                catch
+                {
+                    RunOnUiThread(()=>Toast.MakeText(this, Resource.String.unable_to_delete, ToastLength.Short).Show());
+                }
+            });
+
+
+
+        }
+
+        private void ReallyDeleteSelected()
+        {
+            var startIndex = m_AllTasks[ListView.FirstVisiblePosition].ID;
+            try
+            {
+                for (int i = 0; i < m_AllTasks.Count; i++)
+                {
+                    if (!ListView.IsItemChecked(i))
+                        continue;
+
+
+                    DataManager.DeleteTask(m_AllTasks[i].ID);
+                }
+            }
+            catch (Exception)
+            {
+
+                RunOnUiThread(() => Toast.MakeText(this, Resource.String.unable_to_delete, ToastLength.Short).Show());
+            }
+
+
+
+            ReloadData(startIndex);
         }
 
         private void DeleteSelected()
         {
+            if(ListView.GetCheckItemIds().Length > 10)
+            {
+                Util.ShowOkCancelPopup(this, Resource.String.confirm_delete_title, Resource.String.confirm_delete,
+                                       delete =>
+                                           {
+                                               if (!delete)
+                                                   return;
+
+                                               ReallyDeleteSelected();
+                                           });
+            }
+            else
+            {
+                ReallyDeleteSelected();
+            }
 
         }
 
         private void Cancel()
         {
-            for(int i = 0; i < m_Items.Count; i++)
+            bool error = false;
+            for(var i = 0; i < m_AllTasks.Count; i++)
             {
-                if(ListView.IsItemChecked(i))
+                m_AllTasks[i].Checked = false;
+                if (ListView.IsItemChecked(i))
+                {
                     ListView.SetItemChecked(i, false);
+                    try
+                    {
+                        DataManager.SaveTask(m_AllTasks[i]);
+                    }
+                    catch (Exception)
+                    {
+                        error = true;
+                    }
+                    
+                }
+
             }
+
+            if(error)
+            {
+                RunOnUiThread(() => Toast.MakeText(this, Resource.String.unable_to_save,
+                                                ToastLength.Short).Show());
+                                      
+            }
+
+            RunOnUiThread(()=>((TaskAdapter)ListAdapter).NotifyDataSetChanged());
+            SetupMainActionBar();
         }
 
-        public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
+        public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch(item.ItemId)
             {
                 case Resource.Id.menu_about:
+                    var intent = new Intent(this, typeof(AboutActivity));
+                    StartActivity(intent);
                     break;
                 case Resource.Id.menu_cancel:
                     Cancel();
@@ -237,15 +439,19 @@ namespace TasksSimplified
                     DeleteSelected();
                     break;
                 case Resource.Id.menu_delete_all:
-                    Util.ShowOKCancelPopup(this, Resource.String.confirm_delete_title, Resource.String.confirm_delete, (delete) =>
-                                                                                                                           {
-                                                                                                                               if(delete)
-                                                                                                                                   DeleteAll();
-                                                                                                                           });
+                    DeleteAll();
                     break;
             }
 
             return base.OnOptionsItemSelected(item);
+        }
+
+        public void OnInit(OperationResult status)
+        {
+            if(status != OperationResult.Success)
+            {
+                m_TextToSpeech = null;
+            }
         }
     }
 }

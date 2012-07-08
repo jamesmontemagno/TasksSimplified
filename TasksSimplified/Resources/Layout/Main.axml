@@ -39,6 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_marginRight="6dp"
         android:singleLine="true"
+        android:background="@drawable/clearbutton"
         android:src="@drawable/ic_action_microphone"/>
     
     <EditText
@@ -47,7 +48,9 @@
       android:layout_height="fill_parent"
       android:layout_centerVertical="true"
       android:layout_weight="1"
-      android:hint="@string/new_task_hint">
+      android:hint="@string/new_task_hint"
+      android:contentDescription="Enter new task"
+      android:nextFocusDown="@+id/button_add_task">
     </EditText>
 
     <ImageButton
@@ -58,6 +61,9 @@
         android:layout_width="wrap_content"
         android:layout_marginLeft="6dp"
         android:singleLine="true"
-        android:src="@drawable/ic_action_add"/>
+        android:src="@drawable/ic_action_add"
+        android:background="@drawable/clearbutton"
+        android:contentDescription="Save new task"
+        android:nextFocusUp="@id/edit_text_new_task"/>
   </LinearLayout>
 </LinearLayout>

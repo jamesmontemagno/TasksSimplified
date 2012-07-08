@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutActivity.cs" />
     <Compile Include="ActionBarBase\ActionBarActivity.cs" />
     <Compile Include="ActionBarBase\ActionBarListActivity.cs" />
     <Compile Include="ActionBar\ActionBar.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="DataAccessLayer\DataManager.cs" />
     <Compile Include="DataLayer\SQLite.cs" />
     <Compile Include="DataLayer\TaskDatabase.cs" />
+    <Compile Include="Helpers\FlurryAgent.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,7 +89,6 @@
     <AndroidResource Include="Resources\Layout\BlankSpinner.axml" />
     <AndroidResource Include="Resources\Layout\BottomActionBar.axml" />
     <AndroidResource Include="Resources\Layout\BottomActionBar_Item.axml" />
-    <AndroidResource Include="Resources\Layout\Other.axml" />
     <AndroidResource Include="Resources\Layout\OverflowActionBar_Item.axml" />
     <AndroidResource Include="Resources\Layout\SpinnerItem.axml" />
     <AndroidResource Include="Resources\Layout\CheckedListItem.axml">
@@ -106,6 +107,8 @@
     <AndroidResource Include="Resources\Drawable\Icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidJavaLibrary Include="Jars\FlurryAgent.jar" />
+    <Content Include="LICENSE.txt.txt" />
     <Content Include="Properties\AndroidManifest.xml" />
     <AndroidResource Include="Resources\Values\Attrs.xml" />
     <AndroidResource Include="Resources\Values\Colors.xml" />
@@ -156,12 +159,18 @@
     <AndroidResource Include="Resources\Drawable-mdpi\ic_menu_delete_all.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_menu_delete_all.png" />
     <AndroidResource Include="Resources\Drawable\clearbutton.xml" />
+    <AndroidResource Include="Resources\xml\preferences.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Drawable-hdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\Drawable-mdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\Drawable-xhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\Drawable\splash.png" />
+    <AndroidResource Include="Resources\Drawable-land\splash.png" />
+    <AndroidResource Include="Resources\Drawable\clear_btn_normal.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Drawable-land\" />
-    <Folder Include="Resources\Drawable-ldpi\" />
-    <Folder Include="Resources\xml\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.

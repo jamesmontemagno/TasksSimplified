@@ -4,7 +4,7 @@
     <!-- Any customizations for your app running on devices with Theme.Holo here -->
   </style>
   <style name="Theme.Splash" parent="android:Theme">
-    <item name="android:windowBackground">@drawable/icon</item>
+    <item name="android:windowBackground">@drawable/splash</item>
     <item name="android:windowNoTitle">true</item>
   </style>
 </resources>

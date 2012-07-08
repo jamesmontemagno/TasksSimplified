@@ -13,21 +13,37 @@
  * limitations under the License.
 */
 
+
 using Android.App;
 using Android.OS;
+using Android.Preferences;
+using TasksSimplified.Helpers;
 
 namespace TasksSimplified
 {
-    [Activity(MainLauncher = true, Theme = "@style/Theme.Splash", Icon = "@drawable/ic_launcher", NoHistory = true, Label = "@string/ApplicationName")]
-    public class SplashActivity : Activity
+    [Activity(Label = "About", Icon = "@drawable/ic_launcher", Theme = "@style/MyTheme")]
+    public class AboutActivity : PreferenceActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
-            // Start our real activity
-            
-            StartActivity(typeof(MainActivity));
+            // Create your application here
+            AddPreferencesFromResource(Resource.Xml.preferences);
+            FlurryAgent.OnPageView();
+            FlurryAgent.LogEvent("AboutPage");
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+            FlurryAgent.OnStartSession(this, "TNGK6T6P75ZRSBV82QVF");
+        }
+
+        protected override void OnStop()
+        {
+            base.OnStop();
+            FlurryAgent.OnEndSession(this);
         }
     }
 }

@@ -376,7 +376,12 @@ namespace TasksSimplified.ActionBar
 
             view.Tag = action;
             view.SetOnClickListener(this);
+
             view.SetOnLongClickListener(this);
+
+            if(action.PopUpMessage > 0)
+                view.ContentDescription = Resources.GetString(action.PopUpMessage);
+
             return view;
         }
 
@@ -393,6 +398,8 @@ namespace TasksSimplified.ActionBar
 
             labelView.Tag = action;
             labelView.SetOnClickListener(this);
+
+            labelView.ContentDescription = "More options";
             //view.SetOnLongClickListener(this);
 
             m_OverflowAction.Activity = CurrentActivity;

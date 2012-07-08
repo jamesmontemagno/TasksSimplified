@@ -34,9 +34,11 @@ namespace TasksSimplified.ActionBar
     /// </summary>
     public class ActionBarMenuItem : IMenuItem
     {
-        public ActionBarMenuItem(int id)
+        private IntPtr m_Handle;
+        public ActionBarMenuItem(int id, IntPtr handle)
         {
             m_ItemId = id;
+            m_Handle = handle;
         }
 
         char IMenuItem.AlphabeticShortcut
@@ -189,7 +191,7 @@ namespace TasksSimplified.ActionBar
 
         IntPtr Android.Runtime.IJavaObject.Handle
         {
-            get { throw new NotImplementedException(); }
+            get { return m_Handle; }
         }
 
         public void Dispose()
@@ -212,7 +214,7 @@ namespace TasksSimplified.ActionBar
             mContext = context;
             m_Activity = activity;
             MenuItemId = menuId;
-            m_MenuItem = new ActionBarMenuItem(menuId);
+            m_MenuItem = new ActionBarMenuItem(menuId, Handle);
             PopUpMessage = popupId;
         }
 
