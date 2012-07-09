@@ -67,6 +67,10 @@ namespace TasksSimplified
 
             m_AllTasks = new JavaList<TaskModel>();
 
+            m_AddButton = FindViewById<ImageButton>(Resource.Id.button_add_task);
+            m_MicrophoneButton = FindViewById<ImageButton>(Resource.Id.button_microphone);
+            m_TaskEditText = FindViewById<EditText>(Resource.Id.edit_text_new_task);
+
             ActionBar = FindViewById<ActionBar.ActionBar>(Resource.Id.actionbar);
             ActionBar.SetTitle("Tasks");
             ActionBar.CurrentActivity = this;
@@ -78,9 +82,7 @@ namespace TasksSimplified
 
             ListView.ChoiceMode = ChoiceMode.Multiple;
 
-            m_AddButton = FindViewById<ImageButton>(Resource.Id.button_add_task);
-            m_MicrophoneButton = FindViewById<ImageButton>(Resource.Id.button_microphone);
-            m_TaskEditText  = FindViewById<EditText>(Resource.Id.edit_text_new_task);
+            
 
             m_AddButton.Click += (sender, args) =>
                              {
@@ -113,7 +115,7 @@ namespace TasksSimplified
                              };
 
             m_AddButton.SetImageResource(Settings.ThemeSetting == 0 ? Resource.Drawable.ic_action_add : Resource.Drawable.ic_action_add_dark);
-            
+            m_MicrophoneButton.SetImageResource(Settings.ThemeSetting == 0 ? Resource.Drawable.ic_action_microphone : Resource.Drawable.ic_action_microphone_dark);
 
             // remove speech if it doesn't exist
             var activities =PackageManager.QueryIntentActivities(new Intent(RecognizerIntent.ActionRecognizeSpeech), 0);
@@ -227,6 +229,8 @@ namespace TasksSimplified
 
             DarkMenuId = Resource.Menu.MainMenu;
             MenuId = Resource.Menu.MainMenu;
+
+            m_AddButton.Visibility = ViewStates.Visible;
         }
 
         private void SetupDeleteActionBar()
@@ -249,6 +253,7 @@ namespace TasksSimplified
             DarkMenuId = Resource.Menu.MainMenuDelete;
             MenuId = Resource.Menu.MainMenuDelete;
 
+            m_AddButton.Visibility = ViewStates.Visible;
         }
 
         private void SetupEditActionBar()
@@ -269,6 +274,7 @@ namespace TasksSimplified
             DarkMenuId = Resource.Menu.MainMenuEdit;
             MenuId = Resource.Menu.MainMenuEdit;
 
+            m_AddButton.Visibility = ViewStates.Gone;
         }
 
         protected override void OnListItemClick(ListView l, View v, int position, long id)
@@ -346,7 +352,6 @@ namespace TasksSimplified
             RunOnUiThread(()=> ListView.SetSelection(itemIndex));
 
         }
-
 
         private void DeleteAll()
         {
@@ -486,11 +491,24 @@ namespace TasksSimplified
 
             var position = ((AdapterView.AdapterContextMenuInfo)menuInfo).Position;
             
-           
             menu.SetHeaderTitle(m_AllTasks[position].Task);
-
+            
             MenuInflater.Inflate(Resource.Menu.ContextMenuTask, menu);
            
+        }
+
+        public override bool OnContextItemSelected(IMenuItem item)
+        {
+            switch(item.ItemId)
+            {
+                case Resource.Id.menu_edit_task:
+                    SetupEditActionBar();
+                    m_TaskEditText.Text = m_AllTasks[m_EditTaskPosition].Task;
+                    ListView.Enabled = false;
+                    return true;
+            }
+
+            return base.OnContextItemSelected(item);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

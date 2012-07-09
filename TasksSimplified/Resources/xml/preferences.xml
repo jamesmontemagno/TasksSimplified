@@ -7,7 +7,7 @@
     <taskssimplified.helpers.IntListPreference
         android:key="ThemeSetting"
         android:title="Theme"
-        android:summary="Pick a theme that fits your style"
+        android:summary="Pick a theme that fits your style. *Restart required!"
         android:entries="@array/theme_preference"
         android:entryValues="@array/theme_values_preference"
         android:dialogTitle="Theme"
@@ -38,8 +38,8 @@
     </PreferenceScreen>
 
     <PreferenceScreen
-        android:title="Copyright (2012)"
-       android:summary="James Montemagno">
+        android:title="Copyright (C) 2012"
+       android:summary="James Montemagno - Refractored LLC">
 
       <intent android:action="android.intent.action.VIEW"
               android:data="http://www.refractored.com" />

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <color name="gray">#80222222</color>
+  <color name="white">#FFFFFFFF</color>
   <color name="redtext">#FFFF0000</color>
   <color name="pop">#FF99CC00</color>
   <color name="actionbar_separator">#FF669900</color>

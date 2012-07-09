@@ -50,7 +50,8 @@
       android:layout_weight="1"
       android:hint="@string/new_task_hint"
       android:contentDescription="Enter new task"
-      android:nextFocusDown="@+id/button_add_task">
+      android:nextFocusDown="@+id/button_add_task"
+       android:inputType="textCapSentences">
     </EditText>
 
     <ImageButton
