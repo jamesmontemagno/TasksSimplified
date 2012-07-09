@@ -194,6 +194,17 @@
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_save_dark.png" />
     <AndroidResource Include="Resources\Menu\MainMenuEdit.xml" />
     <AndroidResource Include="Resources\Menu\ContextMenuTask.xml" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_menu_delete_all.png" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_action_add.png" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_action_add_dark.png" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_action_cancel.png" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_action_cancel_dark.png" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_action_delete_dark.png" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_action_microphone.png" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_action_microphone_dark.png" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_action_overflow.png" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_action_save.png" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_action_save_dark.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Values-v14\" />

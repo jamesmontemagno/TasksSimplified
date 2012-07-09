@@ -135,12 +135,11 @@ namespace TasksSimplified
             if (!string.IsNullOrEmpty(sharedText))
             {
                 m_TaskEditText.Text = sharedText;
-                if(ListView.GetCheckItemIds().Length == 0)
-                    SetupMainActionBar();
-                else
-                    SetupDeleteActionBar();
+                SetActionBar();
             }
         }
+
+        
 
         private void AddNewTask()
         {
@@ -303,17 +302,9 @@ namespace TasksSimplified
         {
             base.OnListItemClick(l, v, position, id);
 
-            if (ListView.GetCheckItemIds().Length > 0)
-            {
-                SetupDeleteActionBar();
-            }
-            else
-            {
-                SetupMainActionBar();
-            }
+          
 
             m_AllTasks[position].Checked = l.IsItemChecked(position);
-            RunOnUiThread(() => ((TaskAdapter) ListAdapter).NotifyDataSetChanged());
 
             try
             {
@@ -326,6 +317,28 @@ namespace TasksSimplified
 
             }
 
+           
+
+            RunOnUiThread(() => ((TaskAdapter)ListAdapter).NotifyDataSetChanged());
+            SetActionBar();
+        }
+
+        private void SetActionBar()
+        {
+            if (m_Editing)
+            {
+                SetupEditActionBar();
+                return;
+            }
+
+            if (m_AllTasks.Where(t => t.Checked).Count() > 0)
+            {
+                SetupDeleteActionBar();
+            }
+            else
+            {
+                SetupMainActionBar();
+            }
         }
 
         private void ReloadData(int startId)
@@ -356,12 +369,7 @@ namespace TasksSimplified
                 ListView.SetItemChecked(i, m_AllTasks[i].Checked);
             }
 
-            if(ListView.GetCheckItemIds().Length > 0)
-                SetupDeleteActionBar();
-            else
-                SetupMainActionBar();
-
-
+            SetActionBar();
 
             if (startId == 0)
                     return;
@@ -484,11 +492,8 @@ namespace TasksSimplified
         private void CancelSave()
         {
             m_TaskEditText.Text = string.Empty;
-            if(ListView.GetCheckItemIds().Length > 0)
-                SetupDeleteActionBar();
-            else
-                SetupMainActionBar();
-           
+            m_Editing = false;
+            SetActionBar();
         }
 
         private void Save()
@@ -510,11 +515,8 @@ namespace TasksSimplified
 
             RunOnUiThread(() => ((TaskAdapter)ListAdapter).NotifyDataSetChanged());
 
-            if (ListView.GetCheckItemIds().Length > 0)
-                SetupDeleteActionBar();
-            else
-                SetupMainActionBar();
-            
+            m_Editing = false;
+            SetActionBar();
         }
 
         public override void OnCreateContextMenu(IContextMenu menu, View v, IContextMenuContextMenuInfo menuInfo)
