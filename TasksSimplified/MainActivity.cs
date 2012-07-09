@@ -42,10 +42,6 @@ namespace TasksSimplified
     [Activity(Label = "@string/ApplicationName", Icon = "@drawable/ic_launcher")]
     public class MainActivity : ActionBarListActivity, TextToSpeech.IOnInitListener
     {
-        readonly string[] m_FakeData = new[]{"lorem","ipsum", "dolor", "sit", "amet",
-        "consectetuer", "adipisc", "jklfe", "morbi", "vel",
-        "ligula", "vitae", "carcu", "aliequet", "this is a crazy crazy long entry into the list so i can check this out to see if it wraps."};
-
         private TextToSpeech m_TextToSpeech;
 
         private JavaList<TaskModel> m_AllTasks;
@@ -66,6 +62,7 @@ namespace TasksSimplified
             Window.SetSoftInputMode(SoftInput.StateAlwaysHidden);
 
             m_AllTasks = new JavaList<TaskModel>();
+            m_EditTaskPosition = 0;
 
             m_AddButton = FindViewById<ImageButton>(Resource.Id.button_add_task);
             m_MicrophoneButton = FindViewById<ImageButton>(Resource.Id.button_microphone);
@@ -231,6 +228,7 @@ namespace TasksSimplified
             MenuId = Resource.Menu.MainMenu;
 
             m_AddButton.Visibility = ViewStates.Visible;
+            ListView.Enabled = true;
         }
 
         private void SetupDeleteActionBar()
@@ -254,6 +252,7 @@ namespace TasksSimplified
             MenuId = Resource.Menu.MainMenuDelete;
 
             m_AddButton.Visibility = ViewStates.Visible;
+            ListView.Enabled = true;
         }
 
         private void SetupEditActionBar()
@@ -276,6 +275,7 @@ namespace TasksSimplified
             MenuId = Resource.Menu.MainMenuEdit;
 
             m_AddButton.Visibility = ViewStates.Gone;
+            ListView.Enabled = false;
         }
 
         protected override void OnListItemClick(ListView l, View v, int position, long id)
@@ -465,8 +465,7 @@ namespace TasksSimplified
                 SetupDeleteActionBar();
             else
                 SetupMainActionBar();
-            m_AddButton.Visibility = ViewStates.Visible;
-            ListView.Enabled = true;
+           
         }
 
         private void Save()
@@ -486,10 +485,13 @@ namespace TasksSimplified
 
             m_TaskEditText.Text = string.Empty;
 
+            RunOnUiThread(() => ((TaskAdapter)ListAdapter).NotifyDataSetChanged());
+
             if (ListView.GetCheckItemIds().Length > 0)
                 SetupDeleteActionBar();
             else
                 SetupMainActionBar();
+            
         }
 
         public override void OnCreateContextMenu(IContextMenu menu, View v, IContextMenuContextMenuInfo menuInfo)
@@ -511,7 +513,7 @@ namespace TasksSimplified
                 case Resource.Id.menu_edit_task:
                     SetupEditActionBar();
                     m_TaskEditText.Text = m_AllTasks[m_EditTaskPosition].Task;
-                    ListView.Enabled = false;
+                    m_TaskEditText.RequestFocus();
                     return true;
             }
 
