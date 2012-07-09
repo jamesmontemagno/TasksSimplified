@@ -6,6 +6,11 @@ Simple and adorable Task app for Android
 http://www.TasksSimplified.com
 
 ## Screenshots
+![Light Theme Add](https://github.com/jamesmontemagno/TasksSimplified/raw/master/Screenshots/Screenshot1.png)
+![Light Theme Checked](https://github.com/jamesmontemagno/TasksSimplified/raw/master/Screenshots/Screenshot2.png)
+![Dark Teme Add](https://github.com/jamesmontemagno/TasksSimplified/raw/master/Screenshots/Screenshot3.png)
+![Dark Teme Checked](https://github.com/jamesmontemagno/TasksSimplified/raw/master/Screenshots/Screenshot4.png)
+
 
 
 ## TODO
@@ -25,3 +30,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  See the License for the specific language governing permissions and
  limitations under the License.
+
+
+
+ Adendum: you may not use the icons or name "Tasks Simplified". Only derivatives of work should be published, not a straight copy/paste.
