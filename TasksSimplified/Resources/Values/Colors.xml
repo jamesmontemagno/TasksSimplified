@@ -2,17 +2,17 @@
 <resources>
   <color name="gray">#80222222</color>
   <color name="redtext">#FFFF0000</color>
-  <color name="pop">#ff33b5e5</color>
-  <color name="actionbar_separator">#FF222222</color>
+  <color name="pop">#FF99CC00</color>
+  <color name="actionbar_separator">#FF669900</color>
   <color name="actionbar_title">#FFFFFF</color>
-  <color name="actionbar_background_start">#FF222222</color>
-  <color name="actionbar_background_end">#FF222222</color>
-  <color name="actionbar_background_item_pressed_start">#ff33b5e5</color>
-  <color name="actionbar_background_item_pressed_end">#ff00ccff</color>
-  <color name="bottomactionbar_separator">#FF222222</color>
+  <color name="actionbar_background_start">#FF669900</color>
+  <color name="actionbar_background_end">#FF669900</color>
+  <color name="actionbar_background_item_pressed_start">#FF99CC00</color>
+  <color name="actionbar_background_item_pressed_end">#FF99CC00</color>
+  <color name="bottomactionbar_separator">#FF99CC00</color>
   <color name="bottomactionbar_title">#FFFFFF</color>
-  <color name="bottomactionbar_background_end">#FF222222</color>
-  <color name="bottomactionbar_background_start">#FF222222</color>
+  <color name="bottomactionbar_background_end">#FF99CC00</color>
+  <color name="bottomactionbar_background_start">#FF99CC00</color>
   <color name="bottomactionbar_background_item_pressed_start">#ff33b5e5</color>
   <color name="bottomactionbar_background_item_pressed_end">#ff00ccff</color>
 </resources>

@@ -15,6 +15,20 @@ namespace TasksSimplified
 	public partial class Resource
 	{
 		
+		public partial class Array
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int theme_preference = 2131034112;
+			
+			// aapt resource value: 0x7f050001
+			public const int theme_values_preference = 2131034113;
+			
+			private Array()
+			{
+			}
+		}
+		
 		public partial class Attribute
 		{
 			
@@ -29,50 +43,50 @@ namespace TasksSimplified
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f050006
-			public const int actionbar_background_end = 2131034118;
+			// aapt resource value: 0x7f060006
+			public const int actionbar_background_end = 2131099654;
 			
-			// aapt resource value: 0x7f050008
-			public const int actionbar_background_item_pressed_end = 2131034120;
+			// aapt resource value: 0x7f060008
+			public const int actionbar_background_item_pressed_end = 2131099656;
 			
-			// aapt resource value: 0x7f050007
-			public const int actionbar_background_item_pressed_start = 2131034119;
+			// aapt resource value: 0x7f060007
+			public const int actionbar_background_item_pressed_start = 2131099655;
 			
-			// aapt resource value: 0x7f050005
-			public const int actionbar_background_start = 2131034117;
+			// aapt resource value: 0x7f060005
+			public const int actionbar_background_start = 2131099653;
 			
-			// aapt resource value: 0x7f050003
-			public const int actionbar_separator = 2131034115;
+			// aapt resource value: 0x7f060003
+			public const int actionbar_separator = 2131099651;
 			
-			// aapt resource value: 0x7f050004
-			public const int actionbar_title = 2131034116;
+			// aapt resource value: 0x7f060004
+			public const int actionbar_title = 2131099652;
 			
-			// aapt resource value: 0x7f05000b
-			public const int bottomactionbar_background_end = 2131034123;
+			// aapt resource value: 0x7f06000b
+			public const int bottomactionbar_background_end = 2131099659;
 			
-			// aapt resource value: 0x7f05000e
-			public const int bottomactionbar_background_item_pressed_end = 2131034126;
+			// aapt resource value: 0x7f06000e
+			public const int bottomactionbar_background_item_pressed_end = 2131099662;
 			
-			// aapt resource value: 0x7f05000d
-			public const int bottomactionbar_background_item_pressed_start = 2131034125;
+			// aapt resource value: 0x7f06000d
+			public const int bottomactionbar_background_item_pressed_start = 2131099661;
 			
-			// aapt resource value: 0x7f05000c
-			public const int bottomactionbar_background_start = 2131034124;
+			// aapt resource value: 0x7f06000c
+			public const int bottomactionbar_background_start = 2131099660;
 			
-			// aapt resource value: 0x7f050009
-			public const int bottomactionbar_separator = 2131034121;
+			// aapt resource value: 0x7f060009
+			public const int bottomactionbar_separator = 2131099657;
 			
-			// aapt resource value: 0x7f05000a
-			public const int bottomactionbar_title = 2131034122;
+			// aapt resource value: 0x7f06000a
+			public const int bottomactionbar_title = 2131099658;
 			
-			// aapt resource value: 0x7f050000
-			public const int gray = 2131034112;
+			// aapt resource value: 0x7f060000
+			public const int gray = 2131099648;
 			
-			// aapt resource value: 0x7f050002
-			public const int pop = 2131034114;
+			// aapt resource value: 0x7f060002
+			public const int pop = 2131099650;
 			
-			// aapt resource value: 0x7f050001
-			public const int redtext = 2131034113;
+			// aapt resource value: 0x7f060001
+			public const int redtext = 2131099649;
 			
 			private Color()
 			{
@@ -82,17 +96,17 @@ namespace TasksSimplified
 		public partial class Dimension
 		{
 			
-			// aapt resource value: 0x7f060000
-			public const int actionbar_height = 2131099648;
+			// aapt resource value: 0x7f070000
+			public const int actionbar_height = 2131165184;
 			
-			// aapt resource value: 0x7f060003
-			public const int actionbar_home_item_width = 2131099651;
+			// aapt resource value: 0x7f070003
+			public const int actionbar_home_item_width = 2131165187;
 			
-			// aapt resource value: 0x7f060001
-			public const int actionbar_item_height = 2131099649;
+			// aapt resource value: 0x7f070001
+			public const int actionbar_item_height = 2131165185;
 			
-			// aapt resource value: 0x7f060002
-			public const int actionbar_item_width = 2131099650;
+			// aapt resource value: 0x7f070002
+			public const int actionbar_item_width = 2131165186;
 			
 			private Dimension()
 			{
@@ -139,31 +153,49 @@ namespace TasksSimplified
 			public const int ic_action_add = 2130837515;
 			
 			// aapt resource value: 0x7f02000c
-			public const int ic_action_cancel = 2130837516;
+			public const int ic_action_add_dark = 2130837516;
 			
 			// aapt resource value: 0x7f02000d
-			public const int ic_action_delete_dark = 2130837517;
+			public const int ic_action_cancel = 2130837517;
 			
 			// aapt resource value: 0x7f02000e
-			public const int ic_action_microphone = 2130837518;
+			public const int ic_action_cancel_dark = 2130837518;
 			
 			// aapt resource value: 0x7f02000f
-			public const int ic_action_overflow = 2130837519;
+			public const int ic_action_delete_dark = 2130837519;
 			
 			// aapt resource value: 0x7f020010
-			public const int ic_launcher = 2130837520;
+			public const int ic_action_microphone = 2130837520;
 			
 			// aapt resource value: 0x7f020011
-			public const int ic_menu_about = 2130837521;
+			public const int ic_action_microphone_dark = 2130837521;
 			
 			// aapt resource value: 0x7f020012
-			public const int ic_menu_delete_all = 2130837522;
+			public const int ic_action_overflow = 2130837522;
 			
 			// aapt resource value: 0x7f020013
-			public const int Icon = 2130837523;
+			public const int ic_action_save = 2130837523;
 			
 			// aapt resource value: 0x7f020014
-			public const int splash = 2130837524;
+			public const int ic_action_save_dark = 2130837524;
+			
+			// aapt resource value: 0x7f020015
+			public const int ic_launcher = 2130837525;
+			
+			// aapt resource value: 0x7f020016
+			public const int ic_menu_about = 2130837526;
+			
+			// aapt resource value: 0x7f020017
+			public const int ic_menu_delete_all = 2130837527;
+			
+			// aapt resource value: 0x7f020018
+			public const int ic_menu_settings = 2130837528;
+			
+			// aapt resource value: 0x7f020019
+			public const int Icon = 2130837529;
+			
+			// aapt resource value: 0x7f02001a
+			public const int splash = 2130837530;
 			
 			private Drawable()
 			{
@@ -173,71 +205,80 @@ namespace TasksSimplified
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0a000c
-			public const int actionbar = 2131361804;
+			// aapt resource value: 0x7f0b000c
+			public const int actionbar = 2131427340;
 			
-			// aapt resource value: 0x7f0a0006
-			public const int actionbar_actions = 2131361798;
+			// aapt resource value: 0x7f0b0006
+			public const int actionbar_actions = 2131427334;
 			
-			// aapt resource value: 0x7f0a0001
-			public const int actionbar_home = 2131361793;
+			// aapt resource value: 0x7f0b0001
+			public const int actionbar_home = 2131427329;
 			
-			// aapt resource value: 0x7f0a0003
-			public const int actionbar_home_bg = 2131361795;
+			// aapt resource value: 0x7f0b0003
+			public const int actionbar_home_bg = 2131427331;
 			
-			// aapt resource value: 0x7f0a0004
-			public const int actionbar_home_btn = 2131361796;
+			// aapt resource value: 0x7f0b0004
+			public const int actionbar_home_btn = 2131427332;
 			
-			// aapt resource value: 0x7f0a0005
-			public const int actionbar_home_is_back = 2131361797;
+			// aapt resource value: 0x7f0b0005
+			public const int actionbar_home_is_back = 2131427333;
 			
-			// aapt resource value: 0x7f0a0002
-			public const int actionbar_home_logo = 2131361794;
+			// aapt resource value: 0x7f0b0002
+			public const int actionbar_home_logo = 2131427330;
 			
-			// aapt resource value: 0x7f0a000a
-			public const int actionbar_item = 2131361802;
+			// aapt resource value: 0x7f0b000a
+			public const int actionbar_item = 2131427338;
 			
-			// aapt resource value: 0x7f0a0008
-			public const int actionbar_progress = 2131361800;
+			// aapt resource value: 0x7f0b0008
+			public const int actionbar_progress = 2131427336;
 			
-			// aapt resource value: 0x7f0a0009
-			public const int actionbar_title = 2131361801;
+			// aapt resource value: 0x7f0b0009
+			public const int actionbar_title = 2131427337;
 			
-			// aapt resource value: 0x7f0a0007
-			public const int actionbar_title_layout = 2131361799;
+			// aapt resource value: 0x7f0b0007
+			public const int actionbar_title_layout = 2131427335;
 			
-			// aapt resource value: 0x7f0a000b
-			public const int bottomactionbar_item = 2131361803;
+			// aapt resource value: 0x7f0b000b
+			public const int bottomactionbar_item = 2131427339;
 			
-			// aapt resource value: 0x7f0a0010
-			public const int button_add_task = 2131361808;
+			// aapt resource value: 0x7f0b0010
+			public const int button_add_task = 2131427344;
 			
-			// aapt resource value: 0x7f0a000e
-			public const int button_microphone = 2131361806;
+			// aapt resource value: 0x7f0b000e
+			public const int button_microphone = 2131427342;
 			
-			// aapt resource value: 0x7f0a000f
-			public const int edit_text_new_task = 2131361807;
+			// aapt resource value: 0x7f0b000f
+			public const int edit_text_new_task = 2131427343;
 			
-			// aapt resource value: 0x7f0a0013
-			public const int menu_about = 2131361811;
+			// aapt resource value: 0x7f0b0014
+			public const int menu_about = 2131427348;
 			
-			// aapt resource value: 0x7f0a0015
-			public const int menu_cancel = 2131361813;
+			// aapt resource value: 0x7f0b0016
+			public const int menu_cancel = 2131427350;
 			
-			// aapt resource value: 0x7f0a0014
-			public const int menu_delete = 2131361812;
+			// aapt resource value: 0x7f0b0018
+			public const int menu_cancel_save = 2131427352;
 			
-			// aapt resource value: 0x7f0a0012
-			public const int menu_delete_all = 2131361810;
+			// aapt resource value: 0x7f0b0015
+			public const int menu_delete = 2131427349;
 			
-			// aapt resource value: 0x7f0a0011
-			public const int overflow_spinner = 2131361809;
+			// aapt resource value: 0x7f0b0013
+			public const int menu_delete_all = 2131427347;
 			
-			// aapt resource value: 0x7f0a0000
-			public const int screen = 2131361792;
+			// aapt resource value: 0x7f0b0012
+			public const int menu_edit_task = 2131427346;
 			
-			// aapt resource value: 0x7f0a000d
-			public const int status_text = 2131361805;
+			// aapt resource value: 0x7f0b0017
+			public const int menu_save = 2131427351;
+			
+			// aapt resource value: 0x7f0b0011
+			public const int overflow_spinner = 2131427345;
+			
+			// aapt resource value: 0x7f0b0000
+			public const int screen = 2131427328;
+			
+			// aapt resource value: 0x7f0b000d
+			public const int status_text = 2131427341;
 			
 			private Id()
 			{
@@ -282,11 +323,17 @@ namespace TasksSimplified
 		public partial class Menu
 		{
 			
-			// aapt resource value: 0x7f090000
-			public const int MainMenu = 2131296256;
+			// aapt resource value: 0x7f0a0000
+			public const int ContextMenuTask = 2131361792;
 			
-			// aapt resource value: 0x7f090001
-			public const int MainMenuEdit = 2131296257;
+			// aapt resource value: 0x7f0a0001
+			public const int MainMenu = 2131361793;
+			
+			// aapt resource value: 0x7f0a0002
+			public const int MainMenuDelete = 2131361794;
+			
+			// aapt resource value: 0x7f0a0003
+			public const int MainMenuEdit = 2131361795;
 			
 			private Menu()
 			{
@@ -296,50 +343,56 @@ namespace TasksSimplified
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f070002
-			public const int ApplicationName = 2131165186;
+			// aapt resource value: 0x7f080002
+			public const int ApplicationName = 2131230722;
 			
-			// aapt resource value: 0x7f070000
-			public const int VersionNumber = 2131165184;
+			// aapt resource value: 0x7f080000
+			public const int VersionNumber = 2131230720;
 			
-			// aapt resource value: 0x7f070001
-			public const int actionbar_activity_not_found = 2131165185;
+			// aapt resource value: 0x7f080001
+			public const int actionbar_activity_not_found = 2131230721;
 			
-			// aapt resource value: 0x7f07000a
-			public const int cancel = 2131165194;
+			// aapt resource value: 0x7f08000c
+			public const int cancel = 2131230732;
 			
-			// aapt resource value: 0x7f07000b
-			public const int confirm_delete = 2131165195;
+			// aapt resource value: 0x7f08000d
+			public const int confirm_delete = 2131230733;
 			
-			// aapt resource value: 0x7f07000c
-			public const int confirm_delete_title = 2131165196;
+			// aapt resource value: 0x7f08000e
+			public const int confirm_delete_title = 2131230734;
 			
-			// aapt resource value: 0x7f070003
-			public const int loading = 2131165187;
+			// aapt resource value: 0x7f080003
+			public const int loading = 2131230723;
 			
-			// aapt resource value: 0x7f070007
-			public const int menu_string_about = 2131165191;
+			// aapt resource value: 0x7f08000a
+			public const int menu_edit_task = 2131230730;
 			
-			// aapt resource value: 0x7f070006
-			public const int menu_string_cancel = 2131165190;
+			// aapt resource value: 0x7f080007
+			public const int menu_string_about = 2131230727;
 			
-			// aapt resource value: 0x7f070005
-			public const int menu_string_delete = 2131165189;
+			// aapt resource value: 0x7f080006
+			public const int menu_string_cancel = 2131230726;
 			
-			// aapt resource value: 0x7f070008
-			public const int menu_string_delete_all = 2131165192;
+			// aapt resource value: 0x7f080005
+			public const int menu_string_delete = 2131230725;
 			
-			// aapt resource value: 0x7f070004
-			public const int new_task_hint = 2131165188;
+			// aapt resource value: 0x7f080008
+			public const int menu_string_delete_all = 2131230728;
 			
-			// aapt resource value: 0x7f070009
-			public const int ok = 2131165193;
+			// aapt resource value: 0x7f080009
+			public const int menu_string_save = 2131230729;
 			
-			// aapt resource value: 0x7f07000e
-			public const int unable_to_delete = 2131165198;
+			// aapt resource value: 0x7f080004
+			public const int new_task_hint = 2131230724;
 			
-			// aapt resource value: 0x7f07000d
-			public const int unable_to_save = 2131165197;
+			// aapt resource value: 0x7f08000b
+			public const int ok = 2131230731;
+			
+			// aapt resource value: 0x7f080010
+			public const int unable_to_delete = 2131230736;
+			
+			// aapt resource value: 0x7f08000f
+			public const int unable_to_save = 2131230735;
 			
 			private String()
 			{
@@ -349,32 +402,35 @@ namespace TasksSimplified
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f080000
-			public const int ActionBar = 2131230720;
+			// aapt resource value: 0x7f090000
+			public const int ActionBar = 2131296256;
 			
-			// aapt resource value: 0x7f080004
-			public const int ActionBarHomeItem = 2131230724;
+			// aapt resource value: 0x7f090004
+			public const int ActionBarHomeItem = 2131296260;
 			
-			// aapt resource value: 0x7f080005
-			public const int ActionBarHomeLogo = 2131230725;
+			// aapt resource value: 0x7f090005
+			public const int ActionBarHomeLogo = 2131296261;
 			
-			// aapt resource value: 0x7f080002
-			public const int ActionBarItem = 2131230722;
+			// aapt resource value: 0x7f090002
+			public const int ActionBarItem = 2131296258;
 			
-			// aapt resource value: 0x7f080006
-			public const int ActionBarProgressBar = 2131230726;
+			// aapt resource value: 0x7f090006
+			public const int ActionBarProgressBar = 2131296262;
 			
-			// aapt resource value: 0x7f080001
-			public const int BottomActionBar = 2131230721;
+			// aapt resource value: 0x7f090001
+			public const int BottomActionBar = 2131296257;
 			
-			// aapt resource value: 0x7f080003
-			public const int ClearButton = 2131230723;
+			// aapt resource value: 0x7f090003
+			public const int ClearButton = 2131296259;
 			
-			// aapt resource value: 0x7f080007
-			public const int MyTheme = 2131230727;
+			// aapt resource value: 0x7f090007
+			public const int MyTheme = 2131296263;
 			
-			// aapt resource value: 0x7f080008
-			public const int Theme_Splash = 2131230728;
+			// aapt resource value: 0x7f090009
+			public const int MyThemeDark = 2131296265;
+			
+			// aapt resource value: 0x7f090008
+			public const int Theme_Splash = 2131296264;
 			
 			private Style()
 			{

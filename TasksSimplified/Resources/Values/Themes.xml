@@ -7,4 +7,7 @@
     <item name="android:windowBackground">@drawable/splash</item>
     <item name="android:windowNoTitle">true</item>
   </style>
+  <style name="MyThemeDark" parent="@android:style/Theme.NoTitleBar">
+    
+  </style>
 </resources>

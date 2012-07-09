@@ -21,17 +21,20 @@ using TasksSimplified.Helpers;
 
 namespace TasksSimplified
 {
-    [Activity(Label = "About", Icon = "@drawable/ic_launcher", Theme = "@style/MyTheme")]
+    [Activity(Label = "About", Icon = "@drawable/ic_launcher")]
     public class AboutActivity : PreferenceActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
+            SetTheme(Settings.ThemeSetting == 0 ? Resource.Style.MyTheme : Resource.Style.MyThemeDark);
+
             base.OnCreate(bundle);
 
-            // Create your application here
-            AddPreferencesFromResource(Resource.Xml.preferences);
             FlurryAgent.OnPageView();
             FlurryAgent.LogEvent("AboutPage");
+
+            PreferenceManager.SharedPreferencesName = Settings.PrefName;
+            AddPreferencesFromResource(Resource.Xml.preferences);
         }
 
         protected override void OnStart()

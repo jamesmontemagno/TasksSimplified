@@ -13,11 +13,11 @@
      limitations under the License.
 -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-  <item android:id="@+id/menu_delete"
-     android:icon="@drawable/ic_action_delete_dark"
-     android:title="@string/menu_string_delete"/>
+  <item android:id="@+id/menu_save"
+     android:icon="@drawable/ic_action_save_dark"
+     android:title="@string/menu_string_save"/>
 
-  <item android:id="@+id/menu_cancel"
-     android:icon="@drawable/ic_action_cancel"
+  <item android:id="@+id/menu_cancel_save"
+     android:icon="@drawable/ic_action_cancel_dark"
      android:title="@string/menu_string_cancel"/>
 </menu>

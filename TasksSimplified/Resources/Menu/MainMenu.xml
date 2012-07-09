@@ -19,6 +19,6 @@
       android:title="@string/menu_string_delete_all"/>
   
   <item android:id="@+id/menu_about"
-      android:icon="@drawable/ic_menu_about"
+      android:icon="@drawable/ic_menu_settings"
       android:title="@string/menu_string_about"/>
 </menu>

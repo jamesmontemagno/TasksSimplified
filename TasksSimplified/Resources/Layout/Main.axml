@@ -65,5 +65,6 @@
         android:background="@drawable/clearbutton"
         android:contentDescription="Save new task"
         android:nextFocusUp="@id/edit_text_new_task"/>
+    
   </LinearLayout>
 </LinearLayout>

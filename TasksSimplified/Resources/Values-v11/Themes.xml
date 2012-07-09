@@ -3,4 +3,7 @@
   <style name="MyTheme" parent="@android:style/Theme.Holo.Light.NoActionBar">
     <!-- Any customizations for your app running on devices with Theme.Holo here -->
   </style>
+  <style name="MyThemeDark" parent="@android:style/Theme.Holo.NoActionBar">
+    
+  </style>
 </resources>

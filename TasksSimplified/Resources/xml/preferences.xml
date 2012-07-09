@@ -2,33 +2,53 @@
 <PreferenceScreen
         xmlns:android="http://schemas.android.com/apk/res/android">
 
+  <PreferenceCategory android:title="Settings">
+
+    <taskssimplified.helpers.IntListPreference
+        android:key="ThemeSetting"
+        android:title="Theme"
+        android:summary="Pick a theme that fits your style"
+        android:entries="@array/theme_preference"
+        android:entryValues="@array/theme_values_preference"
+        android:dialogTitle="Theme"
+        android:defaultValue="0" />
+
+    <CheckBoxPreference
+              android:key="TalkBack"
+              android:title="Talk Back Enabled"
+              android:summary="When you add task by speech if enabled it will talk back to you."
+              android:defaultValue="true" />
+    
+  </PreferenceCategory>
 
   <PreferenceCategory
         android:title="About">
-
-   <Preference
-           android:title="Copyright (2012)"
-           android:summary="James Montemagno" />
-
-    <PreferenceScreen
-          android:title="Refractored LLC">
-
-      <intent android:action="android.intent.action.VIEW"
-              android:data="http://www.refractored.com" />
-      
-    </PreferenceScreen>
 
     <Preference
             android:title="Version"
             android:summary="@string/VersionNumber" />
 
     <PreferenceScreen
-           android:title="Tasks Preferences Website">
+           android:title="Tasks Simplified Support"
+           android:summary="www.TasksSimplified.com">
 
       <intent android:action="android.intent.action.VIEW"
               android:data="http://www.taskssimplified.com" />
 
     </PreferenceScreen>
+
+    <PreferenceScreen
+        android:title="Copyright (2012)"
+       android:summary="James Montemagno">
+
+      <intent android:action="android.intent.action.VIEW"
+              android:data="http://www.refractored.com" />
+
+    </PreferenceScreen>
+
+    <Preference
+           android:title="Written in"
+           android:summary="C# with Mono for Android" />
 
   </PreferenceCategory>
 

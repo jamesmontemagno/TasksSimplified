@@ -39,7 +39,7 @@ namespace TasksSimplified
         public int LastPosition { get; set; }
     }
 
-    [Activity(Label = "@string/ApplicationName", Icon = "@drawable/ic_launcher", Theme = "@style/MyTheme")]
+    [Activity(Label = "@string/ApplicationName", Icon = "@drawable/ic_launcher")]
     public class MainActivity : ActionBarListActivity, TextToSpeech.IOnInitListener
     {
         readonly string[] m_FakeData = new[]{"lorem","ipsum", "dolor", "sit", "amet",
@@ -49,8 +49,15 @@ namespace TasksSimplified
         private TextToSpeech m_TextToSpeech;
 
         private JavaList<TaskModel> m_AllTasks;
+        private int m_EditTaskPosition;
+
+        private EditText m_TaskEditText;
+        private ImageButton m_AddButton;
+        private ImageButton m_MicrophoneButton;
         protected override void OnCreate(Bundle bundle) 
         {
+            SetTheme(Settings.ThemeSetting == 0 ? Resource.Style.MyTheme : Resource.Style.MyThemeDark);
+
             base.OnCreate(bundle);
 
             // Set our view from the "main" layout resource
@@ -74,18 +81,14 @@ namespace TasksSimplified
 
             ListView.ChoiceMode = ChoiceMode.Multiple;
 
-            var add = FindViewById<ImageButton>(Resource.Id.button_add_task);
-            var microphone = FindViewById<ImageButton>(Resource.Id.button_microphone);
+            m_AddButton = FindViewById<ImageButton>(Resource.Id.button_add_task);
+            m_MicrophoneButton = FindViewById<ImageButton>(Resource.Id.button_microphone);
+            m_TaskEditText  = FindViewById<EditText>(Resource.Id.edit_text_new_task);
 
-            //add.SetBackgroundResource(Android.Resource.Color.Transparent);
-            //microphone.SetBackgroundResource(Android.Resource.Color.Transparent);
-
-            add.Click += (sender, args) =>
+            m_AddButton.Click += (sender, args) =>
                              {
-                                 var text = FindViewById<EditText>(Resource.Id.edit_text_new_task);
-                                 var task = text.Text.Trim();
 
-                                
+                                 var task = m_TaskEditText.Text.Trim();
 
                                  if (string.IsNullOrWhiteSpace(task))
                                      return;
@@ -96,7 +99,7 @@ namespace TasksSimplified
                                  {
                                      DataManager.SaveTask(newTask);
                                      m_AllTasks.Add(newTask);
-                                     text.Text = string.Empty;
+                                     m_TaskEditText.Text = string.Empty;
                                      
                                      RunOnUiThread(() =>
                                      {
@@ -112,15 +115,18 @@ namespace TasksSimplified
                                  }
                              };
 
+            m_AddButton.SetImageResource(Settings.ThemeSetting == 0 ? Resource.Drawable.ic_action_add : Resource.Drawable.ic_action_add_dark);
+            
+
             // remove speech if it doesn't exist
             var activities =PackageManager.QueryIntentActivities(new Intent(RecognizerIntent.ActionRecognizeSpeech), 0);
             if (activities.Count == 0)
             {
-                microphone.Visibility = ViewStates.Gone;
+                m_MicrophoneButton.Visibility = ViewStates.Gone;
             }
             else
             {
-                microphone.Click += (sender, args) => StartVoiceRecognitionActivity();
+                m_MicrophoneButton.Click += (sender, args) => StartVoiceRecognitionActivity();
             }
 
             m_TextToSpeech = new TextToSpeech(this, this);
@@ -131,7 +137,7 @@ namespace TasksSimplified
                 m_AllTasks = new JavaList<TaskModel>(saveState.Tasks);
                 RunOnUiThread(() => ListAdapter = new TaskAdapter(this, m_AllTasks));
                 RunOnUiThread(() => ListView.SetSelection(saveState.LastPosition));
-                FindViewById<EditText>(Resource.Id.edit_text_new_task).Text = saveState.NewTaskText;
+                m_TaskEditText.Text = saveState.NewTaskText;
             }
             else
             {
@@ -157,7 +163,7 @@ namespace TasksSimplified
         {
             return new SaveState
                        {
-                           NewTaskText = FindViewById<EditText>(Resource.Id.edit_text_new_task).Text,
+                           NewTaskText = m_TaskEditText.Text,
                            Tasks = m_AllTasks.ToArray(),
                            LastPosition = ListView.SelectedItemPosition
                        };
@@ -173,7 +179,7 @@ namespace TasksSimplified
         
         private void Speak(string message)
         {
-            if (m_TextToSpeech == null)
+            if (m_TextToSpeech == null || !Settings.TalkBackEnabled)
                 return;
 
             m_TextToSpeech.Speak(message, QueueMode.Flush, null);
@@ -193,8 +199,8 @@ namespace TasksSimplified
                 else
                 {
                     var newTask = matches[0];
-                    var text = FindViewById<EditText>(Resource.Id.edit_text_new_task);
-                    text.Text = newTask;
+                   
+                    m_TaskEditText.Text = newTask;
 
                     Speak(newTask);
                 }
@@ -205,8 +211,9 @@ namespace TasksSimplified
 
         private void SetupMainActionBar()
         {
-            if (ActionBar.HasId(Resource.Id.menu_about))
+            if (DarkMenuId == Resource.Menu.MainMenu)
                 return;
+
             ActionBar.SetTitle("Tasks");
 
             ActionBar.RemoveAllActions();
@@ -217,7 +224,7 @@ namespace TasksSimplified
 
             ActionBar.AddAction(action);
 
-            action = new MenuItemActionBarAction(this, this, Resource.Id.menu_about, Resource.Drawable.ic_menu_about,
+            action = new MenuItemActionBarAction(this, this, Resource.Id.menu_about, Resource.Drawable.ic_menu_settings,
                                                      Resource.String.menu_string_about) {ActionType = ActionType.Never};
             ActionBar.AddAction(action);
 
@@ -225,9 +232,9 @@ namespace TasksSimplified
             MenuId = Resource.Menu.MainMenu;
         }
 
-        private void SetupEditActionBar()
+        private void SetupDeleteActionBar()
         {
-            if(ActionBar.HasId(Resource.Id.menu_delete))
+            if (DarkMenuId == Resource.Menu.MainMenuDelete)
                 return;
 
             ActionBar.SetTitle("Delete Tasks");
@@ -237,9 +244,29 @@ namespace TasksSimplified
                                                     Resource.String.menu_string_delete) {ActionType = ActionType.Always};
             ActionBar.AddAction(action);
 
-            action = new MenuItemActionBarAction(this, this, Resource.Id.menu_cancel, Resource.Drawable.ic_action_cancel,
+            action = new MenuItemActionBarAction(this, this, Resource.Id.menu_cancel, Resource.Drawable.ic_action_cancel_dark,
                                                      Resource.String.menu_string_cancel)
                          {ActionType = ActionType.Always};
+            ActionBar.AddAction(action);
+
+            DarkMenuId = Resource.Menu.MainMenuDelete;
+            MenuId = Resource.Menu.MainMenuDelete;
+
+        }
+
+        private void SetupEditActionBar()
+        {
+            if (DarkMenuId == Resource.Menu.MainMenuEdit)
+                return;
+
+            ActionBar.SetTitle("Edit Task");
+
+            var action = new MenuItemActionBarAction(this, this, Resource.Id.menu_save, Resource.Drawable.ic_action_save_dark,
+                                                   Resource.String.menu_string_save) { ActionType = ActionType.Always };
+            ActionBar.AddAction(action);
+
+            action = new MenuItemActionBarAction(this, this, Resource.Id.menu_cancel_save, Resource.Drawable.ic_action_cancel_dark,
+                                                     Resource.String.menu_string_cancel) { ActionType = ActionType.Always };
             ActionBar.AddAction(action);
 
             DarkMenuId = Resource.Menu.MainMenuEdit;
@@ -253,7 +280,7 @@ namespace TasksSimplified
 
             if (ListView.GetCheckItemIds().Length > 0)
             {
-                SetupEditActionBar();
+                SetupDeleteActionBar();
             }
             else
             {
@@ -305,7 +332,7 @@ namespace TasksSimplified
             }
 
             if(ListView.GetCheckItemIds().Length > 0)
-                SetupEditActionBar();
+                SetupDeleteActionBar();
             else
                 SetupMainActionBar();
 
@@ -424,6 +451,47 @@ namespace TasksSimplified
             SetupMainActionBar();
         }
 
+        private void CancelSave()
+        {
+            m_TaskEditText.Text = string.Empty;
+            if(ListView.GetCheckItemIds().Length > 0)
+                SetupDeleteActionBar();
+            else
+                SetupMainActionBar();
+            m_AddButton.Visibility = ViewStates.Visible;
+            ListView.Enabled = true;
+        }
+
+        private void Save()
+        {
+            m_AllTasks[m_EditTaskPosition].Task = m_TaskEditText.Text.Trim();
+
+            try
+            {
+                DataManager.SaveTask(m_AllTasks[m_EditTaskPosition]);
+            }
+            catch (Exception)
+            {
+                RunOnUiThread(() => Toast.MakeText(this, Resource.String.unable_to_save,
+                                                   ToastLength.Short).Show());
+
+            }
+
+        }
+
+        public override void OnCreateContextMenu(IContextMenu menu, View v, IContextMenuContextMenuInfo menuInfo)
+        {
+            base.OnCreateContextMenu(menu, v, menuInfo);
+
+            var position = ((AdapterView.AdapterContextMenuInfo)menuInfo).Position;
+            
+           
+            menu.SetHeaderTitle(m_AllTasks[position].Task);
+
+            MenuInflater.Inflate(Resource.Menu.ContextMenuTask, menu);
+           
+        }
+
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch(item.ItemId)
@@ -440,6 +508,12 @@ namespace TasksSimplified
                     break;
                 case Resource.Id.menu_delete_all:
                     DeleteAll();
+                    break;
+                case Resource.Id.menu_cancel_save:
+                    CancelSave();
+                    break;
+                case Resource.Id.menu_save:
+                    Save();
                     break;
             }
 
