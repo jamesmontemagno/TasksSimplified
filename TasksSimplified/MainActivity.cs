@@ -581,10 +581,10 @@ namespace TasksSimplified
 
         public bool OnEditorAction(TextView v, Android.Views.InputMethods.ImeAction actionId, KeyEvent e)
         {
-            if (actionId == Android.Views.InputMethods.ImeAction.Done)
+            if (actionId == Android.Views.InputMethods.ImeAction.Done && !m_Editing)
             {
                 AddNewTask();
-                return true;
+                return Settings.KeepKeyboardUp;
             }
             return false;
         }
