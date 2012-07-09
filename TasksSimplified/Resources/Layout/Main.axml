@@ -37,7 +37,7 @@
         android:layout_centerVertical="true"
         android:layout_height="@dimen/actionbar_item_height"
         android:layout_width="wrap_content"
-        android:layout_marginRight="6dp"
+        android:layout_marginRight="0dp"
         android:singleLine="true"
         android:background="@drawable/clearbutton"
         android:src="@drawable/ic_action_microphone"/>
@@ -60,7 +60,7 @@
         android:layout_centerVertical="true"
         android:layout_height="@dimen/actionbar_item_height"
         android:layout_width="wrap_content"
-        android:layout_marginLeft="6dp"
+        android:layout_marginLeft="0dp"
         android:singleLine="true"
         android:src="@drawable/ic_action_add"
         android:background="@drawable/clearbutton"
