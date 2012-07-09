@@ -37,6 +37,8 @@ namespace TasksSimplified
         public TaskModel[] Tasks { get; set; }
         public string NewTaskText { get; set; }
         public int LastPosition { get; set; }
+        public int EditIndex { get; set; }
+        public bool Editing { get; set; }
     }
 
     [Activity(Label = "@string/ApplicationName", Icon = "@drawable/ic_launcher")]
@@ -50,6 +52,7 @@ namespace TasksSimplified
         private EditText m_TaskEditText;
         private ImageButton m_AddButton;
         private ImageButton m_MicrophoneButton;
+        private bool m_Editing;
         protected override void OnCreate(Bundle bundle) 
         {
             SetTheme(Settings.ThemeSetting == 0 ? Resource.Style.MyTheme : Resource.Style.MyThemeDark);
@@ -134,6 +137,12 @@ namespace TasksSimplified
                 RunOnUiThread(() => ListAdapter = new TaskAdapter(this, m_AllTasks));
                 RunOnUiThread(() => ListView.SetSelection(saveState.LastPosition));
                 m_TaskEditText.Text = saveState.NewTaskText;
+
+                if(saveState.Editing)
+                {
+                    m_EditTaskPosition = saveState.EditIndex;
+                    SetupEditActionBar();
+                }
             }
             else
             {
@@ -151,7 +160,11 @@ namespace TasksSimplified
             var sharedText = Intent.GetStringExtra(Intent.ExtraText);
             if (!string.IsNullOrEmpty(sharedText))
             {
-                FindViewById<EditText>(Resource.Id.edit_text_new_task).Text = sharedText;
+                m_TaskEditText.Text = sharedText;
+                if(ListView.GetCheckItemIds().Length == 0)
+                    SetupMainActionBar();
+                else
+                    SetupDeleteActionBar();
             }
         }
 
@@ -161,7 +174,9 @@ namespace TasksSimplified
                        {
                            NewTaskText = m_TaskEditText.Text,
                            Tasks = m_AllTasks.ToArray(),
-                           LastPosition = ListView.SelectedItemPosition
+                           LastPosition = ListView.SelectedItemPosition, 
+                           EditIndex = m_EditTaskPosition,
+                           Editing = m_Editing
                        };
         }
 
@@ -229,6 +244,7 @@ namespace TasksSimplified
 
             m_AddButton.Visibility = ViewStates.Visible;
             ListView.Enabled = true;
+            m_Editing = false;
         }
 
         private void SetupDeleteActionBar()
@@ -253,6 +269,7 @@ namespace TasksSimplified
 
             m_AddButton.Visibility = ViewStates.Visible;
             ListView.Enabled = true;
+            m_Editing = false;
         }
 
         private void SetupEditActionBar()
@@ -276,6 +293,7 @@ namespace TasksSimplified
 
             m_AddButton.Visibility = ViewStates.Gone;
             ListView.Enabled = false;
+            m_Editing = true;
         }
 
         protected override void OnListItemClick(ListView l, View v, int position, long id)
@@ -369,6 +387,7 @@ namespace TasksSimplified
                 {
                     DataManager.DeleteTasks();
                     ReloadData(0);
+                    RunOnUiThread(() => Toast.MakeText(this, Resource.String.nice_work_long, ToastLength.Long).Show());
                 }
                 catch
                 {
@@ -393,6 +412,8 @@ namespace TasksSimplified
 
                     DataManager.DeleteTask(m_AllTasks[i].ID);
                 }
+
+                RunOnUiThread(() => Toast.MakeText(this, Resource.String.nice_work_short, ToastLength.Long).Show());
             }
             catch (Exception)
             {
@@ -407,6 +428,7 @@ namespace TasksSimplified
 
         private void DeleteSelected()
         {
+            
             if(ListView.GetCheckItemIds().Length > 10)
             {
                 Util.ShowOkCancelPopup(this, Resource.String.confirm_delete_title, Resource.String.confirm_delete,
@@ -498,9 +520,9 @@ namespace TasksSimplified
         {
             base.OnCreateContextMenu(menu, v, menuInfo);
 
-            var position = ((AdapterView.AdapterContextMenuInfo)menuInfo).Position;
-            
-            menu.SetHeaderTitle(m_AllTasks[position].Task);
+            m_EditTaskPosition = ((AdapterView.AdapterContextMenuInfo)menuInfo).Position;
+
+            menu.SetHeaderTitle(m_AllTasks[m_EditTaskPosition].Task);
             
             MenuInflater.Inflate(Resource.Menu.ContextMenuTask, menu);
            

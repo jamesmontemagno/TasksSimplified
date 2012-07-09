@@ -17,4 +17,6 @@
   <string name="confirm_delete_title">Delete?</string>
   <string name="unable_to_save">Unable to save new task, please try again.</string>
   <string name="unable_to_delete">Unable to delete, please try again.</string>
+  <string name="nice_work_short">Nice work finishing some tasks. You are AWESOME!</string>
+  <string name="nice_work_long">Wow, you finished everything! You are AMAZING!</string>
 </resources>

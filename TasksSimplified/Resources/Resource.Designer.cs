@@ -388,6 +388,12 @@ namespace TasksSimplified
 			// aapt resource value: 0x7f080004
 			public const int new_task_hint = 2131230724;
 			
+			// aapt resource value: 0x7f080012
+			public const int nice_work_long = 2131230738;
+			
+			// aapt resource value: 0x7f080011
+			public const int nice_work_short = 2131230737;
+			
 			// aapt resource value: 0x7f08000b
 			public const int ok = 2131230731;
 			
