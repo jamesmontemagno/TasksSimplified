@@ -262,6 +262,7 @@ namespace TasksSimplified
                 return;
 
             ActionBar.SetTitle("Edit Task");
+            ActionBar.RemoveAllActions();
 
             var action = new MenuItemActionBarAction(this, this, Resource.Id.menu_save, Resource.Drawable.ic_action_save_dark,
                                                    Resource.String.menu_string_save) { ActionType = ActionType.Always };
@@ -483,6 +484,12 @@ namespace TasksSimplified
 
             }
 
+            m_TaskEditText.Text = string.Empty;
+
+            if (ListView.GetCheckItemIds().Length > 0)
+                SetupDeleteActionBar();
+            else
+                SetupMainActionBar();
         }
 
         public override void OnCreateContextMenu(IContextMenu menu, View v, IContextMenuContextMenuInfo menuInfo)
