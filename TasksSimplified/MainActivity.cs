@@ -42,7 +42,7 @@ namespace TasksSimplified
     }
 
     [Activity(Label = "@string/ApplicationName", Icon = "@drawable/ic_launcher")]
-    public class MainActivity : ActionBarListActivity, TextToSpeech.IOnInitListener
+    public class MainActivity : ActionBarListActivity, TextToSpeech.IOnInitListener, TextView.IOnEditorActionListener
     {
         private TextToSpeech m_TextToSpeech;
 
@@ -78,41 +78,15 @@ namespace TasksSimplified
             RegisterForContextMenu(ListView);
 
 
+            m_TaskEditText.SetOnEditorActionListener(this);
+
             SetupMainActionBar();
 
             ListView.ChoiceMode = ChoiceMode.Multiple;
 
             
 
-            m_AddButton.Click += (sender, args) =>
-                             {
-
-                                 var task = m_TaskEditText.Text.Trim();
-
-                                 if (string.IsNullOrWhiteSpace(task))
-                                     return;
-
-                                 var newTask = new TaskModel {Task = task};
-
-                                 try
-                                 {
-                                     DataManager.SaveTask(newTask);
-                                     m_AllTasks.Add(newTask);
-                                     m_TaskEditText.Text = string.Empty;
-                                     
-                                     RunOnUiThread(() =>
-                                     {
-                                         ((TaskAdapter)ListAdapter).NotifyDataSetChanged();
-                                         ListView.SetSelection(m_AllTasks.Count - 1);
-                                     });
-                                 }
-                                 catch (Exception)
-                                 {
-                                     RunOnUiThread(() => Toast.MakeText(this, Resource.String.unable_to_save,
-                                                                        ToastLength.Short).Show());
-                                      
-                                 }
-                             };
+            m_AddButton.Click += (sender, args) => AddNewTask();
 
             m_AddButton.SetImageResource(Settings.ThemeSetting == 0 ? Resource.Drawable.ic_action_add : Resource.Drawable.ic_action_add_dark);
             m_MicrophoneButton.SetImageResource(Settings.ThemeSetting == 0 ? Resource.Drawable.ic_action_microphone : Resource.Drawable.ic_action_microphone_dark);
@@ -165,6 +139,35 @@ namespace TasksSimplified
                     SetupMainActionBar();
                 else
                     SetupDeleteActionBar();
+            }
+        }
+
+        private void AddNewTask()
+        {
+            var task = m_TaskEditText.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(task))
+                return;
+
+            var newTask = new TaskModel {Task = task};
+
+            try
+            {
+                DataManager.SaveTask(newTask);
+                m_AllTasks.Add(newTask);
+                m_TaskEditText.Text = string.Empty;
+                                     
+                RunOnUiThread(() =>
+                                  {
+                                      ((TaskAdapter)ListAdapter).NotifyDataSetChanged();
+                                      ListView.SetSelection(m_AllTasks.Count - 1);
+                                  });
+            }
+            catch (Exception)
+            {
+                RunOnUiThread(() => Toast.MakeText(this, Resource.String.unable_to_save,
+                                                   ToastLength.Short).Show());
+                                      
             }
         }
 
@@ -574,6 +577,16 @@ namespace TasksSimplified
             {
                 m_TextToSpeech = null;
             }
+        }
+
+        public bool OnEditorAction(TextView v, Android.Views.InputMethods.ImeAction actionId, KeyEvent e)
+        {
+            if (actionId == Android.Views.InputMethods.ImeAction.Done)
+            {
+                AddNewTask();
+                return true;
+            }
+            return false;
         }
     }
 }

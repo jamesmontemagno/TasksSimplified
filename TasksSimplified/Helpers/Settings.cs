@@ -8,6 +8,7 @@ namespace TasksSimplified.Helpers
         public static readonly string PrefName = "TASKSSIMPLIFIEDSETTINGS";
         private const string ThemeKey = "ThemeSetting";
         private const string TalkBackKey = "TalkBack";
+        private const string KeepKeyboardUpKey = "KeepKeyboardUp";
 
 
         private static readonly ISharedPreferences SharedPreferences;
@@ -44,6 +45,16 @@ namespace TasksSimplified.Helpers
             set
             {
                 SharedPreferencesEditor.PutBoolean(TalkBackKey, value);
+                SharedPreferencesEditor.Commit();
+            }
+        }
+
+        public static bool KeepKeyboardUp
+        {
+            get { return SharedPreferences.GetBoolean(KeepKeyboardUpKey, true); }
+            set
+            {
+                SharedPreferencesEditor.PutBoolean(KeepKeyboardUpKey, value);
                 SharedPreferencesEditor.Commit();
             }
         }

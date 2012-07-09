@@ -18,7 +18,14 @@
               android:title="Talk Back Enabled"
               android:summary="When you add task by speech if enabled it will talk back to you."
               android:defaultValue="true" />
-    
+
+    <CheckBoxPreference
+              android:key="KeepKeyboardUp"
+              android:title="Keep Keyboard Up"
+              android:summary="After you enter a new task the keyboard will remain up."
+              android:defaultValue="true" />
+
+
   </PreferenceCategory>
 
   <PreferenceCategory
