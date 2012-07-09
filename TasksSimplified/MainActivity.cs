@@ -387,15 +387,13 @@ namespace TasksSimplified
                 {
                     DataManager.DeleteTasks();
                     ReloadData(0);
-                    RunOnUiThread(() => Toast.MakeText(this, Resource.String.nice_work_long, ToastLength.Long).Show());
+                    RunOnUiThread(() => Toast.MakeText(this, Resource.String.nice_work_long, ToastLength.Short).Show());
                 }
                 catch
                 {
                     RunOnUiThread(()=>Toast.MakeText(this, Resource.String.unable_to_delete, ToastLength.Short).Show());
                 }
             });
-
-
 
         }
 
@@ -413,7 +411,7 @@ namespace TasksSimplified
                     DataManager.DeleteTask(m_AllTasks[i].ID);
                 }
 
-                RunOnUiThread(() => Toast.MakeText(this, Resource.String.nice_work_short, ToastLength.Long).Show());
+                RunOnUiThread(() => Toast.MakeText(this, Resource.String.nice_work_short, ToastLength.Short).Show());
             }
             catch (Exception)
             {
