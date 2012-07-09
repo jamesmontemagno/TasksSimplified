@@ -375,7 +375,7 @@ namespace TasksSimplified
         private void DeleteAll()
         {
 
-            if (ListView.GetCheckItemIds().Length == 0)
+            if (m_AllTasks.Count == 0)
                 return;
 
             Util.ShowOkCancelPopup(this, Resource.String.confirm_delete_title, Resource.String.confirm_delete, delete =>
