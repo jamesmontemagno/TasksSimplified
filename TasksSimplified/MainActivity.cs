@@ -65,9 +65,6 @@ namespace TasksSimplified
 
             Window.SetSoftInputMode(SoftInput.StateAlwaysHidden);
 
-            DarkMenuId = Resource.Menu.MainMenu;
-            MenuId = Resource.Menu.MainMenu;
-
             m_AllTasks = new JavaList<TaskModel>();
 
             ActionBar = FindViewById<ActionBar.ActionBar>(Resource.Id.actionbar);

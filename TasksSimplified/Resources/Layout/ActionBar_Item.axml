@@ -19,7 +19,6 @@
     android:background="@drawable/actionbar_btn"
     android:layout_height="@dimen/actionbar_item_height"
     android:layout_centerVertical="true"
-    android:layout_gravity="top"
     android:singleLine="true"
     android:visibility="visible"
     />
