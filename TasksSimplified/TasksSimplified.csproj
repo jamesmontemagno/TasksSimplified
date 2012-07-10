@@ -126,7 +126,9 @@
     <AndroidResource Include="Resources\Values-land\Dimens.xml" />
     <AndroidResource Include="Resources\Values-large-land\Dimens.xml" />
     <AndroidResource Include="Resources\Values-sw600dp\Dimens.xml" />
-    <AndroidResource Include="Resources\Values-v11\Themes.xml" />
+    <AndroidResource Include="Resources\Values-v11\Themes.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\Values-xlarge\Dimens.xml" />
     <AndroidResource Include="Resources\Drawable\bottomactionbar_btn_pressed.xml" />
     <AndroidResource Include="Resources\Drawable\actionbar_back_indicator.png" />
