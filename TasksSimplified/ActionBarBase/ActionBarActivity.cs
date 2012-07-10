@@ -33,6 +33,9 @@ namespace TasksSimplified.ActionBarBase
             if(ActionBar == null)
                 return base.OnPrepareOptionsMenu(menu);
 
+            menu.Clear();
+            MenuInflater.Inflate(IsDarkTheme ? DarkMenuId : MenuId, menu);
+
             for (int i = 0; i < menu.Size(); i++)
             {
                 var menuItem = menu.GetItem(i);
