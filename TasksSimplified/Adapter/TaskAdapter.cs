@@ -56,7 +56,7 @@ namespace TasksSimplified.Adapter
 
             if (task.Checked)
             {
-                wrapper.Title.SetTextColor(m_Context.Resources.GetColor(Resource.Color.pop));
+                wrapper.Title.SetTextColor(m_Context.Resources.GetColor(Resource.Color.actionbar_accentcolor));
                 wrapper.Title.PaintFlags |= Android.Graphics.PaintFlags.StrikeThruText;
             }
             else

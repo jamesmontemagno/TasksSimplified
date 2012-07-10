@@ -16,6 +16,7 @@
      *Modified by James Montemagno Copyright 2012 http://www.montemagno.com
 -->
 <resources>
+  <dimen name="actionbar_accentheight">3dp</dimen>
   <dimen name="actionbar_height">50dp</dimen>
   <dimen name="actionbar_item_height">47dp</dimen>
   <dimen name="actionbar_item_width">56dp</dimen>

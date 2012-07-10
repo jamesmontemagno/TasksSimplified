@@ -22,20 +22,20 @@
 </shape>-->
 
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
-  
-  <item android:top="3dp">
-    <shape android:shape="rectangle" >
-      <size android:height="3dp" />
-      <solid android:color="@color/pop" />
-    </shape>
-  </item>
-  
-  <item android:bottom="3dp">
+
+  <item>
     <shape android:shape="rectangle" >
       <size android:height="@dimen/actionbar_height" />
-      <solid android:color="@color/actionbar_background_start" />
+      <solid android:color="@color/actionbar_maincolor" />
     </shape>
   </item>
 
-  
+  <item android:top="@dimen/actionbar_item_height">
+    <shape android:shape="rectangle" >
+      <size android:height="@dimen/actionbar_accentheight" />
+      <solid android:color="@color/actionbar_accentcolor" />
+    </shape>
+  </item>
+
+
 </layer-list>

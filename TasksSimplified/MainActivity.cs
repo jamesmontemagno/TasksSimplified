@@ -267,6 +267,15 @@ namespace TasksSimplified
                          {ActionType = ActionType.Always};
             ActionBar.AddAction(action);
 
+            action = new MenuItemActionBarAction(this, this, Resource.Id.menu_delete_all, Resource.Drawable.ic_menu_delete_all,
+                                                    Resource.String.menu_string_delete_all) { ActionType = ActionType.Never };
+
+            ActionBar.AddAction(action);
+
+            action = new MenuItemActionBarAction(this, this, Resource.Id.menu_about, Resource.Drawable.ic_menu_settings,
+                                                     Resource.String.menu_string_about) { ActionType = ActionType.Never };
+            ActionBar.AddAction(action);
+
             DarkMenuId = Resource.Menu.MainMenuDelete;
             MenuId = Resource.Menu.MainMenuDelete;
 

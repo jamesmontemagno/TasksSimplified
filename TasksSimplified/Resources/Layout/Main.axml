@@ -15,7 +15,7 @@
        android:layout_width="fill_parent"
        android:layout_height="wrap_content"
        android:paddingLeft="6dip"
-       android:textColor="@color/pop"
+       android:textColor="@color/actionbar_accentcolor"
        android:visibility="gone"
        android:text="@string/loading"/>
 
