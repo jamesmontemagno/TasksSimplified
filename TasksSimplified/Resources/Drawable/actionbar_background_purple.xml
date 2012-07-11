@@ -12,8 +12,28 @@
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
      limitations under the License.
--->
+
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-  <solid android:color="@android:color/transparent" />
-</shape>
+    <gradient
+        android:startColor="@color/actionbar_background_start"
+        android:endColor="@color/actionbar_background_end"
+        android:angle="-90" />
+</shape>-->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+  <item>
+    <shape android:shape="rectangle" >
+      <size android:height="@dimen/actionbar_height" />
+      <solid android:color="@color/actionbar_accentcolor_purple" />
+    </shape>
+  </item>
+
+  <item android:bottom="@dimen/actionbar_accentheight">
+    <shape android:shape="rectangle" >
+      <size android:height="@dimen/actionbar_accentheight" />
+      <solid android:color="@color/actionbar_maincolor_purple" />
+    </shape>
+  </item>
+</layer-list>

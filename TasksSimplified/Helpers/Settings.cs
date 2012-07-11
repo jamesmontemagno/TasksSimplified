@@ -100,6 +100,30 @@ namespace TasksSimplified.Helpers
             }
         }
 
+        public static int ThemeAccentClearButtonId
+        {
+            get
+            {
+                switch (ThemeAccent)
+                {
+                    case 0:
+                        return Resource.Drawable.clearbutton_blue;
+                    case 1:
+                        return Resource.Drawable.clearbutton_gray;
+                    case 2:
+                        return Resource.Drawable.clearbutton_green;
+                    case 3:
+                        return Resource.Drawable.clearbutton_purple;
+                    case 4:
+                        return Resource.Drawable.clearbutton_red;
+                    case 5:
+                        return Resource.Drawable.clearbutton_yellow;
+                }
+
+                return Resource.Drawable.clearbutton_green;
+            }
+        }
+
         public static bool TalkBackEnabled
         {
             get { return SharedPreferences.GetBoolean(TalkBackKey, true); }

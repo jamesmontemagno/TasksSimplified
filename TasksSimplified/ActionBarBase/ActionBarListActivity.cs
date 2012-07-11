@@ -24,7 +24,12 @@ namespace TasksSimplified.ActionBarBase
     [Activity(Label = "")]
     public class ActionBarListActivity : ListActivity
     {
-        public ActionBar.ActionBar ActionBar { get; set; }
+        private ActionBar.ActionBar m_ActionBar;
+        public ActionBar.ActionBar ActionBar
+        {
+            get { return m_ActionBar; }
+            set { m_ActionBar = value; ActionBarUtils.SetActionBarTheme(m_ActionBar, Settings.ThemeAccent);}
+        }
         public int DarkMenuId { get; set; }
         public int MenuId { get; set; }
         public bool IsDarkTheme { get; set; }

@@ -4,7 +4,7 @@
   <color name="white">#FFFFFFFF</color>
   <color name="redtext">#FFFF0000</color>
 
-  <color name="actionbar_separator">#8B1A1A</color>
+  <color name="actionbar_separator">#FF669900</color>
   <color name="actionbar_title">#FFFFFF</color>
   
   <!-- Default colors-->

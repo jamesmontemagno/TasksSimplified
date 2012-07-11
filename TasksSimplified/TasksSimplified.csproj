@@ -224,6 +224,22 @@
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_overflow_dark.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_menu_sort.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_delete.png" />
+    <AndroidResource Include="Resources\Drawable\actionbar_background_gray.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_background_green.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_background_purple.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_background_red.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_background_yellow.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_btn_gray.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_btn_green.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_btn_purple.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_btn_red.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_btn_yellow.xml" />
+    <AndroidResource Include="Resources\Drawable\clearbutton_blue.xml" />
+    <AndroidResource Include="Resources\Drawable\clearbutton_gray.xml" />
+    <AndroidResource Include="Resources\Drawable\clearbutton_green.xml" />
+    <AndroidResource Include="Resources\Drawable\clearbutton_purple.xml" />
+    <AndroidResource Include="Resources\Drawable\clearbutton_red.xml" />
+    <AndroidResource Include="Resources\Drawable\clearbutton_yellow.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Values-v14\" />

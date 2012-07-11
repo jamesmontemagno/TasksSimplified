@@ -67,6 +67,11 @@ namespace TasksSimplified.ActionBar
             set { m_ActionsView.SetBackgroundColor(value); }
         }
 
+        public int SeparatorColorRaw
+        {
+            set { m_ActionsView.SetBackgroundResource(value); }
+        }
+
         /// <summary>
         /// Set the drawable of the seperators between Action Items
         /// </summary>
@@ -75,12 +80,22 @@ namespace TasksSimplified.ActionBar
             set { m_ActionsView.SetBackgroundDrawable(value); }
         }
 
+        public int SeparatorDrawableRaw
+        {
+            set { m_ActionsView.SetBackgroundResource(value); }
+        }
+
         /// <summary>
         /// Set the color of the Title in the Action Bar
         /// </summary>
         public Color TitleColor
         {
             set { m_TitleView.SetTextColor(value); }
+        }
+
+        public int TitleColorRaw
+        {
+            set { m_TitleView.SetTextColor(Resources.GetColor(value)); }
         }
 
         /// <summary>
@@ -99,12 +114,18 @@ namespace TasksSimplified.ActionBar
             set { m_TitleView.SetText(value); }
         }
 
+
         /// <summary>
         /// Set the background color of the Action Bar
         /// </summary>
         public Color BackgroundColor
         {
-            set { m_BarView.SetBackgroundColor(value); }
+            set { SetBackgroundColor(value); }
+        }
+
+        public int BackgroundColorRaw
+        {
+            set { SetBackgroundColor(Resources.GetColor(value)); }
         }
 
         /// <summary>
@@ -112,13 +133,20 @@ namespace TasksSimplified.ActionBar
         /// </summary>
         public Drawable BackgroundDrawable
         {
-            set { m_BarView.SetBackgroundDrawable(value); }
+            set { SetBackgroundDrawable(value); }
+        }
+
+        public int BackgroundDrawableRaw
+        {
+            set { SetBackgroundResource(value); }
         }
 
         /// <summary>
         /// Set the background drawable of the Action Bar Items
         /// </summary>
         public Drawable ItemBackgroundDrawable { get; set; }
+
+        public int ItemBackgroundDrawableRaw { get; set; }
 
         /// <summary>
         /// Returns the amount of Action Items in the Action Bar
@@ -227,6 +255,10 @@ namespace TasksSimplified.ActionBar
             if (null != ItemBackgroundDrawable)
             {
                 m_LogoView.SetBackgroundDrawable(ItemBackgroundDrawable.GetConstantState().NewDrawable());
+            }
+            else if (ItemBackgroundDrawableRaw > 0)
+            {
+                m_LogoView.SetBackgroundResource(ItemBackgroundDrawableRaw);
             }
 
             ((LayoutParams)m_TitleLayout.LayoutParameters).AddRule(LayoutRules.RightOf, Resource.Id.actionbar_home_logo);
@@ -399,6 +431,10 @@ namespace TasksSimplified.ActionBar
             {
                 view.SetBackgroundDrawable(ItemBackgroundDrawable.GetConstantState().NewDrawable());
             }
+            else if (ItemBackgroundDrawableRaw > 0)
+            {
+                view.SetBackgroundResource(ItemBackgroundDrawableRaw);
+            }
 
             var labelView =
                 view.FindViewById<ImageButton>(Resource.Id.actionbar_item);
@@ -407,6 +443,10 @@ namespace TasksSimplified.ActionBar
             view.Tag = action;
             view.SetOnClickListener(this);
             view.SetOnLongClickListener(this);
+
+            if (action.PopUpMessage > 0)
+                view.ContentDescription = Resources.GetString(action.PopUpMessage);
+
             return view;
         }
 

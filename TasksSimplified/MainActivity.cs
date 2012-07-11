@@ -72,6 +72,10 @@ namespace TasksSimplified
             m_TaskEditText = FindViewById<EditText>(Resource.Id.edit_text_new_task);
 
             ActionBar = FindViewById<ActionBar.ActionBar>(Resource.Id.actionbar);
+
+            //ActionBar.BackgroundDrawable = Resources.GetDrawable(Resource.Drawable.actionbar_background_blue);
+            //ActionBar.ItemBackgroundDrawable = Resources.GetDrawable(Resource.Drawable.actionbar_btn_blue);
+            //ActionBar.SeparatorColor = Resources.GetColor(Resource.Color.actionbar_separatorcolor_blue);
             ActionBar.Title = "Tasks";
             ActionBar.CurrentActivity = this;
             ActionBar.SetHomeLogo(Resource.Drawable.ic_launcher);
@@ -85,6 +89,9 @@ namespace TasksSimplified
 
             m_AddButton.SetImageResource(Settings.ThemeSetting == 0 ? Resource.Drawable.ic_action_add : Resource.Drawable.ic_action_add_dark);
             m_MicrophoneButton.SetImageResource(Settings.ThemeSetting == 0 ? Resource.Drawable.ic_action_microphone : Resource.Drawable.ic_action_microphone_dark);
+
+            m_AddButton.SetBackgroundResource(Settings.ThemeAccentClearButtonId);
+            m_MicrophoneButton.SetBackgroundResource(Settings.ThemeAccentClearButtonId);
 
             // remove speech if it doesn't exist
             var activities =PackageManager.QueryIntentActivities(new Intent(RecognizerIntent.ActionRecognizeSpeech), 0);
@@ -624,6 +631,11 @@ namespace TasksSimplified
                 return Settings.KeepKeyboardUp;
             }
             return false;
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
         }
     }
 }

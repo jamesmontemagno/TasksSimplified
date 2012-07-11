@@ -3,9 +3,6 @@
   <style name="MyTheme" parent="@android:style/Theme.Light.NoTitleBar">
     <item name="android:windowBackground">@drawable/background_holo_light</item>
     <item name="android:listViewStyle">@style/ListViewStyle</item>
-    <item name="background">@drawable/actionbar_background_blue</item>
-    <item name="background_item">@drawable/actionbar_btn_blue</item>
-    <item name="separator">@color/actionbar_maincolor_blue</item>
     <!-- Any customizations for your app running on devices with Theme.Holo here -->
   </style>
   <style name="Theme.Splash" parent="android:Theme">
