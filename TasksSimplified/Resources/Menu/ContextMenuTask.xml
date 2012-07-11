@@ -15,5 +15,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
   <item android:id="@+id/menu_edit_task"
-      android:title="@string/menu_edit_task"/>
+      android:title="@string/menu_string_edit_task"/>
+
+  <item android:id="@+id/menu_share_task"
+      android:title="@string/menu_string_share_task"/>
 </menu>

@@ -18,6 +18,9 @@ namespace TasksSimplified
 		public partial class Array
 		{
 			
+			// aapt resource value: 0x7f050004
+			public const int sort_by_options = 2131034116;
+			
 			// aapt resource value: 0x7f050002
 			public const int theme_accent_preference = 2131034114;
 			
@@ -38,8 +41,20 @@ namespace TasksSimplified
 		public partial class Attribute
 		{
 			
+			// aapt resource value: 0x7f010003
+			public const int background = 2130771971;
+			
+			// aapt resource value: 0x7f010004
+			public const int background_item = 2130771972;
+			
+			// aapt resource value: 0x7f010002
+			public const int separator = 2130771970;
+			
 			// aapt resource value: 0x7f010000
 			public const int title = 2130771968;
+			
+			// aapt resource value: 0x7f010001
+			public const int title_color = 2130771969;
 			
 			private Attribute()
 			{
@@ -49,89 +64,95 @@ namespace TasksSimplified
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f060004
-			public const int actionbar_accentcolor = 2131099652;
-			
-			// aapt resource value: 0x7f06000c
-			public const int actionbar_accentcolor_blue = 2131099660;
-			
-			// aapt resource value: 0x7f060018
-			public const int actionbar_accentcolor_gray = 2131099672;
-			
-			// aapt resource value: 0x7f060008
-			public const int actionbar_accentcolor_green = 2131099656;
-			
-			// aapt resource value: 0x7f06001c
-			public const int actionbar_accentcolor_purple = 2131099676;
-			
-			// aapt resource value: 0x7f060010
-			public const int actionbar_accentcolor_red = 2131099664;
-			
-			// aapt resource value: 0x7f060014
-			public const int actionbar_accentcolor_yellow = 2131099668;
-			
-			// aapt resource value: 0x7f060003
-			public const int actionbar_maincolor = 2131099651;
-			
-			// aapt resource value: 0x7f06000b
-			public const int actionbar_maincolor_blue = 2131099659;
-			
-			// aapt resource value: 0x7f060017
-			public const int actionbar_maincolor_gray = 2131099671;
-			
-			// aapt resource value: 0x7f060007
-			public const int actionbar_maincolor_green = 2131099655;
-			
-			// aapt resource value: 0x7f06001b
-			public const int actionbar_maincolor_purple = 2131099675;
-			
-			// aapt resource value: 0x7f06000f
-			public const int actionbar_maincolor_red = 2131099663;
-			
-			// aapt resource value: 0x7f060013
-			public const int actionbar_maincolor_yellow = 2131099667;
-			
 			// aapt resource value: 0x7f060006
-			public const int actionbar_separatorcolor = 2131099654;
+			public const int actionbar_accentcolor = 2131099654;
 			
 			// aapt resource value: 0x7f06000e
-			public const int actionbar_separatorcolor_blue = 2131099662;
+			public const int actionbar_accentcolor_blue = 2131099662;
 			
 			// aapt resource value: 0x7f06001a
-			public const int actionbar_separatorcolor_gray = 2131099674;
+			public const int actionbar_accentcolor_gray = 2131099674;
 			
 			// aapt resource value: 0x7f06000a
-			public const int actionbar_separatorcolor_green = 2131099658;
+			public const int actionbar_accentcolor_green = 2131099658;
 			
 			// aapt resource value: 0x7f06001e
-			public const int actionbar_separatorcolor_purple = 2131099678;
+			public const int actionbar_accentcolor_purple = 2131099678;
 			
 			// aapt resource value: 0x7f060012
-			public const int actionbar_separatorcolor_red = 2131099666;
+			public const int actionbar_accentcolor_red = 2131099666;
 			
 			// aapt resource value: 0x7f060016
-			public const int actionbar_separatorcolor_yellow = 2131099670;
+			public const int actionbar_accentcolor_yellow = 2131099670;
 			
 			// aapt resource value: 0x7f060005
-			public const int actionbar_titlecolor = 2131099653;
+			public const int actionbar_maincolor = 2131099653;
 			
 			// aapt resource value: 0x7f06000d
-			public const int actionbar_titlecolor_blue = 2131099661;
+			public const int actionbar_maincolor_blue = 2131099661;
 			
 			// aapt resource value: 0x7f060019
-			public const int actionbar_titlecolor_gray = 2131099673;
+			public const int actionbar_maincolor_gray = 2131099673;
 			
 			// aapt resource value: 0x7f060009
-			public const int actionbar_titlecolor_green = 2131099657;
+			public const int actionbar_maincolor_green = 2131099657;
 			
 			// aapt resource value: 0x7f06001d
-			public const int actionbar_titlecolor_purple = 2131099677;
+			public const int actionbar_maincolor_purple = 2131099677;
 			
 			// aapt resource value: 0x7f060011
-			public const int actionbar_titlecolor_red = 2131099665;
+			public const int actionbar_maincolor_red = 2131099665;
 			
 			// aapt resource value: 0x7f060015
-			public const int actionbar_titlecolor_yellow = 2131099669;
+			public const int actionbar_maincolor_yellow = 2131099669;
+			
+			// aapt resource value: 0x7f060003
+			public const int actionbar_separator = 2131099651;
+			
+			// aapt resource value: 0x7f060008
+			public const int actionbar_separatorcolor = 2131099656;
+			
+			// aapt resource value: 0x7f060010
+			public const int actionbar_separatorcolor_blue = 2131099664;
+			
+			// aapt resource value: 0x7f06001c
+			public const int actionbar_separatorcolor_gray = 2131099676;
+			
+			// aapt resource value: 0x7f06000c
+			public const int actionbar_separatorcolor_green = 2131099660;
+			
+			// aapt resource value: 0x7f060020
+			public const int actionbar_separatorcolor_purple = 2131099680;
+			
+			// aapt resource value: 0x7f060014
+			public const int actionbar_separatorcolor_red = 2131099668;
+			
+			// aapt resource value: 0x7f060018
+			public const int actionbar_separatorcolor_yellow = 2131099672;
+			
+			// aapt resource value: 0x7f060004
+			public const int actionbar_title = 2131099652;
+			
+			// aapt resource value: 0x7f060007
+			public const int actionbar_titlecolor = 2131099655;
+			
+			// aapt resource value: 0x7f06000f
+			public const int actionbar_titlecolor_blue = 2131099663;
+			
+			// aapt resource value: 0x7f06001b
+			public const int actionbar_titlecolor_gray = 2131099675;
+			
+			// aapt resource value: 0x7f06000b
+			public const int actionbar_titlecolor_green = 2131099659;
+			
+			// aapt resource value: 0x7f06001f
+			public const int actionbar_titlecolor_purple = 2131099679;
+			
+			// aapt resource value: 0x7f060013
+			public const int actionbar_titlecolor_red = 2131099667;
+			
+			// aapt resource value: 0x7f060017
+			public const int actionbar_titlecolor_yellow = 2131099671;
 			
 			// aapt resource value: 0x7f060000
 			public const int gray = 2131099648;
@@ -180,13 +201,13 @@ namespace TasksSimplified
 			public const int actionbar_background = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int actionbar_btn = 2130837506;
+			public const int actionbar_background_blue = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int actionbar_btn_normal = 2130837507;
+			public const int actionbar_btn = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int actionbar_btn_pressed = 2130837508;
+			public const int actionbar_btn_blue = 2130837508;
 			
 			// aapt resource value: 0x7f020005
 			public const int background_holo_dark = 2130837509;
@@ -225,40 +246,49 @@ namespace TasksSimplified
 			public const int ic_action_cancel_dark = 2130837520;
 			
 			// aapt resource value: 0x7f020011
-			public const int ic_action_delete_dark = 2130837521;
+			public const int ic_action_delete = 2130837521;
 			
 			// aapt resource value: 0x7f020012
-			public const int ic_action_microphone = 2130837522;
+			public const int ic_action_delete_dark = 2130837522;
 			
 			// aapt resource value: 0x7f020013
-			public const int ic_action_microphone_dark = 2130837523;
+			public const int ic_action_microphone = 2130837523;
 			
 			// aapt resource value: 0x7f020014
-			public const int ic_action_overflow = 2130837524;
+			public const int ic_action_microphone_dark = 2130837524;
 			
 			// aapt resource value: 0x7f020015
-			public const int ic_action_save = 2130837525;
+			public const int ic_action_overflow = 2130837525;
 			
 			// aapt resource value: 0x7f020016
-			public const int ic_action_save_dark = 2130837526;
+			public const int ic_action_overflow_dark = 2130837526;
 			
 			// aapt resource value: 0x7f020017
-			public const int ic_launcher = 2130837527;
+			public const int ic_action_save = 2130837527;
 			
 			// aapt resource value: 0x7f020018
-			public const int ic_menu_about = 2130837528;
+			public const int ic_action_save_dark = 2130837528;
 			
 			// aapt resource value: 0x7f020019
-			public const int ic_menu_delete_all = 2130837529;
+			public const int ic_launcher = 2130837529;
 			
 			// aapt resource value: 0x7f02001a
-			public const int ic_menu_settings = 2130837530;
+			public const int ic_menu_about = 2130837530;
 			
 			// aapt resource value: 0x7f02001b
-			public const int Icon = 2130837531;
+			public const int ic_menu_delete_all = 2130837531;
 			
 			// aapt resource value: 0x7f02001c
-			public const int splash = 2130837532;
+			public const int ic_menu_settings = 2130837532;
+			
+			// aapt resource value: 0x7f02001d
+			public const int ic_menu_sort = 2130837533;
+			
+			// aapt resource value: 0x7f02001e
+			public const int Icon = 2130837534;
+			
+			// aapt resource value: 0x7f02001f
+			public const int splash = 2130837535;
 			
 			private Drawable()
 			{
@@ -313,26 +343,32 @@ namespace TasksSimplified
 			// aapt resource value: 0x7f0b000f
 			public const int edit_text_new_task = 2131427343;
 			
-			// aapt resource value: 0x7f0b0014
-			public const int menu_about = 2131427348;
-			
 			// aapt resource value: 0x7f0b0016
-			public const int menu_cancel = 2131427350;
+			public const int menu_about = 2131427350;
 			
 			// aapt resource value: 0x7f0b0018
-			public const int menu_cancel_save = 2131427352;
+			public const int menu_cancel = 2131427352;
+			
+			// aapt resource value: 0x7f0b001a
+			public const int menu_cancel_save = 2131427354;
+			
+			// aapt resource value: 0x7f0b0017
+			public const int menu_delete = 2131427351;
 			
 			// aapt resource value: 0x7f0b0015
-			public const int menu_delete = 2131427349;
-			
-			// aapt resource value: 0x7f0b0013
-			public const int menu_delete_all = 2131427347;
+			public const int menu_delete_all = 2131427349;
 			
 			// aapt resource value: 0x7f0b0012
 			public const int menu_edit_task = 2131427346;
 			
-			// aapt resource value: 0x7f0b0017
-			public const int menu_save = 2131427351;
+			// aapt resource value: 0x7f0b0019
+			public const int menu_save = 2131427353;
+			
+			// aapt resource value: 0x7f0b0013
+			public const int menu_share_task = 2131427347;
+			
+			// aapt resource value: 0x7f0b0014
+			public const int menu_sort = 2131427348;
 			
 			// aapt resource value: 0x7f0b0011
 			public const int overflow_spinner = 2131427345;
@@ -415,53 +451,113 @@ namespace TasksSimplified
 			// aapt resource value: 0x7f080001
 			public const int actionbar_activity_not_found = 2131230721;
 			
-			// aapt resource value: 0x7f08000c
-			public const int cancel = 2131230732;
+			// aapt resource value: 0x7f080014
+			public const int blue = 2131230740;
 			
-			// aapt resource value: 0x7f08000d
-			public const int confirm_delete = 2131230733;
+			// aapt resource value: 0x7f080020
+			public const int cancel = 2131230752;
 			
-			// aapt resource value: 0x7f08000e
-			public const int confirm_delete_title = 2131230734;
+			// aapt resource value: 0x7f080021
+			public const int confirm_delete = 2131230753;
+			
+			// aapt resource value: 0x7f080022
+			public const int confirm_delete_title = 2131230754;
+			
+			// aapt resource value: 0x7f080010
+			public const int dark = 2131230736;
+			
+			// aapt resource value: 0x7f080017
+			public const int gray = 2131230743;
+			
+			// aapt resource value: 0x7f080012
+			public const int green = 2131230738;
+			
+			// aapt resource value: 0x7f080011
+			public const int light = 2131230737;
 			
 			// aapt resource value: 0x7f080003
 			public const int loading = 2131230723;
 			
 			// aapt resource value: 0x7f08000a
-			public const int menu_edit_task = 2131230730;
-			
-			// aapt resource value: 0x7f080007
-			public const int menu_string_about = 2131230727;
-			
-			// aapt resource value: 0x7f080006
-			public const int menu_string_cancel = 2131230726;
-			
-			// aapt resource value: 0x7f080005
-			public const int menu_string_delete = 2131230725;
-			
-			// aapt resource value: 0x7f080008
-			public const int menu_string_delete_all = 2131230728;
+			public const int menu_string_about = 2131230730;
 			
 			// aapt resource value: 0x7f080009
-			public const int menu_string_save = 2131230729;
+			public const int menu_string_cancel = 2131230729;
 			
-			// aapt resource value: 0x7f080004
-			public const int new_task_hint = 2131230724;
-			
-			// aapt resource value: 0x7f080012
-			public const int nice_work_long = 2131230738;
-			
-			// aapt resource value: 0x7f080011
-			public const int nice_work_short = 2131230737;
+			// aapt resource value: 0x7f080008
+			public const int menu_string_delete = 2131230728;
 			
 			// aapt resource value: 0x7f08000b
-			public const int ok = 2131230731;
+			public const int menu_string_delete_all = 2131230731;
 			
-			// aapt resource value: 0x7f080010
-			public const int unable_to_delete = 2131230736;
+			// aapt resource value: 0x7f08000d
+			public const int menu_string_edit_task = 2131230733;
+			
+			// aapt resource value: 0x7f08000c
+			public const int menu_string_save = 2131230732;
+			
+			// aapt resource value: 0x7f08000e
+			public const int menu_string_share_task = 2131230734;
 			
 			// aapt resource value: 0x7f08000f
-			public const int unable_to_save = 2131230735;
+			public const int menu_string_sort = 2131230735;
+			
+			// aapt resource value: 0x7f080007
+			public const int new_task_hint = 2131230727;
+			
+			// aapt resource value: 0x7f080026
+			public const int nice_work_long = 2131230758;
+			
+			// aapt resource value: 0x7f080025
+			public const int nice_work_short = 2131230757;
+			
+			// aapt resource value: 0x7f08001f
+			public const int ok = 2131230751;
+			
+			// aapt resource value: 0x7f080016
+			public const int purple = 2131230742;
+			
+			// aapt resource value: 0x7f080015
+			public const int red = 2131230741;
+			
+			// aapt resource value: 0x7f08001e
+			public const int share = 2131230750;
+			
+			// aapt resource value: 0x7f080018
+			public const int sort_newest = 2131230744;
+			
+			// aapt resource value: 0x7f080019
+			public const int sort_oldest = 2131230745;
+			
+			// aapt resource value: 0x7f08001c
+			public const int sort_title = 2131230748;
+			
+			// aapt resource value: 0x7f08001a
+			public const int sort_title_ascending = 2131230746;
+			
+			// aapt resource value: 0x7f08001b
+			public const int sort_title_descending = 2131230747;
+			
+			// aapt resource value: 0x7f08001d
+			public const int speak_new_task = 2131230749;
+			
+			// aapt resource value: 0x7f080005
+			public const int title_delete_tasks = 2131230725;
+			
+			// aapt resource value: 0x7f080006
+			public const int title_edit_task = 2131230726;
+			
+			// aapt resource value: 0x7f080004
+			public const int title_tasks = 2131230724;
+			
+			// aapt resource value: 0x7f080024
+			public const int unable_to_delete = 2131230756;
+			
+			// aapt resource value: 0x7f080023
+			public const int unable_to_save = 2131230755;
+			
+			// aapt resource value: 0x7f080013
+			public const int yellow = 2131230739;
 			
 			private String()
 			{
@@ -473,6 +569,9 @@ namespace TasksSimplified
 			
 			// aapt resource value: 0x7f090000
 			public const int ActionBar = 2131296256;
+			
+			// aapt resource value: 0x7f09000e
+			public const int ActionBarBlue = 2131296270;
 			
 			// aapt resource value: 0x7f090005
 			public const int ActionBarHomeItem = 2131296261;
@@ -486,6 +585,12 @@ namespace TasksSimplified
 			// aapt resource value: 0x7f090007
 			public const int ActionBarProgressBar = 2131296263;
 			
+			// aapt resource value: 0x7f09000c
+			public const int AlertThemeDark = 2131296268;
+			
+			// aapt resource value: 0x7f09000b
+			public const int AlertThemeLight = 2131296267;
+			
 			// aapt resource value: 0x7f090001
 			public const int BottomActionBar = 2131296257;
 			
@@ -495,8 +600,8 @@ namespace TasksSimplified
 			// aapt resource value: 0x7f090004
 			public const int ClearButton = 2131296260;
 			
-			// aapt resource value: 0x7f09000b
-			public const int ListViewStyle = 2131296267;
+			// aapt resource value: 0x7f09000d
+			public const int ListViewStyle = 2131296269;
 			
 			// aapt resource value: 0x7f090008
 			public const int MyTheme = 2131296264;
@@ -527,10 +632,26 @@ namespace TasksSimplified
 		{
 			
 			public static int[] ActionBar = new int[] {
-					2130771968};
+					2130771968,
+					2130771969,
+					2130771970,
+					2130771971,
+					2130771972};
+			
+			// aapt resource value: 3
+			public const int ActionBar_background = 3;
+			
+			// aapt resource value: 4
+			public const int ActionBar_background_item = 4;
+			
+			// aapt resource value: 2
+			public const int ActionBar_separator = 2;
 			
 			// aapt resource value: 0
 			public const int ActionBar_title = 0;
+			
+			// aapt resource value: 1
+			public const int ActionBar_title_color = 1;
 			
 			private Styleable()
 			{

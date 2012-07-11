@@ -14,6 +14,11 @@
 -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+  <item android:id="@+id/menu_sort"
+ android:icon="@drawable/ic_menu_sort"
+ android:title="@string/menu_string_sort"/>
+
+  
   <item android:id="@+id/menu_delete_all"
       android:icon="@drawable/ic_menu_delete_all"
       android:title="@string/menu_string_delete_all"/>
@@ -21,4 +26,6 @@
   <item android:id="@+id/menu_about"
       android:icon="@drawable/ic_menu_settings"
       android:title="@string/menu_string_about"/>
+  
+  
 </menu>

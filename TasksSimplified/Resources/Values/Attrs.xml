@@ -17,5 +17,9 @@
 <resources>
   <declare-styleable name="ActionBar">
     <attr name="title" format="string" localization="suggested" />
+    <attr name="title_color" format="color" />
+    <attr name="separator" format="color" />
+    <attr name="background" format="reference|color" />
+    <attr name="background_item" format="reference|color" />
   </declare-styleable>
 </resources>

@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+using System.Collections.Generic;
 using Android.App;
 
 namespace TasksSimplified.ActionBar
@@ -64,6 +65,18 @@ namespace TasksSimplified.ActionBar
                 max--;
 
             return currentNumber < max;
+        }
+
+        /// <summary>
+        /// A LinkedList that holds a list of Action.
+        /// </summary>
+        public class ActionList : LinkedList<ActionBarAction>
+        {
+        }
+
+        public static void SetActionBarTheme(ActionBar actionBar, int theme)
+        {
+
         }
     }
 }

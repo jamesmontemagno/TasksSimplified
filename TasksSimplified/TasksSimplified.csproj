@@ -56,7 +56,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutActivity.cs" />
-    <Compile Include="ActionBarBase\ActionBarActivity.cs" />
     <Compile Include="ActionBarBase\ActionBarListActivity.cs" />
     <Compile Include="ActionBar\ActionBar.cs" />
     <Compile Include="ActionBar\ActionBarAction.cs" />
@@ -76,6 +75,7 @@
     <Compile Include="DataLayer\TaskDatabase.cs" />
     <Compile Include="Helpers\FlurryAgent.cs" />
     <Compile Include="Helpers\IntListPreferencecs.cs" />
+    <Compile Include="Helpers\PopUpHelpers.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -134,8 +134,6 @@
     <AndroidResource Include="Resources\Drawable\actionbar_back_indicator.png" />
     <AndroidResource Include="Resources\Drawable\actionbar_background.xml" />
     <AndroidResource Include="Resources\Drawable\actionbar_btn.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_btn_normal.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_btn_pressed.xml" />
     <AndroidResource Include="Resources\Drawable\bottomactionbar_background.xml" />
     <AndroidResource Include="Resources\Drawable\bottomactionbar_btn.xml" />
     <AndroidResource Include="Resources\Drawable\bottomactionbar_btn_normal.xml" />
@@ -211,6 +209,21 @@
     <AndroidResource Include="Resources\Drawable-ldpi\ic_action_overflow.png" />
     <AndroidResource Include="Resources\Drawable-ldpi\ic_action_save.png" />
     <AndroidResource Include="Resources\Drawable-ldpi\ic_action_save_dark.png" />
+    <AndroidResource Include="Resources\Drawable\actionbar_btn_blue.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_background_blue.xml" />
+    <AndroidResource Include="Resources\Drawable-hdpi\ic_action_delete.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\ic_action_overflow_dark.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\ic_menu_sort.png" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_menu_about.png" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_menu_sort.png" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_action_delete.png" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_action_overflow_dark.png" />
+    <AndroidResource Include="Resources\Drawable-mdpi\ic_action_delete.png" />
+    <AndroidResource Include="Resources\Drawable-mdpi\ic_action_overflow_dark.png" />
+    <AndroidResource Include="Resources\Drawable-mdpi\ic_menu_sort.png" />
+    <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_overflow_dark.png" />
+    <AndroidResource Include="Resources\Drawable-xhdpi\ic_menu_sort.png" />
+    <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_delete.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Values-v14\" />

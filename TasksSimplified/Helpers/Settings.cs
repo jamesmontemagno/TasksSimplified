@@ -1,5 +1,6 @@
 using Android.App;
 using Android.Content;
+using TasksSimplified.DataAccessLayer;
 
 namespace TasksSimplified.Helpers
 {
@@ -10,6 +11,7 @@ namespace TasksSimplified.Helpers
         private const string ThemeAccentKey = "ThemeAccent";
         private const string TalkBackKey = "TalkBack";
         private const string KeepKeyboardUpKey = "KeepKeyboardUp";
+        private const string SortByKey = "SortBy";
 
 
         private static readonly ISharedPreferences SharedPreferences;
@@ -36,6 +38,23 @@ namespace TasksSimplified.Helpers
             set
             {
                 SharedPreferencesEditor.PutInt(ThemeKey, value);
+                SharedPreferencesEditor.Commit();
+            }
+        }
+
+        public static SortOption SortBy
+        {
+            get
+            {
+                var returnValue = SharedPreferences.GetInt(SortByKey, 0);
+                if (returnValue < 0)
+                    returnValue = 0;
+
+                return (SortOption)returnValue;
+            }
+            set
+            {
+                SharedPreferencesEditor.PutInt(SortByKey, (int)value);
                 SharedPreferencesEditor.Commit();
             }
         }

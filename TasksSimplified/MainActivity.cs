@@ -72,19 +72,14 @@ namespace TasksSimplified
             m_TaskEditText = FindViewById<EditText>(Resource.Id.edit_text_new_task);
 
             ActionBar = FindViewById<ActionBar.ActionBar>(Resource.Id.actionbar);
-            ActionBar.SetTitle("Tasks");
+            ActionBar.Title = "Tasks";
             ActionBar.CurrentActivity = this;
             ActionBar.SetHomeLogo(Resource.Drawable.ic_launcher);
             RegisterForContextMenu(ListView);
 
 
             m_TaskEditText.SetOnEditorActionListener(this);
-
-            SetupMainActionBar();
-
             ListView.ChoiceMode = ChoiceMode.Multiple;
-
-            
 
             m_AddButton.Click += (sender, args) => AddNewTask();
 
@@ -111,12 +106,8 @@ namespace TasksSimplified
                 RunOnUiThread(() => ListAdapter = new TaskAdapter(this, m_AllTasks));
                 RunOnUiThread(() => ListView.SetSelection(saveState.LastPosition));
                 m_TaskEditText.Text = saveState.NewTaskText;
-
-                if(saveState.Editing)
-                {
-                    m_EditTaskPosition = saveState.EditIndex;
-                    SetupEditActionBar();
-                }
+                m_Editing = saveState.Editing;
+                m_EditTaskPosition = saveState.EditIndex;
             }
             else
             {
@@ -124,6 +115,8 @@ namespace TasksSimplified
                 FlurryAgent.LogEvent("MainActivity");
                 ReloadData(0);
             }
+
+            SetActionBar();
 
             if (Intent.ActionSend != Intent.Action || Intent.Type == null)
                 return;
@@ -135,6 +128,7 @@ namespace TasksSimplified
             if (!string.IsNullOrEmpty(sharedText))
             {
                 m_TaskEditText.Text = sharedText;
+                m_Editing = false;
                 SetActionBar();
             }
         }
@@ -186,7 +180,7 @@ namespace TasksSimplified
         {
             var intent = new Intent(RecognizerIntent.ActionRecognizeSpeech);
             intent.PutExtra(RecognizerIntent.ExtraLanguageModel,RecognizerIntent.LanguageModelFreeForm);
-            intent.PutExtra(RecognizerIntent.ExtraPrompt, "Speak new task...");
+            intent.PutExtra(RecognizerIntent.ExtraPrompt, Resources.GetString(Resource.String.speak_new_task));
             StartActivityForResult(intent, 0);
         }
         
@@ -227,11 +221,18 @@ namespace TasksSimplified
             if (DarkMenuId == Resource.Menu.MainMenu)
                 return;
 
-            ActionBar.SetTitle("Tasks");
+            ActionBar.TitleRaw = Resource.String.title_tasks;
 
             ActionBar.RemoveAllActions();
+
+            var
+            action = new MenuItemActionBarAction(this, this, Resource.Id.menu_sort, Resource.Drawable.ic_menu_sort,
+                                                   Resource.String.menu_string_sort) { ActionType = ActionType.Never };
+
+            ActionBar.AddAction(action); 
             
-            var action = new MenuItemActionBarAction(this, this, Resource.Id.menu_delete_all, Resource.Drawable.ic_menu_delete_all,
+            
+            action = new MenuItemActionBarAction(this, this, Resource.Id.menu_delete_all, Resource.Drawable.ic_menu_delete_all,
                                                      Resource.String.menu_string_delete_all)
                              {ActionType = ActionType.Never};
 
@@ -254,7 +255,7 @@ namespace TasksSimplified
             if (DarkMenuId == Resource.Menu.MainMenuDelete)
                 return;
 
-            ActionBar.SetTitle("Delete Tasks");
+            ActionBar.TitleRaw = Resource.String.title_delete_tasks;
             ActionBar.RemoveAllActions();
 
             var action = new MenuItemActionBarAction(this, this, Resource.Id.menu_delete, Resource.Drawable.ic_action_delete_dark,
@@ -264,6 +265,11 @@ namespace TasksSimplified
             action = new MenuItemActionBarAction(this, this, Resource.Id.menu_cancel, Resource.Drawable.ic_action_cancel_dark,
                                                      Resource.String.menu_string_cancel)
                          {ActionType = ActionType.Always};
+            ActionBar.AddAction(action);
+
+            action = new MenuItemActionBarAction(this, this, Resource.Id.menu_sort, Resource.Drawable.ic_menu_sort,
+                                                   Resource.String.menu_string_sort) { ActionType = ActionType.Never };
+
             ActionBar.AddAction(action);
 
             action = new MenuItemActionBarAction(this, this, Resource.Id.menu_delete_all, Resource.Drawable.ic_menu_delete_all,
@@ -288,7 +294,7 @@ namespace TasksSimplified
             if (DarkMenuId == Resource.Menu.MainMenuEdit)
                 return;
 
-            ActionBar.SetTitle("Edit Task");
+            ActionBar.TitleRaw = Resource.String.title_edit_task;
             ActionBar.RemoveAllActions();
 
             var action = new MenuItemActionBarAction(this, this, Resource.Id.menu_save, Resource.Drawable.ic_action_save_dark,
@@ -356,7 +362,7 @@ namespace TasksSimplified
         private void ReloadData(int startId)
         {
             m_AllTasks.Clear();
-            foreach(var task in DataManager.GetTasks())
+            foreach(var task in DataManager.GetTasks(Settings.SortBy))
             {
                 m_AllTasks.Add(task);
             }
@@ -510,7 +516,15 @@ namespace TasksSimplified
 
         private void Save()
         {
-            m_AllTasks[m_EditTaskPosition].Task = m_TaskEditText.Text.Trim();
+            var editedTask = m_TaskEditText.Text.Trim();
+
+            if(string.IsNullOrWhiteSpace(editedTask))
+            {
+                CancelSave();
+                return;
+            }
+
+            m_AllTasks[m_EditTaskPosition].Task = editedTask;
 
             try
             {
@@ -551,6 +565,15 @@ namespace TasksSimplified
                     SetupEditActionBar();
                     m_TaskEditText.Text = m_AllTasks[m_EditTaskPosition].Task;
                     m_TaskEditText.RequestFocus();
+                    return true;
+
+                case Resource.Id.menu_share_task:
+
+                     var intent = new Intent(Intent.ActionSend);
+                    intent.SetType("text/plain");
+                    intent.PutExtra(Intent.ExtraText, m_AllTasks[m_EditTaskPosition].Task);
+                    StartActivity(Intent.CreateChooser(intent, Resources.GetString(Resource.String.share)));
+
                     return true;
             }
 

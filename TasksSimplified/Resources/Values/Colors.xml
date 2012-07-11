@@ -3,6 +3,9 @@
   <color name="gray">#80222222</color>
   <color name="white">#FFFFFFFF</color>
   <color name="redtext">#FFFF0000</color>
+
+  <color name="actionbar_separator">#8B1A1A</color>
+  <color name="actionbar_title">#FFFFFF</color>
   
   <!-- Default colors-->
   <color name="actionbar_maincolor">#FF669900</color>

@@ -20,13 +20,16 @@ namespace TasksSimplified.Adapter
         private readonly Activity m_Context;
         private readonly JavaList<TaskModel> m_Tasks;
 
-        private int m_FontColor;
+        private Android.Graphics.Color  m_UncheckedColor;
+        private Android.Graphics.Color m_CheckedColor;
+
 
         public TaskAdapter(Activity context, JavaList<TaskModel> tasks)
         {
             m_Context = context;
             m_Tasks = tasks;
-            m_FontColor = Settings.ThemeSetting == 0 ? Resource.Color.gray : Resource.Color.white;
+            m_UncheckedColor = m_Context.Resources.GetColor(Settings.ThemeSetting == 0 ? Resource.Color.gray : Resource.Color.white);
+            m_CheckedColor = m_Context.Resources.GetColor(Settings.ThemeAccentId);
         }
 
         public override View GetView(int position, View convertView, ViewGroup parent)
@@ -56,13 +59,13 @@ namespace TasksSimplified.Adapter
 
             if (task.Checked)
             {
-                wrapper.Title.SetTextColor(m_Context.Resources.GetColor(Resource.Color.actionbar_accentcolor));
+                wrapper.Title.SetTextColor(m_CheckedColor);
                 wrapper.Title.PaintFlags |= Android.Graphics.PaintFlags.StrikeThruText;
             }
             else
             {
 
-                wrapper.Title.SetTextColor(m_Context.Resources.GetColor(m_FontColor));
+                wrapper.Title.SetTextColor(m_UncheckedColor);
                 wrapper.Title.PaintFlags &= ~Android.Graphics.PaintFlags.StrikeThruText;
             }
 

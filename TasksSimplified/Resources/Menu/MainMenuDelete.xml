@@ -21,6 +21,10 @@
      android:icon="@drawable/ic_action_cancel_dark"
      android:title="@string/menu_string_cancel"/>
 
+  <item android:id="@+id/menu_sort"
+   android:icon="@drawable/ic_menu_sort"
+   android:title="@string/menu_string_sort"/>
+  
   <item android:id="@+id/menu_delete_all"
      android:icon="@drawable/ic_menu_delete_all"
      android:title="@string/menu_string_delete_all"/>
