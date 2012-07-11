@@ -7,6 +7,7 @@ namespace TasksSimplified.Helpers
     {
         public static readonly string PrefName = "TASKSSIMPLIFIEDSETTINGS";
         private const string ThemeKey = "ThemeSetting";
+        private const string ThemeAccentKey = "ThemeAccent";
         private const string TalkBackKey = "TalkBack";
         private const string KeepKeyboardUpKey = "KeepKeyboardUp";
 
@@ -36,6 +37,47 @@ namespace TasksSimplified.Helpers
             {
                 SharedPreferencesEditor.PutInt(ThemeKey, value);
                 SharedPreferencesEditor.Commit();
+            }
+        }
+
+        public static int ThemeAccent
+        {
+            get
+            {
+                var returnValue = SharedPreferences.GetInt(ThemeAccentKey, 2);
+                if (returnValue < 0)
+                    returnValue = 0;
+
+                return returnValue;
+            }
+            set
+            {
+                SharedPreferencesEditor.PutInt(ThemeAccentKey, value);
+                SharedPreferencesEditor.Commit();
+            }
+        }
+
+        public static int ThemeAccentId
+        {
+            get
+            {
+                switch(ThemeAccent)
+                {
+                    case 0:
+                        return Resource.Color.actionbar_maincolor_blue;
+                    case 1:
+                        return Resource.Color.actionbar_maincolor_gray;
+                    case 2:
+                        return Resource.Color.actionbar_maincolor_green;
+                    case 3:
+                        return Resource.Color.actionbar_maincolor_purple;
+                    case 4:
+                        return Resource.Color.actionbar_maincolor_red;
+                     case 5:
+                        return Resource.Color.actionbar_maincolor_yellow;
+                }
+
+                return Resource.Color.actionbar_maincolor_green;
             }
         }
 

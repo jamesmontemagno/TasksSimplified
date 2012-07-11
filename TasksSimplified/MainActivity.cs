@@ -153,13 +153,13 @@ namespace TasksSimplified
             try
             {
                 DataManager.SaveTask(newTask);
-                m_AllTasks.Add(newTask);
+                m_AllTasks.Insert(0, newTask);
                 m_TaskEditText.Text = string.Empty;
                                      
                 RunOnUiThread(() =>
                                   {
                                       ((TaskAdapter)ListAdapter).NotifyDataSetChanged();
-                                      ListView.SetSelection(m_AllTasks.Count - 1);
+                                      ListView.SetSelection(0);
                                   });
             }
             catch (Exception)
@@ -339,6 +339,9 @@ namespace TasksSimplified
                 SetupEditActionBar();
                 return;
             }
+
+
+    
 
             if (m_AllTasks.Where(t => t.Checked).Count() > 0)
             {

@@ -9,7 +9,7 @@ namespace TasksSimplified.DataAccessLayer
         #region Devices
         public static IEnumerable<TaskModel> GetTasks()
         {
-            return DataLayer.TaskDatabase.GetItems<TaskModel>().OrderBy(t => t.DateCreated);
+            return DataLayer.TaskDatabase.GetItems<TaskModel>().OrderByDescending(t => t.DateCreated);
         }
 
         public static void DeleteTasks()

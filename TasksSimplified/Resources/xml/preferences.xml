@@ -13,6 +13,15 @@
         android:dialogTitle="Theme"
         android:defaultValue="0" />
 
+    <taskssimplified.helpers.IntListPreference
+        android:key="ThemeAccent"
+        android:title="Accent Color"
+        android:summary="Spice up your life with a sweet accent color!"
+        android:entries="@array/theme_accent_preference"
+        android:entryValues="@array/theme_accent_values_preference"
+        android:dialogTitle="Theme"
+        android:defaultValue="2" />
+
     <CheckBoxPreference
               android:key="TalkBack"
               android:title="Talk Back Enabled"
