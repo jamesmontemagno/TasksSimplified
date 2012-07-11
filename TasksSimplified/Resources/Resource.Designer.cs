@@ -111,70 +111,76 @@ namespace TasksSimplified
 			public const int actionbar_btn_pressed = 2130837508;
 			
 			// aapt resource value: 0x7f020005
-			public const int bottomactionbar_background = 2130837509;
+			public const int background_holo_dark = 2130837509;
 			
 			// aapt resource value: 0x7f020006
-			public const int bottomactionbar_btn = 2130837510;
+			public const int background_holo_light = 2130837510;
 			
 			// aapt resource value: 0x7f020007
-			public const int bottomactionbar_btn_normal = 2130837511;
+			public const int bottomactionbar_background = 2130837511;
 			
 			// aapt resource value: 0x7f020008
-			public const int bottomactionbar_btn_pressed = 2130837512;
+			public const int bottomactionbar_btn = 2130837512;
 			
 			// aapt resource value: 0x7f020009
-			public const int clear_btn_normal = 2130837513;
+			public const int bottomactionbar_btn_normal = 2130837513;
 			
 			// aapt resource value: 0x7f02000a
-			public const int clearbutton = 2130837514;
+			public const int bottomactionbar_btn_pressed = 2130837514;
 			
 			// aapt resource value: 0x7f02000b
-			public const int ic_action_add = 2130837515;
+			public const int clear_btn_normal = 2130837515;
 			
 			// aapt resource value: 0x7f02000c
-			public const int ic_action_add_dark = 2130837516;
+			public const int clearbutton = 2130837516;
 			
 			// aapt resource value: 0x7f02000d
-			public const int ic_action_cancel = 2130837517;
+			public const int ic_action_add = 2130837517;
 			
 			// aapt resource value: 0x7f02000e
-			public const int ic_action_cancel_dark = 2130837518;
+			public const int ic_action_add_dark = 2130837518;
 			
 			// aapt resource value: 0x7f02000f
-			public const int ic_action_delete_dark = 2130837519;
+			public const int ic_action_cancel = 2130837519;
 			
 			// aapt resource value: 0x7f020010
-			public const int ic_action_microphone = 2130837520;
+			public const int ic_action_cancel_dark = 2130837520;
 			
 			// aapt resource value: 0x7f020011
-			public const int ic_action_microphone_dark = 2130837521;
+			public const int ic_action_delete_dark = 2130837521;
 			
 			// aapt resource value: 0x7f020012
-			public const int ic_action_overflow = 2130837522;
+			public const int ic_action_microphone = 2130837522;
 			
 			// aapt resource value: 0x7f020013
-			public const int ic_action_save = 2130837523;
+			public const int ic_action_microphone_dark = 2130837523;
 			
 			// aapt resource value: 0x7f020014
-			public const int ic_action_save_dark = 2130837524;
+			public const int ic_action_overflow = 2130837524;
 			
 			// aapt resource value: 0x7f020015
-			public const int ic_launcher = 2130837525;
+			public const int ic_action_save = 2130837525;
 			
 			// aapt resource value: 0x7f020016
-			public const int ic_menu_about = 2130837526;
+			public const int ic_action_save_dark = 2130837526;
 			
 			// aapt resource value: 0x7f020017
-			public const int ic_menu_delete_all = 2130837527;
+			public const int ic_launcher = 2130837527;
 			
 			// aapt resource value: 0x7f020018
-			public const int ic_menu_settings = 2130837528;
+			public const int ic_menu_about = 2130837528;
 			
 			// aapt resource value: 0x7f020019
-			public const int Icon = 2130837529;
+			public const int ic_menu_delete_all = 2130837529;
 			
 			// aapt resource value: 0x7f02001a
-			public const int splash = 2130837530;
+			public const int ic_menu_settings = 2130837530;
+			
+			// aapt resource value: 0x7f02001b
+			public const int Icon = 2130837531;
+			
+			// aapt resource value: 0x7f02001c
+			public const int splash = 2130837532;
 			
 			private Drawable()
 			{
@@ -410,6 +416,9 @@ namespace TasksSimplified
 			
 			// aapt resource value: 0x7f090004
 			public const int ClearButton = 2131296260;
+			
+			// aapt resource value: 0x7f09000b
+			public const int ListViewStyle = 2131296267;
 			
 			// aapt resource value: 0x7f090008
 			public const int MyTheme = 2131296264;
