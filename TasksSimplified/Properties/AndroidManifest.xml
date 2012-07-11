@@ -1,7 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.refractored.tasks.simplified" android:versionCode="3" android:versionName="@string/VersionNumber">
   <application android:label="Tasks Simplified" android:debuggable="true" android:icon="@drawable/ic_launcher">
     <activity android:name="taskssimplified.MainActivity" android:label="@string/ApplicationName" android:icon="@drawable/ic_launcher" android:launchMode="singleTop" android:theme="@style/MyTheme">
+=======
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.refractored.tasks.simplified.dev" android:versionCode="2" android:versionName="@string/VersionNumber">
+  <application android:label="Tasks Simplified" android:debuggable="true" android:icon="@drawable/ic_launcher"  android:hardwareAccelerated="true">
+    <activity android:name="taskssimplified.MainActivity" android:label="@string/ApplicationName" android:icon="@drawable/ic_launcher" android:launchMode="singleTop" >
+>>>>>>> 963c9763555c8df5c2d1af7b6869abe50c362a49
       <intent-filter>
         <action android:name="android.intent.action.SEND" />
         <category android:name="android.intent.category.DEFAULT" />

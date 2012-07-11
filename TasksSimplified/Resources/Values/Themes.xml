@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
   <style name="MyTheme" parent="@android:style/Theme.Light.NoTitleBar">
+    <item name="android:windowBackground">@drawable/background_holo_light</item>
+    <item name="android:listViewStyle">@style/ListViewStyle</item>
     <!-- Any customizations for your app running on devices with Theme.Holo here -->
   </style>
   <style name="Theme.Splash" parent="android:Theme">
@@ -8,6 +10,11 @@
     <item name="android:windowNoTitle">true</item>
   </style>
   <style name="MyThemeDark" parent="@android:style/Theme.NoTitleBar">
-    
+    <item name="android:windowBackground">@drawable/background_holo_dark</item>
+    <item name="android:listViewStyle">@style/ListViewStyle</item>
+  </style>
+
+  <style name="ListViewStyle" parent="android:Widget.ListView">
+    <item name="android:cacheColorHint">#00000000</item>
   </style>
 </resources>
