@@ -18,6 +18,7 @@ namespace TasksSimplified.DataLayer
         protected TaskDatabase(string path) : base (path)
         {
             CreateTable<TaskModel>();
+            CreateTable<ClearedTaskModel>();
         }
 
 

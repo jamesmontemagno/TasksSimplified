@@ -21,4 +21,5 @@
   <dimen name="actionbar_item_height">47dp</dimen>
   <dimen name="actionbar_item_width">56dp</dimen>
   <dimen name="actionbar_home_item_width">56dp</dimen>
+  <dimen name="widget_margin">8dp</dimen>
 </resources>

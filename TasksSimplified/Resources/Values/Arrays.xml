@@ -28,7 +28,7 @@
   <string-array name="sort_by_options">
     <item>@string/sort_newest</item>
     <item>@string/sort_oldest</item>
-    <item>@string/sort_title_ascending</item>
-    <item>@string/sort_title_descending</item>
+    <!--<item>@string/sort_title_ascending</item>
+    <item>@string/sort_title_descending</item>-->
   </string-array>
 </resources>

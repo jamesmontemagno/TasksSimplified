@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical" android:id="@+id/widget_full"
+  android:background="#00000000"
+  android:padding="@dimen/widget_margin">
+
+  <LinearLayout android:layout_width="match_parent" android:layout_height="44dp" android:orientation="horizontal" android:background="@drawable/widget_background_holo_dark">
+    <ImageView android:id="@+id/widget_home_logo" android:layout_gravity="left" android:padding="3dp" android:layout_marginLeft="0dp" android:layout_width="wrap_content" android:layout_height="fill_parent"
+               android:adjustViewBounds="true" android:scaleType="fitXY" android:background="#00000000" style="@style/ActionBarHomeLogo" 
+               android:src="@drawable/ic_launcher"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="Tasks" android:textColor="#FFFFFFFF" android:textAppearance="?android:attr/textAppearanceLarge" android:layout_centerVertical="true" android:gravity="center_vertical"/>
+  </LinearLayout>
+
+  <LinearLayout android:layout_width="match_parent" android:layout_height="2dp" android:orientation="horizontal" android:background="#FF33B5E5"/>
+  <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1"
+                android:orientation="vertical" android:background="@drawable/background_holo_light">
+
+    <TextView style="@style/WidgetText" android:id="@+id/widget_task_1"/>
+    <TextView style="@style/WidgetText" android:id="@+id/widget_task_2"/>
+    <TextView style="@style/WidgetText" android:id="@+id/widget_task_3"/>
+    <TextView style="@style/WidgetText" android:id="@+id/widget_task_4"/>
+    <TextView style="@style/WidgetText" android:id="@+id/widget_task_5"/>
+    <TextView style="@style/WidgetText" android:id="@+id/widget_task_6"/>
+    <TextView style="@style/WidgetText" android:id="@+id/widget_task_7"/>
+  </LinearLayout>
+  <LinearLayout android:layout_width="match_parent" android:layout_height="2dp" android:orientation="horizontal" android:background="#FF33B5E5"/>
+</LinearLayout>

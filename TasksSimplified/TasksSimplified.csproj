@@ -69,6 +69,7 @@
     <Compile Include="Adapter\TaskAdapter.cs" />
     <Compile Include="BusinessLayer\Contracts\BusinessEntityBase.cs" />
     <Compile Include="BusinessLayer\Contracts\IBusinessEntity.cs" />
+    <Compile Include="BusinessLayer\CompletedTaskModel.cs" />
     <Compile Include="BusinessLayer\TaskModel.cs" />
     <Compile Include="DataAccessLayer\DataManager.cs" />
     <Compile Include="DataLayer\SQLite.cs" />
@@ -80,7 +81,9 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaskWidgetProvider.cs" />
     <Compile Include="SplashScreenActivity.cs" />
+    <Compile Include="UpdateService.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -89,13 +92,18 @@
     <AndroidResource Include="Resources\Layout\ActionBar.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\ActionBar_Item.axml" />
+    <AndroidResource Include="Resources\Layout\ActionBar_Item.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\Layout\BlankSpinner.axml" />
     <AndroidResource Include="Resources\Layout\BottomActionBar.axml" />
     <AndroidResource Include="Resources\Layout\BottomActionBar_Item.axml" />
     <AndroidResource Include="Resources\Layout\OverflowActionBar_Item.axml" />
     <AndroidResource Include="Resources\Layout\SpinnerItem.axml" />
     <AndroidResource Include="Resources\Layout\CheckedListItem.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\taskwidget.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -115,7 +123,9 @@
   <ItemGroup>
     <AndroidJavaLibrary Include="Jars\FlurryAgent.jar" />
     <Content Include="LICENSE.txt.txt" />
-    <Content Include="Properties\AndroidManifest.xml" />
+    <Content Include="Properties\AndroidManifest.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <AndroidResource Include="Resources\Values\Attrs.xml" />
     <AndroidResource Include="Resources\Values\Colors.xml" />
     <AndroidResource Include="Resources\Values\Dimens.xml" />
@@ -146,9 +156,7 @@
     <AndroidResource Include="Resources\Drawable-mdpi\ic_menu_about.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_delete_dark.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_menu_about.png" />
-    <AndroidResource Include="Resources\Drawable-mdpi\ic_action_overflow.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\ic_action_overflow.png" />
-    <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_overflow.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\ic_action_cancel.png" />
     <AndroidResource Include="Resources\Drawable-mdpi\ic_action_cancel.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_cancel.png" />
@@ -206,25 +214,22 @@
     <AndroidResource Include="Resources\Drawable-ldpi\ic_action_delete_dark.png" />
     <AndroidResource Include="Resources\Drawable-ldpi\ic_action_microphone.png" />
     <AndroidResource Include="Resources\Drawable-ldpi\ic_action_microphone_dark.png" />
-    <AndroidResource Include="Resources\Drawable-ldpi\ic_action_overflow.png" />
     <AndroidResource Include="Resources\Drawable-ldpi\ic_action_save.png" />
     <AndroidResource Include="Resources\Drawable-ldpi\ic_action_save_dark.png" />
     <AndroidResource Include="Resources\Drawable\actionbar_btn_blue.xml" />
     <AndroidResource Include="Resources\Drawable\actionbar_background_blue.xml" />
     <AndroidResource Include="Resources\Drawable-hdpi\ic_action_delete.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\ic_action_overflow_dark.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\ic_menu_sort.png" />
     <AndroidResource Include="Resources\Drawable-ldpi\ic_menu_about.png" />
     <AndroidResource Include="Resources\Drawable-ldpi\ic_menu_sort.png" />
     <AndroidResource Include="Resources\Drawable-ldpi\ic_action_delete.png" />
-    <AndroidResource Include="Resources\Drawable-ldpi\ic_action_overflow_dark.png" />
     <AndroidResource Include="Resources\Drawable-mdpi\ic_action_delete.png" />
-    <AndroidResource Include="Resources\Drawable-mdpi\ic_action_overflow_dark.png" />
     <AndroidResource Include="Resources\Drawable-mdpi\ic_menu_sort.png" />
-    <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_overflow_dark.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_menu_sort.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_delete.png" />
-    <AndroidResource Include="Resources\Drawable\actionbar_background_gray.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_background_gray.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\Drawable\actionbar_background_green.xml" />
     <AndroidResource Include="Resources\Drawable\actionbar_background_purple.xml" />
     <AndroidResource Include="Resources\Drawable\actionbar_background_red.xml" />
@@ -240,10 +245,15 @@
     <AndroidResource Include="Resources\Drawable\clearbutton_purple.xml" />
     <AndroidResource Include="Resources\Drawable\clearbutton_red.xml" />
     <AndroidResource Include="Resources\Drawable\clearbutton_yellow.xml" />
+    <AndroidResource Include="Resources\xml\task_widget_info.xml" />
+    <AndroidResource Include="Resources\Values-v14\Dimens.xml" />
+    <AndroidResource Include="Resources\Drawable\widget_background_holo_light.xml" />
+    <AndroidResource Include="Resources\Drawable\widget_background_holo_dark.xml" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_action_overflow_dark.png" />
+    <AndroidResource Include="Resources\Drawable-mdpi\ic_action_overflow_dark.png" />
+    <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_overflow_dark.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Values-v14\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.

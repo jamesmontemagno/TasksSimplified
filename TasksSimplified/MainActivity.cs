@@ -16,6 +16,7 @@
 using System;
 using System.Linq;
 using Android.App;
+using Android.Appwidget;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
@@ -47,6 +48,7 @@ namespace TasksSimplified
         private TextToSpeech m_TextToSpeech;
 
         private JavaList<TaskModel> m_AllTasks;
+        private bool m_DataChanged;
         private int m_EditTaskPosition;
 
         private EditText m_TaskEditText;
@@ -149,18 +151,32 @@ namespace TasksSimplified
             if (string.IsNullOrWhiteSpace(task))
                 return;
 
+            m_DataChanged = true;
             var newTask = new TaskModel {Task = task};
 
             try
             {
                 DataManager.SaveTask(newTask);
-                m_AllTasks.Insert(0, newTask);
+
+                var selection = 0;
+                switch(Settings.SortBy)
+                {
+                    case SortOption.Newest:
+                        m_AllTasks.Insert(0, newTask);
+                        SetChecks();
+                        break;
+                    case SortOption.Oldest:
+                        m_AllTasks.Add(newTask);
+                        selection = m_AllTasks.Count - 1;
+                        break;
+                }
+               
                 m_TaskEditText.Text = string.Empty;
                                      
                 RunOnUiThread(() =>
                                   {
                                       ((TaskAdapter)ListAdapter).NotifyDataSetChanged();
-                                      ListView.SetSelection(0);
+                                      ListView.SetSelection(selection);
                                   });
             }
             catch (Exception)
@@ -324,8 +340,8 @@ namespace TasksSimplified
         {
             base.OnListItemClick(l, v, position, id);
 
-          
 
+            m_DataChanged = true;
             m_AllTasks[position].Checked = l.IsItemChecked(position);
 
             try
@@ -366,6 +382,15 @@ namespace TasksSimplified
             }
         }
 
+
+        private void SetChecks()
+        {
+            for (int i = 0; i < m_AllTasks.Count; i++)
+            {
+                ListView.SetItemChecked(i, m_AllTasks[i].Checked);
+            }
+        }
+
         private void ReloadData(int startId)
         {
             m_AllTasks.Clear();
@@ -389,10 +414,7 @@ namespace TasksSimplified
 #endif
             RunOnUiThread(() => ListAdapter = new TaskAdapter(this, m_AllTasks));
 
-            for (int i = 0; i < m_AllTasks.Count; i++ )
-            {
-                ListView.SetItemChecked(i, m_AllTasks[i].Checked);
-            }
+            SetChecks();
 
             SetActionBar();
 
@@ -418,6 +440,13 @@ namespace TasksSimplified
             {
                 if (!delete)
                     return;
+                m_DataChanged = true;
+                try
+                {
+                    foreach (var task in m_AllTasks)
+                        DataManager.SaveTask(new ClearedTaskModel(task));
+                }
+                catch{}
 
                 try
                 {
@@ -435,6 +464,7 @@ namespace TasksSimplified
 
         private void ReallyDeleteSelected()
         {
+            m_DataChanged = true;
             var startIndex = m_AllTasks[ListView.FirstVisiblePosition].ID;
             try
             {
@@ -443,6 +473,7 @@ namespace TasksSimplified
                     if (!ListView.IsItemChecked(i))
                         continue;
 
+                    DataManager.SaveTask(new ClearedTaskModel(m_AllTasks[i]));
 
                     DataManager.DeleteTask(m_AllTasks[i].ID);
                 }
@@ -531,6 +562,8 @@ namespace TasksSimplified
                 return;
             }
 
+            m_DataChanged = true;
+
             m_AllTasks[m_EditTaskPosition].Task = editedTask;
 
             try
@@ -550,6 +583,20 @@ namespace TasksSimplified
 
             m_Editing = false;
             SetActionBar();
+        }
+
+        private void Sort()
+        {
+            var oldSort = Settings.SortBy;
+
+            PopUpHelpers.ShowListPopup(this, Resource.String.sort_title, Resource.Array.sort_by_options, (newSort) =>
+                                                                                                             {
+                                                                                                                 if(oldSort == (SortOption)newSort)
+                                                                                                                     return;
+
+                                                                                                                 Settings.SortBy = (SortOption)newSort;
+                                                                                                                 ReloadData(0);
+                                                                                                             });
         }
 
         public override void OnCreateContextMenu(IContextMenu menu, View v, IContextMenuContextMenuInfo menuInfo)
@@ -610,6 +657,9 @@ namespace TasksSimplified
                 case Resource.Id.menu_save:
                     Save();
                     break;
+                case Resource.Id.menu_sort:
+                    Sort();
+                    break;
             }
 
             return base.OnOptionsItemSelected(item);
@@ -631,6 +681,16 @@ namespace TasksSimplified
                 return Settings.KeepKeyboardUp;
             }
             return false;
+        }
+
+        protected override void OnPause()
+        {
+            base.OnPause();
+            if (!m_DataChanged)
+                return;
+
+            var intent = new Intent(TaskWidgetProvider.UpdateIntent);
+            this.SendBroadcast(intent);
         }
 
         protected override void OnResume()

@@ -45,6 +45,42 @@ namespace TasksSimplified.DataAccessLayer
         public static int SaveTask(TaskModel item)
         {
             return DataLayer.TaskDatabase.SaveItem<TaskModel>(item);
+            
+        }
+
+        #endregion
+
+        #region ClearedTasks
+        public static IEnumerable<ClearedTaskModel> GetClearedTasks(SortOption sortOption)
+        {
+            switch (sortOption)
+            {
+                case SortOption.Newest:
+                    return DataLayer.TaskDatabase.GetItems<ClearedTaskModel>().OrderByDescending(t => t.DateCreated);
+                case SortOption.Oldest:
+                    return DataLayer.TaskDatabase.GetItems<ClearedTaskModel>().OrderBy(t => t.DateCreated);
+                case SortOption.TitleAscending:
+                    return DataLayer.TaskDatabase.GetItems<ClearedTaskModel>().OrderBy(t => t.Task);
+                case SortOption.TitleDescending:
+                    return DataLayer.TaskDatabase.GetItems<ClearedTaskModel>().OrderByDescending(t => t.Task);
+            }
+
+            return DataLayer.TaskDatabase.GetItems<ClearedTaskModel>().OrderBy(t => t.DateCreated);
+        }
+
+        public static void DeleteClearedTaskModel()
+        {
+            DataLayer.TaskDatabase.ClearTable<ClearedTaskModel>();
+        }
+
+        public static void DeleteClearedTaskModel(int id)
+        {
+            DataLayer.TaskDatabase.DeleteItem<ClearedTaskModel>(id);
+        }
+
+        public static int SaveTask(ClearedTaskModel item)
+        {
+            return DataLayer.TaskDatabase.SaveItem<ClearedTaskModel>(item);
         }
 
         #endregion

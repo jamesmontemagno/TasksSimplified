@@ -186,6 +186,9 @@ namespace TasksSimplified
 			// aapt resource value: 0x7f070003
 			public const int actionbar_item_width = 2131165187;
 			
+			// aapt resource value: 0x7f070005
+			public const int widget_margin = 2131165189;
+			
 			private Dimension()
 			{
 			}
@@ -338,6 +341,12 @@ namespace TasksSimplified
 			// aapt resource value: 0x7f02002f
 			public const int splash = 2130837551;
 			
+			// aapt resource value: 0x7f020030
+			public const int widget_background_holo_dark = 2130837552;
+			
+			// aapt resource value: 0x7f020031
+			public const int widget_background_holo_light = 2130837553;
+			
 			private Drawable()
 			{
 			}
@@ -391,32 +400,32 @@ namespace TasksSimplified
 			// aapt resource value: 0x7f0b000f
 			public const int edit_text_new_task = 2131427343;
 			
-			// aapt resource value: 0x7f0b0016
-			public const int menu_about = 2131427350;
+			// aapt resource value: 0x7f0b001f
+			public const int menu_about = 2131427359;
 			
-			// aapt resource value: 0x7f0b0018
-			public const int menu_cancel = 2131427352;
+			// aapt resource value: 0x7f0b0021
+			public const int menu_cancel = 2131427361;
 			
-			// aapt resource value: 0x7f0b001a
-			public const int menu_cancel_save = 2131427354;
+			// aapt resource value: 0x7f0b0023
+			public const int menu_cancel_save = 2131427363;
 			
-			// aapt resource value: 0x7f0b0017
-			public const int menu_delete = 2131427351;
+			// aapt resource value: 0x7f0b0020
+			public const int menu_delete = 2131427360;
 			
-			// aapt resource value: 0x7f0b0015
-			public const int menu_delete_all = 2131427349;
+			// aapt resource value: 0x7f0b001e
+			public const int menu_delete_all = 2131427358;
 			
-			// aapt resource value: 0x7f0b0012
-			public const int menu_edit_task = 2131427346;
+			// aapt resource value: 0x7f0b001b
+			public const int menu_edit_task = 2131427355;
 			
-			// aapt resource value: 0x7f0b0019
-			public const int menu_save = 2131427353;
+			// aapt resource value: 0x7f0b0022
+			public const int menu_save = 2131427362;
 			
-			// aapt resource value: 0x7f0b0013
-			public const int menu_share_task = 2131427347;
+			// aapt resource value: 0x7f0b001c
+			public const int menu_share_task = 2131427356;
 			
-			// aapt resource value: 0x7f0b0014
-			public const int menu_sort = 2131427348;
+			// aapt resource value: 0x7f0b001d
+			public const int menu_sort = 2131427357;
 			
 			// aapt resource value: 0x7f0b0011
 			public const int overflow_spinner = 2131427345;
@@ -426,6 +435,33 @@ namespace TasksSimplified
 			
 			// aapt resource value: 0x7f0b000d
 			public const int status_text = 2131427341;
+			
+			// aapt resource value: 0x7f0b0012
+			public const int widget_full = 2131427346;
+			
+			// aapt resource value: 0x7f0b0013
+			public const int widget_home_logo = 2131427347;
+			
+			// aapt resource value: 0x7f0b0014
+			public const int widget_task_1 = 2131427348;
+			
+			// aapt resource value: 0x7f0b0015
+			public const int widget_task_2 = 2131427349;
+			
+			// aapt resource value: 0x7f0b0016
+			public const int widget_task_3 = 2131427350;
+			
+			// aapt resource value: 0x7f0b0017
+			public const int widget_task_4 = 2131427351;
+			
+			// aapt resource value: 0x7f0b0018
+			public const int widget_task_5 = 2131427352;
+			
+			// aapt resource value: 0x7f0b0019
+			public const int widget_task_6 = 2131427353;
+			
+			// aapt resource value: 0x7f0b001a
+			public const int widget_task_7 = 2131427354;
 			
 			private Id()
 			{
@@ -461,6 +497,9 @@ namespace TasksSimplified
 			
 			// aapt resource value: 0x7f030008
 			public const int SpinnerItem = 2130903048;
+			
+			// aapt resource value: 0x7f030009
+			public const int taskwidget = 2130903049;
 			
 			private Layout()
 			{
@@ -604,6 +643,9 @@ namespace TasksSimplified
 			// aapt resource value: 0x7f080023
 			public const int unable_to_save = 2131230755;
 			
+			// aapt resource value: 0x7f080027
+			public const int widget_name = 2131230759;
+			
 			// aapt resource value: 0x7f080013
 			public const int yellow = 2131230739;
 			
@@ -615,50 +657,53 @@ namespace TasksSimplified
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f090000
-			public const int ActionBar = 2131296256;
+			// aapt resource value: 0x7f090001
+			public const int ActionBar = 2131296257;
 			
-			// aapt resource value: 0x7f09000e
-			public const int ActionBarBlue = 2131296270;
-			
-			// aapt resource value: 0x7f090005
-			public const int ActionBarHomeItem = 2131296261;
+			// aapt resource value: 0x7f09000f
+			public const int ActionBarBlue = 2131296271;
 			
 			// aapt resource value: 0x7f090006
-			public const int ActionBarHomeLogo = 2131296262;
-			
-			// aapt resource value: 0x7f090002
-			public const int ActionBarItem = 2131296258;
+			public const int ActionBarHomeItem = 2131296262;
 			
 			// aapt resource value: 0x7f090007
-			public const int ActionBarProgressBar = 2131296263;
-			
-			// aapt resource value: 0x7f09000c
-			public const int AlertThemeDark = 2131296268;
-			
-			// aapt resource value: 0x7f09000b
-			public const int AlertThemeLight = 2131296267;
-			
-			// aapt resource value: 0x7f090001
-			public const int BottomActionBar = 2131296257;
+			public const int ActionBarHomeLogo = 2131296263;
 			
 			// aapt resource value: 0x7f090003
-			public const int BottomActionBarItem = 2131296259;
-			
-			// aapt resource value: 0x7f090004
-			public const int ClearButton = 2131296260;
-			
-			// aapt resource value: 0x7f09000d
-			public const int ListViewStyle = 2131296269;
+			public const int ActionBarItem = 2131296259;
 			
 			// aapt resource value: 0x7f090008
-			public const int MyTheme = 2131296264;
+			public const int ActionBarProgressBar = 2131296264;
 			
-			// aapt resource value: 0x7f09000a
-			public const int MyThemeDark = 2131296266;
+			// aapt resource value: 0x7f09000d
+			public const int AlertThemeDark = 2131296269;
+			
+			// aapt resource value: 0x7f09000c
+			public const int AlertThemeLight = 2131296268;
+			
+			// aapt resource value: 0x7f090002
+			public const int BottomActionBar = 2131296258;
+			
+			// aapt resource value: 0x7f090004
+			public const int BottomActionBarItem = 2131296260;
+			
+			// aapt resource value: 0x7f090005
+			public const int ClearButton = 2131296261;
+			
+			// aapt resource value: 0x7f09000e
+			public const int ListViewStyle = 2131296270;
 			
 			// aapt resource value: 0x7f090009
-			public const int Theme_Splash = 2131296265;
+			public const int MyTheme = 2131296265;
+			
+			// aapt resource value: 0x7f09000b
+			public const int MyThemeDark = 2131296267;
+			
+			// aapt resource value: 0x7f09000a
+			public const int Theme_Splash = 2131296266;
+			
+			// aapt resource value: 0x7f090000
+			public const int WidgetText = 2131296256;
 			
 			private Style()
 			{
@@ -670,6 +715,9 @@ namespace TasksSimplified
 			
 			// aapt resource value: 0x7f040000
 			public const int preferences = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int task_widget_info = 2130968577;
 			
 			private Xml()
 			{

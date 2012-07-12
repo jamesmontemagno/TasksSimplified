@@ -19,5 +19,4 @@
     android:background="@drawable/actionbar_btn"
     android:layout_height="@dimen/actionbar_item_height"
     android:singleLine="true"
-    android:visibility="visible"
-    />
+    android:visibility="visible"/>

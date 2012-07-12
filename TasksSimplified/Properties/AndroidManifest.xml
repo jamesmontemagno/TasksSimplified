@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.refractored.tasks.simplified" android:versionCode="4" android:versionName="@string/VersionNumber">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.refractored.tasks.simplified.dev" android:versionCode="4" android:versionName="@string/VersionNumber">
 <application android:label="Tasks Simplified" android:debuggable="true" android:icon="@drawable/ic_launcher"  android:hardwareAccelerated="true">
     <activity android:name="taskssimplified.MainActivity" android:label="@string/ApplicationName" android:icon="@drawable/ic_launcher" android:launchMode="singleTop" >
       <intent-filter>
