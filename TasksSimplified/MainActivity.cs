@@ -58,6 +58,12 @@ namespace TasksSimplified
         private int m_OriginalTheme;
         private int m_OriginalAccent;
 
+        private string[] m_FakeData = new string[]
+                                          {
+                                              "Tasks Simplified", "Beautiful", "Adorable", "Simple", "www.TasksSimplified.com",
+                                              "1 List", "Tons of Themes", "The Only Task List You Need"
+                                          };
+
         protected override void OnCreate(Bundle bundle) 
         {
             SetTheme(Settings.ThemeSetting == 0 ? Resource.Style.MyTheme : Resource.Style.MyThemeDark);
@@ -267,6 +273,11 @@ namespace TasksSimplified
 
             ActionBar.AddAction(action);
 
+            action = new MenuItemActionBarAction(this, this, Resource.Id.menu_history, Resource.Drawable.ic_menu_history,
+                                                     Resource.String.menu_string_history) { ActionType = ActionType.Never };
+
+            ActionBar.AddAction(action);
+
             action = new MenuItemActionBarAction(this, this, Resource.Id.menu_about, Resource.Drawable.ic_menu_settings,
                                                      Resource.String.menu_string_about) {ActionType = ActionType.Never};
             ActionBar.AddAction(action);
@@ -291,10 +302,6 @@ namespace TasksSimplified
                                                     Resource.String.menu_string_delete) {ActionType = ActionType.Always};
             ActionBar.AddAction(action);
 
-            action = new MenuItemActionBarAction(this, this, Resource.Id.menu_cancel, Resource.Drawable.ic_action_cancel_dark,
-                                                     Resource.String.menu_string_cancel)
-                         {ActionType = ActionType.Always};
-            ActionBar.AddAction(action);
 
             action = new MenuItemActionBarAction(this, this, Resource.Id.menu_sort, Resource.Drawable.ic_menu_sort,
                                                    Resource.String.menu_string_sort) { ActionType = ActionType.Never };
@@ -303,6 +310,11 @@ namespace TasksSimplified
 
             action = new MenuItemActionBarAction(this, this, Resource.Id.menu_delete_all, Resource.Drawable.ic_menu_delete_all,
                                                     Resource.String.menu_string_delete_all) { ActionType = ActionType.Never };
+
+            ActionBar.AddAction(action);
+
+            action = new MenuItemActionBarAction(this, this, Resource.Id.menu_history, Resource.Drawable.ic_menu_history,
+                                                     Resource.String.menu_string_history) { ActionType = ActionType.Never };
 
             ActionBar.AddAction(action);
 
@@ -518,39 +530,6 @@ namespace TasksSimplified
 
         }
 
-        private void Cancel()
-        {
-            bool error = false;
-            for(var i = 0; i < m_AllTasks.Count; i++)
-            {
-                m_AllTasks[i].Checked = false;
-                if (ListView.IsItemChecked(i))
-                {
-                    ListView.SetItemChecked(i, false);
-                    try
-                    {
-                        DataManager.SaveTask(m_AllTasks[i]);
-                    }
-                    catch (Exception)
-                    {
-                        error = true;
-                    }
-                    
-                }
-
-            }
-
-            if(error)
-            {
-                RunOnUiThread(() => Toast.MakeText(this, Resource.String.unable_to_save,
-                                                ToastLength.Short).Show());
-                                      
-            }
-
-            RunOnUiThread(()=>((TaskAdapter)ListAdapter).NotifyDataSetChanged());
-            SetupMainActionBar();
-        }
-
         private void CancelSave()
         {
             m_TaskEditText.Text = string.Empty;
@@ -631,7 +610,14 @@ namespace TasksSimplified
 
                      var intent = new Intent(Intent.ActionSend);
                     intent.SetType("text/plain");
-                    intent.PutExtra(Intent.ExtraText, m_AllTasks[m_EditTaskPosition].Task);
+
+                    var stringId = m_AllTasks[m_EditTaskPosition].Checked
+                                       ? Resource.String.share_finished
+                                       : Resource.String.share_not_finished;
+
+                    var shareMessage = string.Format(Resources.GetString(stringId), m_AllTasks[m_EditTaskPosition].Task);
+
+                    intent.PutExtra(Intent.ExtraText, shareMessage);
                     StartActivity(Intent.CreateChooser(intent, Resources.GetString(Resource.String.share)));
 
                     return true;
@@ -645,11 +631,8 @@ namespace TasksSimplified
             switch(item.ItemId)
             {
                 case Resource.Id.menu_about:
-                    var intent = new Intent(this, typeof(AboutActivity));
-                    StartActivity(intent);
-                    break;
-                case Resource.Id.menu_cancel:
-                    Cancel();
+                    var aboutIntent = new Intent(this, typeof(AboutActivity));
+                    StartActivity(aboutIntent);
                     break;
                 case Resource.Id.menu_delete:
                     DeleteSelected();
@@ -665,6 +648,10 @@ namespace TasksSimplified
                     break;
                 case Resource.Id.menu_sort:
                     Sort();
+                    break;
+                case Resource.Id.menu_history:
+                    var historyIntent = new Intent(this, typeof (HistoryActivity));
+                    StartActivity(historyIntent);
                     break;
             }
 

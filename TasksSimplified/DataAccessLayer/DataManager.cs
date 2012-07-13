@@ -53,19 +53,7 @@ namespace TasksSimplified.DataAccessLayer
         #region ClearedTasks
         public static IEnumerable<ClearedTaskModel> GetClearedTasks(SortOption sortOption)
         {
-            switch (sortOption)
-            {
-                case SortOption.Newest:
-                    return DataLayer.TaskDatabase.GetItems<ClearedTaskModel>().OrderByDescending(t => t.DateCreated);
-                case SortOption.Oldest:
-                    return DataLayer.TaskDatabase.GetItems<ClearedTaskModel>().OrderBy(t => t.DateCreated);
-                case SortOption.TitleAscending:
-                    return DataLayer.TaskDatabase.GetItems<ClearedTaskModel>().OrderBy(t => t.Task);
-                case SortOption.TitleDescending:
-                    return DataLayer.TaskDatabase.GetItems<ClearedTaskModel>().OrderByDescending(t => t.Task);
-            }
-
-            return DataLayer.TaskDatabase.GetItems<ClearedTaskModel>().OrderBy(t => t.DateCreated);
+            return DataLayer.TaskDatabase.GetItems<ClearedTaskModel>().OrderByDescending(t => t.DateCompleted);
         }
 
         public static void DeleteClearedTaskModel()

@@ -41,6 +41,11 @@ namespace TasksSimplified
     [MetaData("android.appwidget.provider", Resource = "@xml/task_widget_info_large")]
     public class TaskWidgetProviderLarge : TaskWidgetProvider
     {
-        
+
+        public override void OnUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds)
+        {
+            // To prevent any ANR timeouts, we perform the update in a service
+            context.StartService(new Intent(context, typeof(UpdateService2)));
+        }
     }
 }

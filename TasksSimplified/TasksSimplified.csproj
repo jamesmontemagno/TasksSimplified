@@ -66,11 +66,13 @@
     <Compile Include="ActionBar\MyActionBarAction.cs" />
     <Compile Include="ActionBar\OverflowActionBarAction.cs" />
     <Compile Include="ActionBar\ScrollingTextView.cs" />
+    <Compile Include="Adapter\ClearedTaskAdapter.cs" />
     <Compile Include="Adapter\TaskAdapter.cs" />
     <Compile Include="BusinessLayer\Contracts\BusinessEntityBase.cs" />
     <Compile Include="BusinessLayer\Contracts\IBusinessEntity.cs" />
     <Compile Include="BusinessLayer\CompletedTaskModel.cs" />
     <Compile Include="BusinessLayer\TaskModel.cs" />
+    <Compile Include="HistoryActivity.cs" />
     <Compile Include="DataAccessLayer\DataManager.cs" />
     <Compile Include="DataLayer\SQLite.cs" />
     <Compile Include="DataLayer\TaskDatabase.cs" />
@@ -98,12 +100,20 @@
     <AndroidResource Include="Resources\Layout\BlankSpinner.axml" />
     <AndroidResource Include="Resources\Layout\BottomActionBar.axml" />
     <AndroidResource Include="Resources\Layout\BottomActionBar_Item.axml" />
-    <AndroidResource Include="Resources\Layout\OverflowActionBar_Item.axml" />
+    <AndroidResource Include="Resources\Layout\OverflowActionBar_Item.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\Layout\SpinnerItem.axml" />
     <AndroidResource Include="Resources\Layout\CheckedListItem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\Layout\taskwidget.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\History.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\HistoryItem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -273,6 +283,22 @@
     <AndroidResource Include="Resources\Drawable\clearbutton_red_inverse.xml" />
     <AndroidResource Include="Resources\Drawable\clearbutton_yellow_inverse.xml" />
     <AndroidResource Include="Resources\xml\task_widget_info_large.xml" />
+    <AndroidResource Include="Resources\Drawable\widgetpreviewlarge.png" />
+    <AndroidResource Include="Resources\Drawable\widgetpreviewsmall.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\ic_action_share.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\ic_action_share_dark.png" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_action_share.png" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_action_share_dark.png" />
+    <AndroidResource Include="Resources\Drawable-mdpi\ic_action_share.png" />
+    <AndroidResource Include="Resources\Drawable-mdpi\ic_action_share_dark.png" />
+    <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_share.png" />
+    <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_share_dark.png" />
+    <AndroidResource Include="Resources\Menu\HistoryMenu.xml" />
+    <AndroidResource Include="Resources\Menu\ContextMenuHistoryTask.xml" />
+    <AndroidResource Include="Resources\Drawable-xhdpi\ic_menu_history.png" />
+    <AndroidResource Include="Resources\Drawable-mdpi\ic_menu_history.png" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_menu_history.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\ic_menu_history.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

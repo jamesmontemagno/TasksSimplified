@@ -4,5 +4,6 @@
     android:minHeight="110dp"
     android:updatePeriodMillis="86400000"
     android:initialLayout="@layout/taskwidget"
+    android:previewImage="@drawable/widgetpreviewsmall"
     android:resizeMode="horizontal|vertical">
 </appwidget-provider>

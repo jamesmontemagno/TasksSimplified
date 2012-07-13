@@ -6,17 +6,17 @@
 
     <taskssimplified.helpers.IntListPreference
         android:key="ThemeSetting"
-        android:title="Theme"
-        android:summary="Pick a theme that fits your style. *Restart required!"
+        android:title="@string/pref_theme_title"
+        android:summary="@string/pref_theme_summary"
         android:entries="@array/theme_preference"
         android:entryValues="@array/theme_values_preference"
-        android:dialogTitle="Theme"
+        android:dialogTitle="@string/pref_theme_title"
         android:defaultValue="0" />
 
     <taskssimplified.helpers.IntListPreference
         android:key="ThemeAccent"
-        android:title="Accent Color"
-        android:summary="Spice up your life with a sweet accent color!"
+        android:title="@string/pref_accent_title"
+        android:summary="@string/pref_accent_summary"
         android:entries="@array/theme_accent_preference"
         android:entryValues="@array/theme_accent_values_preference"
         android:dialogTitle="Theme"
@@ -24,28 +24,28 @@
 
     <CheckBoxPreference
               android:key="TalkBack"
-              android:title="Talk Back Enabled"
-              android:summary="When you add task by speech if enabled it will talk back to you."
+              android:title="@string/pref_talkback_title"
+              android:summary="@string/pref_talkback_summary"
               android:defaultValue="true" />
 
     <CheckBoxPreference
               android:key="KeepKeyboardUp"
-              android:title="Keep Keyboard Up"
-              android:summary="After you enter a new task with DONE, the keyboard will remain up."
+              android:title="@string/pref_keyboard_title"
+              android:summary="@string/pref_keyboard_summary"
               android:defaultValue="true" />
 
 
   </PreferenceCategory>
 
   <PreferenceCategory
-        android:title="About">
+        android:title="@string/about">
 
     <Preference
-            android:title="Version"
+            android:title="@string/version"
             android:summary="@string/VersionNumber" />
 
     <PreferenceScreen
-           android:title="Tasks Simplified Support"
+           android:title="@string/support"
            android:summary="www.TasksSimplified.com">
 
       <intent android:action="android.intent.action.VIEW"

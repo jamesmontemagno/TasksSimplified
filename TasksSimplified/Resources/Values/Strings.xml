@@ -15,7 +15,9 @@
   <string name="menu_string_save">Save Task</string>
   <string name="menu_string_edit_task">Edit Task</string>
   <string name="menu_string_share_task">Share Task</string>
+  <string name="menu_string_share_history">Share History</string>
   <string name="menu_string_sort">Sort Tasks</string>
+  <string name="menu_string_history">Completed Tasks</string>
   <string name="dark">Dark</string>
   <string name="light">Light</string>
   <string name="green">Green</string>
@@ -37,8 +39,8 @@
   <string name="sort_title">Sort Tasks</string>
   <string name="speak_new_task">Speak New Task...</string>
   <string name="share">Share</string>
-  <string name="share_finished">I just finished: </string>
-  <string name="share_not_finished">I need to finish: </string>
+  <string name="share_finished">I just finished: {0} in #TasksSimplified</string>
+  <string name="share_not_finished">I need to finish: {0} in #TasksSimplified</string>
   <string name="ok">OK</string>
   <string name="cancel">Cancel</string>
   <string name="confirm_delete">Are you sure ou want to delete all of these tasks?</string>
@@ -50,5 +52,25 @@
   <string name="widget_name">Tasks Small</string>
   <string name="widget_name_large">Tasks Large</string>
   <string name="theme_changed_title">Theme Changed</string>
-  <string name="theme_changed_message">Theme settings have changed, would you like to restart now? *Recommended</string>
+  <string name="theme_changed_message">Theme settings have changed, would you like to restart now?</string>
+  <string name="completed_tasks">Completed Tasks</string>
+  <string name="share_history_message">I have completed {0} tasks in #TasksSimplified</string>
+  <string name="share_single_history_message">I completed {0} on {1} in #TasksSimplified</string>
+
+
+  <string name="pref_theme_title">Theme</string>
+  <string name="pref_theme_summary">Pick a theme that fits your style.</string>
+
+  <string name="pref_accent_title">Accent Color</string>
+  <string name="pref_accent_summary">Spice up your life with a sweet accent color!</string>
+
+  <string name="pref_talkback_title">Talk Back</string>
+  <string name="pref_talkback_summary">When you add task by speech if enabled it will talk back to you.</string>
+
+  <string name="pref_keyboard_title">Keep Keyboard Up</string>
+  <string name="pref_keyboard_summary">After you enter a new task with DONE, the keyboard will remain up.</string>
+
+    <string name="about">About</string>
+  <string name="version">Version</string>
+  <string name="support">Tasks Simplified Support</string>
 </resources>
