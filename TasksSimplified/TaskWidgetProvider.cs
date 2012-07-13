@@ -34,4 +34,13 @@ namespace TasksSimplified
             context.StartService(new Intent(context, typeof(UpdateService)));
         }
     }
+
+
+    [BroadcastReceiver(Label = "@string/widget_name_large")]
+    [IntentFilter(new string[] { "android.appwidget.action.APPWIDGET_UPDATE", "com.refractored.tasks.simplified.UPDATE_WIDGET" })]
+    [MetaData("android.appwidget.provider", Resource = "@xml/task_widget_info_large")]
+    public class TaskWidgetProviderLarge : TaskWidgetProvider
+    {
+        
+    }
 }

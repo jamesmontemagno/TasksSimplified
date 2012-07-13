@@ -24,6 +24,12 @@
   <string name="red">Red</string>
   <string name="purple">Purple</string>
   <string name="gray">Gray</string>
+  <string name="greeninverse">Inverse Green</string>
+  <string name="yellowinverse">Inverse Yellow</string>
+  <string name="blueinverse">Inverse Blue</string>
+  <string name="redinverse">Inverse Red</string>
+  <string name="purpleinverse">Inverse Purple</string>
+  <string name="grayinverse">Inverse Gray</string>
   <string name="sort_newest">Newest First</string>
   <string name="sort_oldest">Oldest First</string>
   <string name="sort_title_ascending">A-Z</string>
@@ -31,6 +37,8 @@
   <string name="sort_title">Sort Tasks</string>
   <string name="speak_new_task">Speak New Task...</string>
   <string name="share">Share</string>
+  <string name="share_finished">I just finished: </string>
+  <string name="share_not_finished">I need to finish: </string>
   <string name="ok">OK</string>
   <string name="cancel">Cancel</string>
   <string name="confirm_delete">Are you sure ou want to delete all of these tasks?</string>
@@ -39,5 +47,8 @@
   <string name="unable_to_delete">Unable to delete, please try again.</string>
   <string name="nice_work_short">Nice work. You\'re AWESOME!</string>
   <string name="nice_work_long">Wow, everything is done! You\'re AMAZING!</string>
-  <string name="widget_name">Tasks Simplified</string>
+  <string name="widget_name">Tasks Small</string>
+  <string name="widget_name_large">Tasks Large</string>
+  <string name="theme_changed_title">Theme Changed</string>
+  <string name="theme_changed_message">Theme settings have changed, would you like to restart now? *Recommended</string>
 </resources>

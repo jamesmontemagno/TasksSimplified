@@ -114,6 +114,42 @@ namespace TasksSimplified.ActionBar
                     actionBar.ItemBackgroundDrawableRaw = Resource.Drawable.actionbar_btn_yellow;
                     actionBar.BackgroundDrawableRaw = Resource.Drawable.actionbar_background_yellow;
                     break;
+                case 6: //blue
+                    actionBar.SeparatorColorRaw = Resource.Color.actionbar_separatorcolor_blue_inverse;
+                    actionBar.TitleColorRaw = Resource.Color.actionbar_titlecolor_blue;
+                    actionBar.ItemBackgroundDrawableRaw = Resource.Drawable.actionbar_btn_blue_inverse;
+                    actionBar.BackgroundDrawableRaw = Resource.Drawable.actionbar_background_blue_inverse;
+                    break;
+                case 7: //gray
+                    actionBar.SeparatorColorRaw = Resource.Color.actionbar_separatorcolor_gray_inverse;
+                    actionBar.TitleColorRaw = Resource.Color.actionbar_titlecolor_gray;
+                    actionBar.ItemBackgroundDrawableRaw = Resource.Drawable.actionbar_btn_gray_inverse;
+                    actionBar.BackgroundDrawableRaw = Resource.Drawable.actionbar_background_gray_inverse;
+                    break;
+                case 8://green
+                    actionBar.SeparatorColorRaw = Resource.Color.actionbar_separatorcolor_green_inverse;
+                    actionBar.TitleColorRaw = Resource.Color.actionbar_titlecolor_green;
+                    actionBar.ItemBackgroundDrawableRaw = Resource.Drawable.actionbar_btn_green_inverse;
+                    actionBar.BackgroundDrawableRaw = Resource.Drawable.actionbar_background_green_inverse;
+                    break;
+                case 9: //purple
+                    actionBar.SeparatorColorRaw = Resource.Color.actionbar_separatorcolor_purple_inverse;
+                    actionBar.TitleColorRaw = Resource.Color.actionbar_titlecolor_purple;
+                    actionBar.ItemBackgroundDrawableRaw = Resource.Drawable.actionbar_btn_purple_inverse;
+                    actionBar.BackgroundDrawableRaw = Resource.Drawable.actionbar_background_purple_inverse;
+                    break;
+                case 10: //red
+                    actionBar.SeparatorColorRaw = Resource.Color.actionbar_separatorcolor_red_inverse;
+                    actionBar.TitleColorRaw = Resource.Color.actionbar_titlecolor_red;
+                    actionBar.ItemBackgroundDrawableRaw = Resource.Drawable.actionbar_btn_red_inverse;
+                    actionBar.BackgroundDrawableRaw = Resource.Drawable.actionbar_background_red_inverse;
+                    break;
+                case 11: //yellow
+                    actionBar.SeparatorColorRaw = Resource.Color.actionbar_separatorcolor_yellow_inverse;
+                    actionBar.TitleColorRaw = Resource.Color.actionbar_titlecolor_yellow;
+                    actionBar.ItemBackgroundDrawableRaw = Resource.Drawable.actionbar_btn_yellow_inverse;
+                    actionBar.BackgroundDrawableRaw = Resource.Drawable.actionbar_background_yellow_inverse;
+                    break;
             }
         }
     }

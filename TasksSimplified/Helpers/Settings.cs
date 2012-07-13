@@ -94,9 +94,21 @@ namespace TasksSimplified.Helpers
                         return Resource.Color.actionbar_maincolor_red;
                      case 5:
                         return Resource.Color.actionbar_maincolor_yellow;
+                     case 6:
+                        return Resource.Color.actionbar_accentcolor_blue;
+                     case 7:
+                        return Resource.Color.actionbar_accentcolor_gray;
+                     case 8:
+                        return Resource.Color.actionbar_accentcolor_green;
+                     case 9:
+                        return Resource.Color.actionbar_accentcolor_purple;
+                     case 10:
+                        return Resource.Color.actionbar_accentcolor_red;
+                     case 11:
+                        return Resource.Color.actionbar_accentcolor_yellow;
                 }
 
-                return Resource.Color.actionbar_maincolor_green;
+                return Resource.Color.actionbar_accentcolor_green;
             }
         }
 
@@ -118,6 +130,18 @@ namespace TasksSimplified.Helpers
                         return Resource.Drawable.clearbutton_red;
                     case 5:
                         return Resource.Drawable.clearbutton_yellow;
+                    case 6:
+                        return Resource.Drawable.clearbutton_blue_inverse;
+                    case 7:
+                        return Resource.Drawable.clearbutton_gray_inverse;
+                    case 8:
+                        return Resource.Drawable.clearbutton_green_inverse;
+                    case 9:
+                        return Resource.Drawable.clearbutton_purple_inverse;
+                    case 10:
+                        return Resource.Drawable.clearbutton_red_inverse;
+                    case 11:
+                        return Resource.Drawable.clearbutton_yellow_inverse;
                 }
 
                 return Resource.Drawable.clearbutton_green;

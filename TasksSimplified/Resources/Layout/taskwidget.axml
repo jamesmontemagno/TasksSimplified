@@ -24,6 +24,19 @@
     <TextView style="@style/WidgetText" android:id="@+id/widget_task_5"/>
     <TextView style="@style/WidgetText" android:id="@+id/widget_task_6"/>
     <TextView style="@style/WidgetText" android:id="@+id/widget_task_7"/>
+    <TextView style="@style/WidgetText" android:id="@+id/widget_task_8"/>
+    <TextView style="@style/WidgetText" android:id="@+id/widget_task_9"/>
+    <TextView style="@style/WidgetText" android:id="@+id/widget_task_10"/>
+    <TextView style="@style/WidgetText" android:id="@+id/widget_task_11"/>
+    <TextView style="@style/WidgetText" android:id="@+id/widget_task_12"/>
+    <TextView style="@style/WidgetText" android:id="@+id/widget_task_13"/>
+    <TextView style="@style/WidgetText" android:id="@+id/widget_task_14"/>
+    <TextView style="@style/WidgetText" android:id="@+id/widget_task_15"/>
+    <TextView style="@style/WidgetText" android:id="@+id/widget_task_16"/>
+    <TextView style="@style/WidgetText" android:id="@+id/widget_task_17"/>
+    <TextView style="@style/WidgetText" android:id="@+id/widget_task_18"/>
+    <TextView style="@style/WidgetText" android:id="@+id/widget_task_19"/>
+    <TextView style="@style/WidgetText" android:id="@+id/widget_task_20"/>
   </LinearLayout>
   <LinearLayout android:layout_width="match_parent" android:layout_height="2dp" android:orientation="horizontal" android:background="#FF33B5E5"/>
 </LinearLayout>

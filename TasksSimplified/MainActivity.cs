@@ -55,6 +55,9 @@ namespace TasksSimplified
         private ImageButton m_AddButton;
         private ImageButton m_MicrophoneButton;
         private bool m_Editing;
+        private int m_OriginalTheme;
+        private int m_OriginalAccent;
+
         protected override void OnCreate(Bundle bundle) 
         {
             SetTheme(Settings.ThemeSetting == 0 ? Resource.Style.MyTheme : Resource.Style.MyThemeDark);
@@ -63,6 +66,9 @@ namespace TasksSimplified
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
+
+            m_OriginalTheme = Settings.ThemeSetting;
+            m_OriginalAccent = Settings.ThemeAccent;
 
             Window.SetSoftInputMode(SoftInput.StateAlwaysHidden);
 
@@ -696,6 +702,23 @@ namespace TasksSimplified
         protected override void OnResume()
         {
             base.OnResume();
+            if(m_OriginalTheme != Settings.ThemeSetting || m_OriginalAccent != Settings.ThemeAccent)
+            {
+                PopUpHelpers.ShowOKCancelPopup(this, Resource.String.theme_changed_title, 
+                    Resource.String.theme_changed_message, (reload) =>
+                                                               {
+                                                                   if (!reload)
+                                                                       return;
+
+                                                                  
+                                                                   OverridePendingTransition(0, 0);
+                                                                   Intent.AddFlags(ActivityFlags.NoAnimation);
+                                                                   Finish();
+
+                                                                   OverridePendingTransition(0, 0);
+                                                                   StartActivity(Intent);
+                                                               });
+            }
         }
     }
 }

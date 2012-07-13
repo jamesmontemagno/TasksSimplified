@@ -252,6 +252,27 @@
     <AndroidResource Include="Resources\Drawable-ldpi\ic_action_overflow_dark.png" />
     <AndroidResource Include="Resources\Drawable-mdpi\ic_action_overflow_dark.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_overflow_dark.png" />
+    <AndroidResource Include="Resources\Drawable\actionbar_btn_blue_inverse.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_btn_gray_inverse.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_btn_green_inverse.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_btn_purple_inverse.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_btn_red_inverse.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_btn_yellow_inverse.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_background_blue_inverse.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_background_gray_inverse.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Drawable\actionbar_background_green_inverse.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_background_purple_inverse.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_background_red_inverse.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_background_yellow_inverse.xml" />
+    <AndroidResource Include="Resources\Drawable\clearbutton_blue_inverse.xml" />
+    <AndroidResource Include="Resources\Drawable\clearbutton_gray_inverse.xml" />
+    <AndroidResource Include="Resources\Drawable\clearbutton_green_inverse.xml" />
+    <AndroidResource Include="Resources\Drawable\clearbutton_purple_inverse.xml" />
+    <AndroidResource Include="Resources\Drawable\clearbutton_red_inverse.xml" />
+    <AndroidResource Include="Resources\Drawable\clearbutton_yellow_inverse.xml" />
+    <AndroidResource Include="Resources\xml\task_widget_info_large.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

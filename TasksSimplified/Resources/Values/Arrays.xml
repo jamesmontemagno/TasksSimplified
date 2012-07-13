@@ -15,6 +15,12 @@
     <item>@string/purple</item>
     <item>@string/red</item>
     <item>@string/yellow</item>
+    <item>@string/blueinverse</item>
+    <item>@string/grayinverse</item>
+    <item>@string/greeninverse</item>
+    <item>@string/purpleinverse</item>
+    <item>@string/redinverse</item>
+    <item>@string/yellowinverse</item>
   </string-array>
   <string-array name="theme_accent_values_preference">
     <item>0</item>
@@ -24,6 +30,11 @@
     <item>4</item>
     <item>5</item>
     <item>6</item>
+    <item>7</item>
+    <item>8</item>
+    <item>9</item>
+    <item>10</item>
+    <item>11</item>
   </string-array>
   <string-array name="sort_by_options">
     <item>@string/sort_newest</item>

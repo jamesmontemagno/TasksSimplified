@@ -463,6 +463,10 @@ namespace TasksSimplified.ActionBar
             {
                 labelView.SetBackgroundDrawable(ItemBackgroundDrawable.GetConstantState().NewDrawable());
             }
+            else if (ItemBackgroundDrawableRaw > 0)
+            {
+                view.SetBackgroundResource(ItemBackgroundDrawableRaw);
+            }
 
             labelView.SetImageResource(action.GetDrawable());
 
