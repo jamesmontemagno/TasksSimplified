@@ -299,6 +299,7 @@
     <AndroidResource Include="Resources\Drawable-mdpi\ic_menu_history.png" />
     <AndroidResource Include="Resources\Drawable-ldpi\ic_menu_history.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\ic_menu_history.png" />
+    <AndroidResource Include="Resources\Values-ru\Strings.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

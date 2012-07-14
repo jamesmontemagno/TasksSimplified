@@ -28,6 +28,7 @@ namespace TasksSimplified
             var thisWidget = new ComponentName(this, "taskssimplified.TaskWidgetProvider");
             var manager = AppWidgetManager.GetInstance(this);
             manager.UpdateAppWidget(thisWidget, updateViews);
+            StopSelf();
         }
 
         public override IBinder OnBind(Intent intent)
@@ -130,6 +131,7 @@ namespace TasksSimplified
             var thisWidget = new ComponentName(this, "taskssimplified.TaskWidgetProviderLarge");
             var manager = AppWidgetManager.GetInstance(this);
             manager.UpdateAppWidget(thisWidget, updateViews);
+            StopSelf();
         }
     }
 }
