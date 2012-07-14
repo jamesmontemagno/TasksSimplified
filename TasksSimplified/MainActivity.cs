@@ -338,12 +338,12 @@ namespace TasksSimplified
             ActionBar.TitleRaw = Resource.String.title_edit_task;
             ActionBar.RemoveAllActions();
 
-            var action = new MenuItemActionBarAction(this, this, Resource.Id.menu_save, Resource.Drawable.ic_action_save_dark,
-                                                   Resource.String.menu_string_save) { ActionType = ActionType.Always };
+            var action = new MenuItemActionBarAction(this, this, Resource.Id.menu_cancel_save, Resource.Drawable.ic_action_cancel_dark,
+                                                     Resource.String.menu_string_cancel) { ActionType = ActionType.Always };
             ActionBar.AddAction(action);
 
-            action = new MenuItemActionBarAction(this, this, Resource.Id.menu_cancel_save, Resource.Drawable.ic_action_cancel_dark,
-                                                     Resource.String.menu_string_cancel) { ActionType = ActionType.Always };
+            action = new MenuItemActionBarAction(this, this, Resource.Id.menu_save, Resource.Drawable.ic_action_save_dark,
+                                                   Resource.String.menu_string_save) { ActionType = ActionType.Always };
             ActionBar.AddAction(action);
 
             DarkMenuId = Resource.Menu.MainMenuEdit;
