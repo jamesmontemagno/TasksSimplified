@@ -152,7 +152,9 @@
     <AndroidResource Include="Resources\Values-xlarge\Dimens.xml" />
     <AndroidResource Include="Resources\Drawable\bottomactionbar_btn_pressed.xml" />
     <AndroidResource Include="Resources\Drawable\actionbar_back_indicator.png" />
-    <AndroidResource Include="Resources\Drawable\actionbar_background.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_background.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\Drawable\actionbar_btn.xml" />
     <AndroidResource Include="Resources\Drawable\bottomactionbar_background.xml" />
     <AndroidResource Include="Resources\Drawable\bottomactionbar_btn.xml" />
@@ -240,7 +242,9 @@
     <AndroidResource Include="Resources\Drawable\actionbar_background_gray.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Drawable\actionbar_background_green.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_background_green.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\Drawable\actionbar_background_purple.xml" />
     <AndroidResource Include="Resources\Drawable\actionbar_background_red.xml" />
     <AndroidResource Include="Resources\Drawable\actionbar_background_yellow.xml" />
@@ -275,7 +279,9 @@
     <AndroidResource Include="Resources\Drawable\actionbar_background_green_inverse.xml" />
     <AndroidResource Include="Resources\Drawable\actionbar_background_purple_inverse.xml" />
     <AndroidResource Include="Resources\Drawable\actionbar_background_red_inverse.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_background_yellow_inverse.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_background_yellow_inverse.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\Drawable\clearbutton_blue_inverse.xml" />
     <AndroidResource Include="Resources\Drawable\clearbutton_gray_inverse.xml" />
     <AndroidResource Include="Resources\Drawable\clearbutton_green_inverse.xml" />
@@ -300,6 +306,8 @@
     <AndroidResource Include="Resources\Drawable-ldpi\ic_menu_history.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\ic_menu_history.png" />
     <AndroidResource Include="Resources\Values-ru\Strings.xml" />
+    <AndroidResource Include="Resources\Values-da\Strings.xml" />
+    <AndroidResource Include="Resources\Drawable\drop_shadow.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

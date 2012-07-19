@@ -93,9 +93,6 @@ namespace TasksSimplified
 
         private void SetupMainActionBar()
         {
-
-            ActionBar.TitleRaw = Resource.String.title_tasks;
-
             ActionBar.RemoveAllActions();
 
             var action = new MenuItemActionBarAction(this, this, Resource.Id.menu_share, Resource.Drawable.ic_action_share_dark,

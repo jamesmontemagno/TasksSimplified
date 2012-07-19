@@ -24,6 +24,12 @@ namespace TasksSimplified.BusinessLayer
         [XmlElement("p")]
         public string PhoneNumber { get; set; }
 
+        [XmlElement("s")]
+        public int SortOrder { get; set; }
+
+        [XmlElement("n")]
+        public string Note { get; set; }
+
         [XmlElement("ch")]
         public bool Checked { get; set; }
 
