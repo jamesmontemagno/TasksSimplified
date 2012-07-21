@@ -5,7 +5,7 @@
   <PreferenceCategory android:title="Settings">
 
     <taskssimplified.helpers.IntListPreference
-        android:key="ThemeSetting"
+        android:key="ThemeSetting2"
         android:title="@string/pref_theme_title"
         android:summary="@string/pref_theme_summary"
         android:entries="@array/theme_preference"
@@ -14,13 +14,13 @@
         android:defaultValue="0" />
 
     <taskssimplified.helpers.IntListPreference
-        android:key="ThemeAccent"
+        android:key="ThemeAccent2"
         android:title="@string/pref_accent_title"
         android:summary="@string/pref_accent_summary"
         android:entries="@array/theme_accent_preference"
         android:entryValues="@array/theme_accent_values_preference"
         android:dialogTitle="Theme"
-        android:defaultValue="2" />
+        android:defaultValue="0" />
 
     <CheckBoxPreference
               android:key="TalkBack"

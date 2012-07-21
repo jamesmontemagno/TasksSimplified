@@ -13,8 +13,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+<!--<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
 
   <item>
     <shape android:shape="rectangle" >
@@ -22,7 +21,7 @@
       <solid android:color="@color/actionbar_accentcolor" />
     </shape>
   </item>
-
+  
   <item android:top="@dimen/actionbar_accentheight">
     <shape android:shape="rectangle" >
       <size android:height="@dimen/actionbar_accentheight" />
@@ -32,4 +31,8 @@
 
 
 
-</layer-list>
+</layer-list>-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+  <solid android:color="@color/bottomactionbar_maincolor" />
+</shape>

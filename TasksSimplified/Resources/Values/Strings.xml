@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="VersionNumber">2.0.0.0</string>
+  <string name="VersionNumber">2.2.0.0</string>
     <string name="actionbar_activity_not_found">Activity not found, this is no good.</string>
     <string name="ApplicationName">Tasks Simplified</string>
     <string name="loading">Loading...</string>
@@ -20,18 +20,10 @@
   <string name="menu_string_history">Completed Tasks</string>
   <string name="dark">Dark</string>
   <string name="light">Light</string>
-  <string name="green">Green</string>
-  <string name="yellow">Yellow</string>
+  <string name="lightgray">Light Gray</string>
+  <string name="darkgray">Dark Gray</string>
+  <string name="black">Black</string>
   <string name="blue">Blue</string>
-  <string name="red">Red</string>
-  <string name="purple">Purple</string>
-  <string name="gray">Gray</string>
-  <string name="greeninverse">Inverse Green</string>
-  <string name="yellowinverse">Inverse Yellow</string>
-  <string name="blueinverse">Inverse Blue</string>
-  <string name="redinverse">Inverse Red</string>
-  <string name="purpleinverse">Inverse Purple</string>
-  <string name="grayinverse">Inverse Gray</string>
   <string name="sort_newest">Newest First</string>
   <string name="sort_oldest">Oldest First</string>
   <string name="sort_title_ascending">A-Z</string>
@@ -73,4 +65,7 @@
     <string name="about">About</string>
   <string name="version">Version</string>
   <string name="support">Tasks Simplified Support</string>
+
+  <string name="update_title">Tasks Simplified Updated</string>
+  <string name="update_message">Welcome to the lastest version of Tasks Simplified. First off we are now completely FREE!! In this update we have simplified the themes which you can set under Settings. Enjoy! -Motz</string>
 </resources>

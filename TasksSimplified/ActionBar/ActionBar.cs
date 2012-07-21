@@ -30,6 +30,7 @@ using Android.OS;
 using Android.Views;
 using Android.Widget;
 using Android.Util;
+using TasksSimplified.Helpers;
 
 
 namespace TasksSimplified.ActionBar
@@ -64,14 +65,20 @@ namespace TasksSimplified.ActionBar
         /// </summary>
         public Color SeparatorColor
         {
-            set { m_ActionsView.SetBackgroundColor(value);
-            m_HomeLayout.SetBackgroundColor(value);}
+            set
+            {
+                m_ActionsView.SetBackgroundColor(value);
+                m_HomeLayout.SetBackgroundColor(value);
+            }
         }
 
         public int SeparatorColorRaw
         {
-            set { m_ActionsView.SetBackgroundResource(value);
-            m_HomeLayout.SetBackgroundResource(value);}
+            set
+            {
+                m_ActionsView.SetBackgroundResource(value);
+                m_HomeLayout.SetBackgroundResource(value);
+            }
         }
 
         /// <summary>
@@ -79,14 +86,20 @@ namespace TasksSimplified.ActionBar
         /// </summary>
         public Drawable SeparatorDrawable
         {
-            set { m_ActionsView.SetBackgroundDrawable(value);
-            m_HomeLayout.SetBackgroundDrawable(value);}
+            set
+            {
+                m_ActionsView.SetBackgroundDrawable(value);
+                m_HomeLayout.SetBackgroundDrawable(value);
+            }
         }
 
         public int SeparatorDrawableRaw
         {
-            set { m_ActionsView.SetBackgroundResource(value); 
-            m_HomeLayout.SetBackgroundResource(value);}
+            set
+            {
+                m_ActionsView.SetBackgroundResource(value);
+                m_HomeLayout.SetBackgroundResource(value);
+            }
         }
 
         /// <summary>
@@ -107,8 +120,8 @@ namespace TasksSimplified.ActionBar
         /// </summary>
         public string Title
         {
-            get { return m_TitleView.Text; }
             set { m_TitleView.Text = value; }
+            get { return m_TitleView.Text; }
         }
 
         /// <summary>
@@ -235,6 +248,8 @@ namespace TasksSimplified.ActionBar
             m_HomeBtn.Tag = action;
             m_HomeBtn.SetImageResource(action.GetDrawable());
             m_HomeLayout.Visibility = ViewStates.Visible;
+
+            m_BackIndicator.SetBackgroundResource(Settings.UseLightIcons ? Resource.Drawable.actionbar_back_indicator : Resource.Drawable.actionbar_back_indicator_dark);
 
             if (null != ItemBackgroundDrawable)
             {

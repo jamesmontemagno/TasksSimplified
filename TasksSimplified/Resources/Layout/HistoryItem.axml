@@ -30,7 +30,6 @@
       android:paddingLeft="6dip"
       android:paddingRight="6dip"
       android:layout_marginLeft="6dip"
-      android:textColor="#FF212121"
       android:textAppearance="?android:attr/textAppearanceSmall"/>
   <TextView
       android:id="@+id/cleared_title"

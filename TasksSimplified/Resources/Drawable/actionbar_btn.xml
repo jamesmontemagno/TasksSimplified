@@ -15,37 +15,37 @@
 -->
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Non focused states -->
-    <item
-        android:state_focused="false"
-        android:state_selected="false"
-        android:state_pressed="false"
-        android:drawable="@color/actionbar_maincolor"
+  <!-- Non focused states -->
+  <item
+      android:state_focused="false"
+      android:state_selected="false"
+      android:state_pressed="false"
+      android:drawable="@color/actionbar_maincolor"
         />
-    <item
-        android:state_focused="false"
-        android:state_selected="true"
-        android:state_pressed="false"
-        android:drawable="@color/actionbar_accentcolor"
-        />
-
-    <!-- Focused states -->
-    <item
-        android:state_focused="true"
-        android:state_selected="false"
-        android:state_pressed="false"
-        android:drawable="@color/actionbar_accentcolor"
-        />
-    <item
-        android:state_focused="true"
-        android:state_selected="true"
-        android:state_pressed="false"
-        android:drawable="@color/actionbar_accentcolor"
+  <item
+      android:state_focused="false"
+      android:state_selected="true"
+      android:state_pressed="false"
+      android:drawable="@color/actionbar_pressedcolor"
         />
 
-    <!-- Pressed -->
-    <item
-        android:state_pressed="true"
-        android:drawable="@color/actionbar_accentcolor"
+  <!-- Focused states -->
+  <item
+      android:state_focused="true"
+      android:state_selected="false"
+      android:state_pressed="false"
+      android:drawable="@color/actionbar_pressedcolor"
+        />
+  <item
+      android:state_focused="true"
+      android:state_selected="true"
+      android:state_pressed="false"
+      android:drawable="@color/actionbar_pressedcolor"
+        />
+
+  <!-- Pressed -->
+  <item
+      android:state_pressed="true"
+      android:drawable="@color/actionbar_pressedcolor"
         />
 </selector>

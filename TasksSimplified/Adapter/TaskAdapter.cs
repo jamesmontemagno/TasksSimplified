@@ -28,8 +28,8 @@ namespace TasksSimplified.Adapter
         {
             m_Context = context;
             m_Tasks = tasks;
-            m_UncheckedColor = m_Context.Resources.GetColor(Settings.ThemeSetting == 0 ? Resource.Color.gray : Resource.Color.white);
-            m_CheckedColor = m_Context.Resources.GetColor(Settings.ThemeAccentId);
+            m_UncheckedColor = m_Context.Resources.GetColor(Settings.DarkTheme ? Resource.Color.white : Resource.Color.actionbar_maincolor_darkgray);
+            m_CheckedColor = m_Context.Resources.GetColor(Settings.CheckedColor);
         }
 
         public override View GetView(int position, View convertView, ViewGroup parent)

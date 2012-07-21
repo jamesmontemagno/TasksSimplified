@@ -23,6 +23,7 @@ using Android.Runtime;
 using Android.Speech;
 using Android.Speech.Tts;
 using Android.Views;
+using Android.Views.Animations;
 using Android.Widget;
 using TasksSimplified.ActionBarBase;
 using TasksSimplified.ActionBar;
@@ -104,8 +105,8 @@ namespace TasksSimplified
             m_AddButton.SetImageResource(Settings.ThemeSetting == 0 ? Resource.Drawable.ic_action_add : Resource.Drawable.ic_action_add_dark);
             m_MicrophoneButton.SetImageResource(Settings.ThemeSetting == 0 ? Resource.Drawable.ic_action_microphone : Resource.Drawable.ic_action_microphone_dark);
 
-            m_AddButton.SetBackgroundResource(Settings.ThemeAccentClearButtonId);
-            m_MicrophoneButton.SetBackgroundResource(Settings.ThemeAccentClearButtonId);
+            m_AddButton.SetBackgroundResource(Settings.ImageButtonDrawable);
+            m_MicrophoneButton.SetBackgroundResource(Settings.ImageButtonDrawable);
 
             // remove speech if it doesn't exist
             var activities =PackageManager.QueryIntentActivities(new Intent(RecognizerIntent.ActionRecognizeSpeech), 0);
@@ -124,8 +125,10 @@ namespace TasksSimplified
             if (saveState != null)
             {
                 m_AllTasks = new JavaList<TaskModel>(saveState.Tasks);
+                ListView.Visibility = ViewStates.Visible;
                 RunOnUiThread(() => ListAdapter = new TaskAdapter(this, m_AllTasks));
                 RunOnUiThread(() => ListView.SetSelection(saveState.LastPosition));
+                SetChecks();
                 m_TaskEditText.Text = saveState.NewTaskText;
                 m_Editing = saveState.Editing;
                 m_EditTaskPosition = saveState.EditIndex;
@@ -139,18 +142,30 @@ namespace TasksSimplified
 
             SetActionBar();
 
-            if (Intent.ActionSend != Intent.Action || Intent.Type == null)
-                return;
-
-            if ("text/plain" != Intent.Type)
-                return;
-
-            var sharedText = Intent.GetStringExtra(Intent.ExtraText);
-            if (!string.IsNullOrEmpty(sharedText))
+            try
             {
-                m_TaskEditText.Text = sharedText;
-                m_Editing = false;
-                SetActionBar();
+                if (Intent.ActionSend != Intent.Action || Intent.Type == null)
+                    return;
+
+                if ("text/plain" != Intent.Type)
+                    return;
+
+                var sharedText = Intent.GetStringExtra(Intent.ExtraText);
+                if (!string.IsNullOrEmpty(sharedText))
+                {
+                    m_TaskEditText.Text = sharedText;
+                    m_Editing = false;
+                    SetActionBar();
+                }
+            }
+            finally
+            {
+                var version = Resources.GetString(Resource.String.VersionNumber);
+                if (Settings.CurrentVersionNumber != version)
+                {
+                    Settings.CurrentVersionNumber = version;
+                    PopUpHelpers.ShowOKPopup(this, Resource.String.update_title, Resource.String.update_message, (ok)=>{ });
+                }
             }
         }
 
@@ -298,7 +313,7 @@ namespace TasksSimplified
             ActionBar.TitleRaw = Resource.String.title_delete_tasks;
             ActionBar.RemoveAllActions();
 
-            var action = new MenuItemActionBarAction(this, this, Resource.Id.menu_delete, Resource.Drawable.ic_action_delete_dark,
+            var action = new MenuItemActionBarAction(this, this, Resource.Id.menu_delete, Settings.UseLightIcons ? Resource.Drawable.ic_action_delete : Resource.Drawable.ic_action_delete_dark,
                                                     Resource.String.menu_string_delete) {ActionType = ActionType.Always};
             ActionBar.AddAction(action);
 
@@ -338,11 +353,11 @@ namespace TasksSimplified
             ActionBar.TitleRaw = Resource.String.title_edit_task;
             ActionBar.RemoveAllActions();
 
-            var action = new MenuItemActionBarAction(this, this, Resource.Id.menu_cancel_save, Resource.Drawable.ic_action_cancel_dark,
+            var action = new MenuItemActionBarAction(this, this, Resource.Id.menu_cancel_save, Settings.UseLightIcons ? Resource.Drawable.ic_action_cancel : Resource.Drawable.ic_action_cancel_dark,
                                                      Resource.String.menu_string_cancel) { ActionType = ActionType.Always };
             ActionBar.AddAction(action);
 
-            action = new MenuItemActionBarAction(this, this, Resource.Id.menu_save, Resource.Drawable.ic_action_save_dark,
+            action = new MenuItemActionBarAction(this, this, Resource.Id.menu_save, Settings.UseLightIcons ? Resource.Drawable.ic_action_delete : Resource.Drawable.ic_action_save_dark,
                                                    Resource.String.menu_string_save) { ActionType = ActionType.Always };
             ActionBar.AddAction(action);
 
@@ -418,7 +433,7 @@ namespace TasksSimplified
             }
 
 
-#if DEBUG2
+#if DEBUG
             if(m_AllTasks.Count == 0)
             {
                 m_AllTasks = new JavaList<TaskModel>();
@@ -430,7 +445,16 @@ namespace TasksSimplified
                 }
             }
 #endif
-            RunOnUiThread(() => ListAdapter = new TaskAdapter(this, m_AllTasks));
+            RunOnUiThread(() =>
+            {
+                ListAdapter = new TaskAdapter(this, m_AllTasks);
+                if (ListView.Visibility == ViewStates.Gone)
+                {
+                    ListView.Visibility = ViewStates.Visible;
+                    ListView.StartAnimation(AnimationUtils.LoadAnimation(this, Resource.Animation.fadein));
+                }
+            });
+
 
             SetChecks();
 
@@ -486,17 +510,24 @@ namespace TasksSimplified
             var startIndex = m_AllTasks[ListView.FirstVisiblePosition].ID;
             try
             {
+                var allChecked = true;
                 for (int i = 0; i < m_AllTasks.Count; i++)
                 {
                     if (!ListView.IsItemChecked(i))
+                    {
+                        allChecked = false;
                         continue;
+                    }
 
                     DataManager.SaveTask(new ClearedTaskModel(m_AllTasks[i]));
 
                     DataManager.DeleteTask(m_AllTasks[i].ID);
                 }
 
-                RunOnUiThread(() => Toast.MakeText(this, Resource.String.nice_work_short, ToastLength.Short).Show());
+                if(allChecked)
+                    RunOnUiThread(() => Toast.MakeText(this, Resource.String.nice_work_long, ToastLength.Short).Show());
+                else
+                    RunOnUiThread(() => Toast.MakeText(this, Resource.String.nice_work_short, ToastLength.Short).Show());
             }
             catch (Exception)
             {

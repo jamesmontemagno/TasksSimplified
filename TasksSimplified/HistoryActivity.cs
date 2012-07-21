@@ -20,6 +20,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Speech.Tts;
 using Android.Views;
+using Android.Views.Animations;
 using Android.Widget;
 using TasksSimplified.ActionBarBase;
 using TasksSimplified.ActionBar;
@@ -67,6 +68,7 @@ namespace TasksSimplified
                 m_AllTasks = new JavaList<ClearedTaskModel>(saveState.Tasks);
                 RunOnUiThread(() => ListAdapter = new ClearedTaskAdapter(this, m_AllTasks));
                 RunOnUiThread(() => ListView.SetSelection(saveState.LastPosition));
+                ListView.Visibility = ViewStates.Visible;
             }
             else
             {
@@ -76,6 +78,8 @@ namespace TasksSimplified
             }
 
             SetupMainActionBar();
+
+           
         }
 
         
@@ -95,7 +99,7 @@ namespace TasksSimplified
         {
             ActionBar.RemoveAllActions();
 
-            var action = new MenuItemActionBarAction(this, this, Resource.Id.menu_share, Resource.Drawable.ic_action_share_dark,
+            var action = new MenuItemActionBarAction(this, this, Resource.Id.menu_share, Settings.UseLightIcons ? Resource.Drawable.ic_action_share : Resource.Drawable.ic_action_share_dark,
                                                    Resource.String.menu_string_share_history) { ActionType = ActionType.Always };
 
             ActionBar.AddAction(action); 
@@ -115,7 +119,18 @@ namespace TasksSimplified
             }
 
 
-            RunOnUiThread(() => ListAdapter = new ClearedTaskAdapter(this, m_AllTasks));
+            RunOnUiThread(() =>
+                              {
+
+                                  
+                                  ListAdapter = new ClearedTaskAdapter(this, m_AllTasks);
+                                  if (ListView.Visibility == ViewStates.Gone)
+                                  {
+                                      ListView.Visibility = ViewStates.Visible;
+                                      ListView.StartAnimation(AnimationUtils.LoadAnimation(this, Resource.Animation.fadein));
+                                  }
+
+                              });
 
             if (startId == 0)
                    return;

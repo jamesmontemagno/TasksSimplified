@@ -7,11 +7,13 @@ namespace TasksSimplified.Helpers
     public static class Settings
     {
         public static readonly string PrefName = "TASKSSIMPLIFIEDSETTINGS";
-        private const string ThemeKey = "ThemeSetting";
-        private const string ThemeAccentKey = "ThemeAccent";
+        private const string ThemeKey = "ThemeSetting2";
+        private const string ThemeAccentKey = "ThemeAccent2";
         private const string TalkBackKey = "TalkBack";
         private const string KeepKeyboardUpKey = "KeepKeyboardUp";
         private const string SortByKey = "SortBy";
+
+        private const string CurrentVersionNumberKey = "CurrentVersionNumber";
 
 
         private static readonly ISharedPreferences SharedPreferences;
@@ -24,6 +26,21 @@ namespace TasksSimplified.Helpers
             SharedPreferencesEditor = SharedPreferences.Edit();
         }
 
+
+        public static bool DarkTheme
+        {
+            get { return ThemeSetting == 1; }
+        }
+
+        public static bool UseLightIcons
+        {
+            get { return ThemeAccent == 0; }
+        }
+
+        public static bool UseLightIconsBottom
+        {
+            get { return ThemeAccent == 0 || (ThemeAccent == 3 && !DarkTheme); }
+        }
 
         public static int ThemeSetting
         {
@@ -39,6 +56,123 @@ namespace TasksSimplified.Helpers
             {
                 SharedPreferencesEditor.PutInt(ThemeKey, value);
                 SharedPreferencesEditor.Commit();
+            }
+        }
+
+        public static int ThemeAccent
+        {
+            get
+            {
+                var returnValue = SharedPreferences.GetInt(ThemeAccentKey, 0);
+                if (returnValue < 0)
+                    returnValue = 0;
+
+                return returnValue;
+            }
+            set
+            {
+                SharedPreferencesEditor.PutInt(ThemeAccentKey, value);
+                SharedPreferencesEditor.Commit();
+            }
+        }
+
+        public static int ThemeAccentId
+        {
+            get
+            {
+                switch (ThemeAccent)
+                {
+                    case 0:
+                        return Resource.Color.actionbar_maincolor_lightgray;
+                    case 1:
+                        return Resource.Color.actionbar_maincolor;
+                    case 2:
+                        return Resource.Color.actionbar_maincolor_blue;
+                    case 3:
+                        return Resource.Color.actionbar_maincolor_black;
+                }
+
+                return Resource.Color.actionbar_maincolor;
+            }
+        }
+
+        public static int CheckedColor
+        {
+            get
+            {
+                switch (ThemeAccent)
+                {
+                    case 0:
+                        return Resource.Color.actionbar_pressedcolor_lightgray;
+                    case 1:
+                        return Resource.Color.actionbar_pressedcolor_darkgray;
+                    case 2:
+                        return Resource.Color.actionbar_pressedcolor_blue;
+                    case 3:
+                        return Resource.Color.actionbar_pressedcolor_black;
+                }
+
+                return Resource.Color.pager_darkgray;
+            }
+        }
+
+        public static int PagerBackground
+        {
+            get
+            {
+                switch (ThemeAccent)
+                {
+                    case 0:
+                        return Resource.Color.pager_lightgray;
+                    case 1:
+                        return Resource.Color.pager_darkgray;
+                    case 2:
+                        return Resource.Color.pager_blue;
+                    case 3:
+                        return Resource.Color.pager_black;
+                }
+
+                return Resource.Color.pager_darkgray;
+            }
+        }
+
+        public static int PagerBackgroundText
+        {
+            get
+            {
+                switch (ThemeAccent)
+                {
+                    case 0:
+                        return Resource.Color.actionbar_title_blue;
+                    case 1:
+                        return Resource.Color.actionbar_title;
+                    case 2:
+                        return Resource.Color.actionbar_title_blue;
+                    case 3:
+                        return Resource.Color.actionbar_title_black;
+                }
+
+                return Resource.Color.actionbar_title;
+            }
+        }
+
+        public static int ImageButtonDrawable
+        {
+            get
+            {
+                switch (ThemeAccent)
+                {
+                    case 0:
+                        return Resource.Drawable.clearbutton_lightgray;
+                    case 1:
+                        return Resource.Drawable.clearbutton;
+                    case 2:
+                        return Resource.Drawable.clearbutton_blue;
+                    case 3:
+                        return Resource.Drawable.clearbutton_black;
+                }
+
+                return Resource.Drawable.clearbutton;
             }
         }
 
@@ -59,92 +193,17 @@ namespace TasksSimplified.Helpers
             }
         }
 
-        public static int ThemeAccent
+        public static string CurrentVersionNumber
         {
             get
             {
-                var returnValue = SharedPreferences.GetInt(ThemeAccentKey, 2);
-                if (returnValue < 0)
-                    returnValue = 0;
-
-                return returnValue;
+                return SharedPreferences.GetString(CurrentVersionNumberKey, "Unknown");
+              
             }
             set
             {
-                SharedPreferencesEditor.PutInt(ThemeAccentKey, value);
+                SharedPreferencesEditor.PutString(CurrentVersionNumberKey, value);
                 SharedPreferencesEditor.Commit();
-            }
-        }
-
-        public static int ThemeAccentId
-        {
-            get
-            {
-                switch(ThemeAccent)
-                {
-                    case 0:
-                        return Resource.Color.actionbar_maincolor_blue;
-                    case 1:
-                        return Resource.Color.actionbar_maincolor_gray;
-                    case 2:
-                        return Resource.Color.actionbar_maincolor_green;
-                    case 3:
-                        return Resource.Color.actionbar_maincolor_purple;
-                    case 4:
-                        return Resource.Color.actionbar_maincolor_red;
-                     case 5:
-                        return Resource.Color.actionbar_maincolor_yellow;
-                     case 6:
-                        return Resource.Color.actionbar_accentcolor_blue;
-                     case 7:
-                        return Resource.Color.actionbar_accentcolor_gray;
-                     case 8:
-                        return Resource.Color.actionbar_accentcolor_green;
-                     case 9:
-                        return Resource.Color.actionbar_accentcolor_purple;
-                     case 10:
-                        return Resource.Color.actionbar_accentcolor_red;
-                     case 11:
-                        return Resource.Color.actionbar_accentcolor_yellow;
-                }
-
-                return Resource.Color.actionbar_accentcolor_green;
-            }
-        }
-
-        public static int ThemeAccentClearButtonId
-        {
-            get
-            {
-                switch (ThemeAccent)
-                {
-                    case 0:
-                        return Resource.Drawable.clearbutton_blue;
-                    case 1:
-                        return Resource.Drawable.clearbutton_gray;
-                    case 2:
-                        return Resource.Drawable.clearbutton_green;
-                    case 3:
-                        return Resource.Drawable.clearbutton_purple;
-                    case 4:
-                        return Resource.Drawable.clearbutton_red;
-                    case 5:
-                        return Resource.Drawable.clearbutton_yellow;
-                    case 6:
-                        return Resource.Drawable.clearbutton_blue_inverse;
-                    case 7:
-                        return Resource.Drawable.clearbutton_gray_inverse;
-                    case 8:
-                        return Resource.Drawable.clearbutton_green_inverse;
-                    case 9:
-                        return Resource.Drawable.clearbutton_purple_inverse;
-                    case 10:
-                        return Resource.Drawable.clearbutton_red_inverse;
-                    case 11:
-                        return Resource.Drawable.clearbutton_yellow_inverse;
-                }
-
-                return Resource.Drawable.clearbutton_green;
             }
         }
 

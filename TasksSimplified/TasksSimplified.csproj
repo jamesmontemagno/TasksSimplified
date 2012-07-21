@@ -60,7 +60,6 @@
     <Compile Include="ActionBar\ActionBar.cs" />
     <Compile Include="ActionBar\ActionBarAction.cs" />
     <Compile Include="ActionBar\ActionBarUtils.cs" />
-    <Compile Include="ActionBar\BottomActionBar.cs" />
     <Compile Include="ActionBar\IActionBarAction.cs" />
     <Compile Include="ActionBar\MenuItemActionBarAction.cs" />
     <Compile Include="ActionBar\MyActionBarAction.cs" />
@@ -98,8 +97,6 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\Layout\BlankSpinner.axml" />
-    <AndroidResource Include="Resources\Layout\BottomActionBar.axml" />
-    <AndroidResource Include="Resources\Layout\BottomActionBar_Item.axml" />
     <AndroidResource Include="Resources\Layout\OverflowActionBar_Item.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -150,25 +147,14 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\Values-xlarge\Dimens.xml" />
-    <AndroidResource Include="Resources\Drawable\bottomactionbar_btn_pressed.xml" />
     <AndroidResource Include="Resources\Drawable\actionbar_back_indicator.png" />
-    <AndroidResource Include="Resources\Drawable\actionbar_background.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\Drawable\actionbar_btn.xml" />
-    <AndroidResource Include="Resources\Drawable\bottomactionbar_background.xml" />
-    <AndroidResource Include="Resources\Drawable\bottomactionbar_btn.xml" />
-    <AndroidResource Include="Resources\Drawable\bottomactionbar_btn_normal.xml" />
     <AndroidResource Include="Resources\Drawable-hdpi\actionbar_back_indicator.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\ic_action_delete_dark.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\ic_menu_about.png" />
     <AndroidResource Include="Resources\Drawable-mdpi\ic_action_delete_dark.png" />
-    <AndroidResource Include="Resources\Drawable\ic_action_delete_dark.png" />
-    <AndroidResource Include="Resources\Drawable\ic_menu_about.png" />
     <AndroidResource Include="Resources\Drawable-mdpi\ic_menu_about.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_delete_dark.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_menu_about.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\ic_action_overflow.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\ic_action_cancel.png" />
     <AndroidResource Include="Resources\Drawable-mdpi\ic_action_cancel.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_cancel.png" />
@@ -183,7 +169,6 @@
     <AndroidResource Include="Resources\Drawable-hdpi\ic_menu_delete_all.png" />
     <AndroidResource Include="Resources\Drawable-mdpi\ic_menu_delete_all.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_menu_delete_all.png" />
-    <AndroidResource Include="Resources\Drawable\clearbutton.xml" />
     <AndroidResource Include="Resources\xml\preferences.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -193,7 +178,6 @@
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\Drawable\splash.png" />
     <AndroidResource Include="Resources\Drawable-land\splash.png" />
-    <AndroidResource Include="Resources\Drawable\clear_btn_normal.xml" />
     <AndroidResource Include="Resources\Values\Arrays.xml" />
     <AndroidResource Include="Resources\Drawable-hdpi\ic_menu_settings.png" />
     <AndroidResource Include="Resources\Drawable-ldpi\ic_menu_settings.png" />
@@ -217,7 +201,6 @@
     <AndroidResource Include="Resources\Menu\MainMenuEdit.xml" />
     <AndroidResource Include="Resources\Menu\ContextMenuTask.xml" />
     <AndroidResource Include="Resources\Drawable-ldpi\ic_menu_delete_all.png" />
-    <AndroidResource Include="Resources\Drawable\background_holo_dark.xml" />
     <AndroidResource Include="Resources\Drawable-ldpi\ic_action_add.png" />
     <AndroidResource Include="Resources\Drawable\background_holo_light.xml" />
     <AndroidResource Include="Resources\Drawable-ldpi\ic_action_add_dark.png" />
@@ -228,8 +211,6 @@
     <AndroidResource Include="Resources\Drawable-ldpi\ic_action_microphone_dark.png" />
     <AndroidResource Include="Resources\Drawable-ldpi\ic_action_save.png" />
     <AndroidResource Include="Resources\Drawable-ldpi\ic_action_save_dark.png" />
-    <AndroidResource Include="Resources\Drawable\actionbar_btn_blue.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_background_blue.xml" />
     <AndroidResource Include="Resources\Drawable-hdpi\ic_action_delete.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\ic_menu_sort.png" />
     <AndroidResource Include="Resources\Drawable-ldpi\ic_menu_about.png" />
@@ -239,55 +220,10 @@
     <AndroidResource Include="Resources\Drawable-mdpi\ic_menu_sort.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_menu_sort.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_delete.png" />
-    <AndroidResource Include="Resources\Drawable\actionbar_background_gray.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\Drawable\actionbar_background_green.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\Drawable\actionbar_background_purple.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_background_red.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_background_yellow.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_btn_gray.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_btn_green.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_btn_purple.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_btn_red.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_btn_yellow.xml" />
-    <AndroidResource Include="Resources\Drawable\clearbutton_blue.xml" />
-    <AndroidResource Include="Resources\Drawable\clearbutton_gray.xml" />
-    <AndroidResource Include="Resources\Drawable\clearbutton_green.xml" />
-    <AndroidResource Include="Resources\Drawable\clearbutton_purple.xml" />
-    <AndroidResource Include="Resources\Drawable\clearbutton_red.xml" />
-    <AndroidResource Include="Resources\Drawable\clearbutton_yellow.xml" />
     <AndroidResource Include="Resources\xml\task_widget_info.xml" />
     <AndroidResource Include="Resources\Values-v14\Dimens.xml" />
     <AndroidResource Include="Resources\Drawable\widget_background_holo_light.xml" />
     <AndroidResource Include="Resources\Drawable\widget_background_holo_dark.xml" />
-    <AndroidResource Include="Resources\Drawable-ldpi\ic_action_overflow_dark.png" />
-    <AndroidResource Include="Resources\Drawable-mdpi\ic_action_overflow_dark.png" />
-    <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_overflow_dark.png" />
-    <AndroidResource Include="Resources\Drawable\actionbar_btn_blue_inverse.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_btn_gray_inverse.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_btn_green_inverse.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_btn_purple_inverse.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_btn_red_inverse.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_btn_yellow_inverse.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_background_blue_inverse.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_background_gray_inverse.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\Drawable\actionbar_background_green_inverse.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_background_purple_inverse.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_background_red_inverse.xml" />
-    <AndroidResource Include="Resources\Drawable\actionbar_background_yellow_inverse.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\Drawable\clearbutton_blue_inverse.xml" />
-    <AndroidResource Include="Resources\Drawable\clearbutton_gray_inverse.xml" />
-    <AndroidResource Include="Resources\Drawable\clearbutton_green_inverse.xml" />
-    <AndroidResource Include="Resources\Drawable\clearbutton_purple_inverse.xml" />
-    <AndroidResource Include="Resources\Drawable\clearbutton_red_inverse.xml" />
-    <AndroidResource Include="Resources\Drawable\clearbutton_yellow_inverse.xml" />
     <AndroidResource Include="Resources\xml\task_widget_info_large.xml" />
     <AndroidResource Include="Resources\Drawable\widgetpreviewlarge.png" />
     <AndroidResource Include="Resources\Drawable\widgetpreviewsmall.png" />
@@ -308,6 +244,37 @@
     <AndroidResource Include="Resources\Values-ru\Strings.xml" />
     <AndroidResource Include="Resources\Values-da\Strings.xml" />
     <AndroidResource Include="Resources\Drawable\drop_shadow.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_back_indicator_dark.png" />
+    <AndroidResource Include="Resources\Drawable\actionbar_background.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_background_black.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_background_blue.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_background_lightgray.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_btn.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_btn_black.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_btn_blue.xml" />
+    <AndroidResource Include="Resources\Drawable\actionbar_btn_lightgray.xml" />
+    <AndroidResource Include="Resources\Drawable\bottomactionbar_background.xml" />
+    <AndroidResource Include="Resources\Drawable\bottomactionbar_background_black.xml" />
+    <AndroidResource Include="Resources\Drawable\bottomactionbar_background_blue.xml" />
+    <AndroidResource Include="Resources\Drawable\bottomactionbar_background_lightgray.xml" />
+    <AndroidResource Include="Resources\Drawable\bottomactionbar_btn.xml" />
+    <AndroidResource Include="Resources\Drawable\bottomactionbar_btn_black.xml" />
+    <AndroidResource Include="Resources\Drawable\bottomactionbar_btn_blue.xml" />
+    <AndroidResource Include="Resources\Drawable\bottomactionbar_btn_lightgray.xml" />
+    <AndroidResource Include="Resources\Drawable\clearbutton.xml" />
+    <AndroidResource Include="Resources\Drawable\clearbutton_black.xml" />
+    <AndroidResource Include="Resources\Drawable\clearbutton_blue.xml" />
+    <AndroidResource Include="Resources\Drawable\clearbutton_lightgray.xml" />
+    <AndroidResource Include="Resources\Drawable-hdpi\actionbar_back_indicator_dark.png" />
+    <AndroidResource Include="Resources\Anim\fadein.xml" />
+    <AndroidResource Include="Resources\Drawable-hdpi\ic_action_overflow_dark.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\ic_action_overflow.png" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_action_overflow.png" />
+    <AndroidResource Include="Resources\Drawable-ldpi\ic_action_overflow_dark.png" />
+    <AndroidResource Include="Resources\Drawable-mdpi\ic_action_overflow_dark.png" />
+    <AndroidResource Include="Resources\Drawable-mdpi\ic_action_overflow.png" />
+    <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_overflow_dark.png" />
+    <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_overflow.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

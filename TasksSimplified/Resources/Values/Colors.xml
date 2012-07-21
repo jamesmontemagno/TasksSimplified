@@ -3,50 +3,51 @@
   <color name="gray">#80222222</color>
   <color name="white">#FFFFFFFF</color>
   <color name="redtext">#FFFF0000</color>
+  <color name="bottomactionbar_separator">#00000000</color>
 
-  <color name="actionbar_separator">#FF669900</color>
-  <color name="actionbar_title">#FFFFFF</color>
-  
+  <color name="actionbar_maincolor">#FF222222</color>
+  <color name="actionbar_accentcolor">#FF1b1b1b</color>
+  <color name="actionbar_pressedcolor">#FF3f8daa</color>
+  <color name="actionbar_title">#FFFFFFFF</color>
+  <color name="actionbar_separator">#FF212121</color>
+  <color name="bottomactionbar_maincolor">#FF555555</color>
+  <color name="bottomactionbar_pressedcolor">#FF3f8daa</color>
+
   <!-- Default colors-->
-  <color name="actionbar_maincolor">#FF669900</color>
-  <color name="actionbar_accentcolor">#FF99CC00</color>
-  <color name="actionbar_titlecolor">#FFFFFF</color>  
-  <color name="actionbar_separatorcolor">#FF669900</color>
+  <color name="actionbar_maincolor_lightgray">#FFDDDDDD</color>
+  <color name="actionbar_accentcolor_lightgray">#FFafafaf</color>
+  <color name="actionbar_pressedcolor_lightgray">#FF77c5e1</color>
+  <color name="actionbar_title_lightgray">#FF000000</color>
+  <color name="actionbar_separator_lightgray">#FFDDDDDD</color>
+  <color name="bottomactionbar_maincolor_lightgray">#FFDDDDDD</color>
+  <color name="bottomactionbar_pressedcolor_lightgray">#FF77c5e1</color>
+  <color name="pager_lightgray">#FF4c505b</color>
 
-  <!--Themeing colors-->
-  <color name="actionbar_maincolor_green">#FF669900</color>
-  <color name="actionbar_accentcolor_green">#FF99CC00</color>
-  <color name="actionbar_titlecolor_green">#FFFFFF</color>
-  <color name="actionbar_separatorcolor_green">#FF669900</color>
-  <color name="actionbar_separatorcolor_green_inverse">#FF99CC00</color>
+  <color name="actionbar_maincolor_darkgray">#FF222222</color>
+  <color name="actionbar_accentcolor_darkgray">#FF1b1b1b</color>
+  <color name="actionbar_pressedcolor_darkgray">#FF3f8daa</color>
+  <color name="actionbar_title_darkgray">#FFFFFFFF</color>
+  <color name="actionbar_separator_darkgray">#FF212121</color>
+  <color name="bottomactionbar_maincolor_darkgray">#FF555555</color>
+  <color name="bottomactionbar_pressedcolor_darkgray">#FF3f8daa</color>
+  <color name="pager_darkgray">#FF206288</color>
 
-  <color name="actionbar_maincolor_blue">#FF0099CC</color>
-  <color name="actionbar_accentcolor_blue">#FF33B5E5</color>
-  <color name="actionbar_titlecolor_blue">#FFFFFF</color>
-  <color name="actionbar_separatorcolor_blue">#FF0099CC</color>
-  <color name="actionbar_separatorcolor_blue_inverse">#FF33B5E5</color>
-  
-  <color name="actionbar_maincolor_red">#FFCC0000</color>
-  <color name="actionbar_accentcolor_red">#FFFF4444</color>
-  <color name="actionbar_titlecolor_red">#FFFFFF</color>
-  <color name="actionbar_separatorcolor_red">#FFCC0000</color>
-  <color name="actionbar_separatorcolor_red_inverse">#FFFF4444</color>
+  <color name="actionbar_maincolor_black">#FF000000</color>
+  <color name="actionbar_accentcolor_black">#FF33b5e5</color>
+  <color name="actionbar_pressedcolor_black">#FF206e8a</color>
+  <color name="actionbar_title_black">#FFFFFFFF</color>
+  <color name="actionbar_separator_black">#FF000000</color>
+  <color name="bottomactionbar_maincolor_black">#00000000</color>
+  <color name="bottomactionbar_pressedcolor_black">#FF206e8a</color>
+  <color name="pager_black">#FF4c505b</color>
 
-  <color name="actionbar_maincolor_yellow">#FFFF8800</color>
-  <color name="actionbar_accentcolor_yellow">#FFFFBB33</color>
-  <color name="actionbar_titlecolor_yellow">#FFFFFF</color>
-  <color name="actionbar_separatorcolor_yellow">#FFFF8800</color>
-  <color name="actionbar_separatorcolor_yellow_inverse">#FFFFBB33</color>
+  <color name="actionbar_maincolor_blue">#FF33b5e5</color>
+  <color name="actionbar_accentcolor_blue">#FF30acd9</color>
+  <color name="actionbar_pressedcolor_blue">#FF71cbed</color>
+  <color name="actionbar_title_blue">#FFFFFFFF</color>
+  <color name="actionbar_separator_blue">#FF33b5e5</color>
+  <color name="bottomactionbar_maincolor_blue">#FF555555</color>
+  <color name="bottomactionbar_pressedcolor_blue">#FF888888</color>
+  <color name="pager_blue">#FF4c505b</color>
 
-  <color name="actionbar_maincolor_gray">#FF222222</color>
-  <color name="actionbar_accentcolor_gray">#FF686868</color>
-  <color name="actionbar_titlecolor_gray">#FFFFFF</color>
-  <color name="actionbar_separatorcolor_gray">#FF222222</color>
-  <color name="actionbar_separatorcolor_gray_inverse">#FF686868</color>
-  
-  <color name="actionbar_maincolor_purple">#FF9933CC</color>
-  <color name="actionbar_accentcolor_purple">#FFAA66CC</color>
-  <color name="actionbar_titlecolor_purple">#FFFFFF</color>
-  <color name="actionbar_separatorcolor_purple">#FF9933CC</color>
-  <color name="actionbar_separatorcolor_purple_inverse">#FFAA66CC</color>
 </resources>

@@ -10,8 +10,6 @@
     <item name="android:windowNoTitle">true</item>
   </style>
   <style name="MyThemeDark" parent="@android:style/Theme.NoTitleBar">
-    <item name="android:windowBackground">@drawable/background_holo_dark</item>
-    <item name="android:listViewStyle">@style/ListViewStyle</item>
   </style>
 
   <style name="AlertThemeLight" parent="@android:style/Theme.Dialog">
@@ -23,9 +21,4 @@
     <item name="android:cacheColorHint">#00000000</item>
   </style>
 
-  <style name="ActionBarBlue" parent="ActionBar">
-    <item name="background">@drawable/actionbar_background_blue</item>
-    <item name="background_item">@drawable/actionbar_btn_blue</item>
-    <item name="separator">@color/actionbar_maincolor_blue</item>
-  </style>
 </resources>

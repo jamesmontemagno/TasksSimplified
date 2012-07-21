@@ -20,13 +20,10 @@ namespace TasksSimplified.Adapter
 
         private readonly Activity m_Context;
         private readonly JavaList<ClearedTaskModel> m_Tasks;
-        private Android.Graphics.Color m_Color;
-
         public ClearedTaskAdapter(Activity context, JavaList<ClearedTaskModel> tasks)
         {
             m_Context = context;
             m_Tasks = tasks;
-            m_Color = m_Context.Resources.GetColor(Settings.ThemeSetting == 0 ? Resource.Color.gray : Resource.Color.white);
         }
 
         public override View GetView(int position, View convertView, ViewGroup parent)
@@ -56,8 +53,6 @@ namespace TasksSimplified.Adapter
             wrapper.Title.Text = task.Task;
             var date = task.DateCompleted.ToLocalTime();
             wrapper.Date.Text = date.ToShortDateString() + " " + date.ToShortTimeString();
-            wrapper.Title.SetTextColor(m_Color);
-
             return view;
         }
 

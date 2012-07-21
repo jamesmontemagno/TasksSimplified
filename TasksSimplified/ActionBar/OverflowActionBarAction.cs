@@ -21,6 +21,7 @@ using Android.App;
 using Android.Content;
 using Android.Views;
 using Android.Widget;
+using TasksSimplified.Helpers;
 
 namespace TasksSimplified.ActionBar
 {
@@ -33,7 +34,8 @@ namespace TasksSimplified.ActionBar
         public int Index { get; set; }
         public OverflowActionBarAction(Context context)
         {
-            mDrawable = Resource.Drawable.ic_action_overflow_dark;
+            var useLight = Settings.UseLightIcons;
+            mDrawable = useLight ? Resource.Drawable.ic_action_overflow : Resource.Drawable.ic_action_overflow_dark;
             mContext = context;
             ActionList = new List<ActionBarAction>();
             m_StringIds = new List<string> {string.Empty};
