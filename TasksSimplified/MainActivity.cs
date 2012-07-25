@@ -24,6 +24,7 @@ using Android.Speech;
 using Android.Speech.Tts;
 using Android.Views;
 using Android.Views.Animations;
+using Android.Views.InputMethods;
 using Android.Widget;
 using TasksSimplified.ActionBarBase;
 using TasksSimplified.ActionBar;
@@ -86,6 +87,7 @@ namespace TasksSimplified
             m_MicrophoneButton = FindViewById<ImageButton>(Resource.Id.button_microphone);
             m_TaskEditText = FindViewById<EditText>(Resource.Id.edit_text_new_task);
 
+            
             ActionBar = FindViewById<ActionBar.ActionBar>(Resource.Id.actionbar);
 
             //ActionBar.BackgroundDrawable = Resources.GetDrawable(Resource.Drawable.actionbar_background_blue);
@@ -98,6 +100,8 @@ namespace TasksSimplified
 
 
             m_TaskEditText.SetOnEditorActionListener(this);
+            
+
             ListView.ChoiceMode = ChoiceMode.Multiple;
 
             m_AddButton.Click += (sender, args) => AddNewTask();
@@ -141,9 +145,16 @@ namespace TasksSimplified
             }
 
             SetActionBar();
-
             try
             {
+                if(Intent.GetBooleanExtra("CameFromWidget", false))
+                {
+                    FocusMainText();
+                    return;
+                }
+
+                if(Intent.Action == TaskWidgetProvider.UpdateIntent)
+
                 if (Intent.ActionSend != Intent.Action || Intent.Type == null)
                     return;
 
@@ -169,7 +180,31 @@ namespace TasksSimplified
             }
         }
 
-        
+        private void FocusMainText()
+        {
+            RunOnUiThread(() =>
+                              {
+                                  
+                                  m_TaskEditText.RequestFocus();
+                                  var inputService = GetSystemService(InputMethodService) as InputMethodManager;
+                                  if (inputService != null)
+                                      inputService.ToggleSoftInput(0,0);
+                                      //inputService.ShowSoftInput(m_TaskEditText,ShowFlags.Implicit);
+                              });
+
+        }
+
+        private void HideKeyboard()
+        {
+             RunOnUiThread(() =>
+                               {
+
+                                   var inputService = GetSystemService(InputMethodService) as InputMethodManager;
+                                   if (inputService != null)
+                                       inputService.HideSoftInputFromWindow(m_TaskEditText.WindowToken,
+                                                                            HideSoftInputFlags.None);
+                               });
+        }
 
         private void AddNewTask()
         {
@@ -357,7 +392,7 @@ namespace TasksSimplified
                                                      Resource.String.menu_string_cancel) { ActionType = ActionType.Always };
             ActionBar.AddAction(action);
 
-            action = new MenuItemActionBarAction(this, this, Resource.Id.menu_save, Settings.UseLightIcons ? Resource.Drawable.ic_action_delete : Resource.Drawable.ic_action_save_dark,
+            action = new MenuItemActionBarAction(this, this, Resource.Id.menu_save, Settings.UseLightIcons ? Resource.Drawable.ic_action_save : Resource.Drawable.ic_action_save_dark,
                                                    Resource.String.menu_string_save) { ActionType = ActionType.Always };
             ActionBar.AddAction(action);
 
@@ -566,6 +601,7 @@ namespace TasksSimplified
             m_TaskEditText.Text = string.Empty;
             m_Editing = false;
             SetActionBar();
+            HideKeyboard();
         }
 
         private void Save()
@@ -634,7 +670,7 @@ namespace TasksSimplified
                 case Resource.Id.menu_edit_task:
                     SetupEditActionBar();
                     m_TaskEditText.Text = m_AllTasks[m_EditTaskPosition].Task;
-                    m_TaskEditText.RequestFocus();
+                    FocusMainText();
                     return true;
 
                 case Resource.Id.menu_share_task:
@@ -699,11 +735,27 @@ namespace TasksSimplified
 
         public bool OnEditorAction(TextView v, Android.Views.InputMethods.ImeAction actionId, KeyEvent e)
         {
-            if (actionId == Android.Views.InputMethods.ImeAction.Done && !m_Editing)
+            try
             {
-                AddNewTask();
-                return Settings.KeepKeyboardUp;
+                if (actionId == Android.Views.InputMethods.ImeAction.Done)
+                {
+                    if (m_Editing)
+                    {
+                        Save();
+                        return false;
+                    }
+
+                    AddNewTask();
+
+                    return Settings.KeepKeyboardUp;
+                }
             }
+            catch (Exception)
+            {
+                
+                //throw;
+            }
+           
             return false;
         }
 

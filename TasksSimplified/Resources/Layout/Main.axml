@@ -60,9 +60,9 @@
       android:layout_height="fill_parent"
       android:layout_centerVertical="true"
       android:layout_weight="1"
+      android:singleLine="true"
       android:hint="@string/new_task_hint"
       android:contentDescription="Enter new task"
-      android:nextFocusDown="@+id/button_add_task"
        android:inputType="textCapSentences">
     </EditText>
 
@@ -76,8 +76,7 @@
         android:singleLine="true"
         android:src="@drawable/ic_action_add"
         android:background="@drawable/clearbutton"
-        android:contentDescription="Save new task"
-        android:nextFocusUp="@id/edit_text_new_task"/>
+        android:contentDescription="Save new task"/>
     
   </LinearLayout>
 </LinearLayout>

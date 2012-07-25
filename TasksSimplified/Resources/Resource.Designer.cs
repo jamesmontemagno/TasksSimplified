@@ -444,35 +444,35 @@ namespace TasksSimplified
 			// aapt resource value: 0x7f0c0011
 			public const int edit_text_new_task = 2131492881;
 			
-			// aapt resource value: 0x7f0c003a
-			public const int menu_about = 2131492922;
-			
-			// aapt resource value: 0x7f0c003d
-			public const int menu_cancel_save = 2131492925;
-			
 			// aapt resource value: 0x7f0c003b
-			public const int menu_delete = 2131492923;
+			public const int menu_about = 2131492923;
 			
-			// aapt resource value: 0x7f0c0038
-			public const int menu_delete_all = 2131492920;
-			
-			// aapt resource value: 0x7f0c0035
-			public const int menu_edit_task = 2131492917;
-			
-			// aapt resource value: 0x7f0c0039
-			public const int menu_history = 2131492921;
+			// aapt resource value: 0x7f0c003e
+			public const int menu_cancel_save = 2131492926;
 			
 			// aapt resource value: 0x7f0c003c
-			public const int menu_save = 2131492924;
+			public const int menu_delete = 2131492924;
+			
+			// aapt resource value: 0x7f0c0039
+			public const int menu_delete_all = 2131492921;
 			
 			// aapt resource value: 0x7f0c0036
-			public const int menu_share = 2131492918;
+			public const int menu_edit_task = 2131492918;
 			
-			// aapt resource value: 0x7f0c0034
-			public const int menu_share_task = 2131492916;
+			// aapt resource value: 0x7f0c003a
+			public const int menu_history = 2131492922;
+			
+			// aapt resource value: 0x7f0c003d
+			public const int menu_save = 2131492925;
 			
 			// aapt resource value: 0x7f0c0037
-			public const int menu_sort = 2131492919;
+			public const int menu_share = 2131492919;
+			
+			// aapt resource value: 0x7f0c0035
+			public const int menu_share_task = 2131492917;
+			
+			// aapt resource value: 0x7f0c0038
+			public const int menu_sort = 2131492920;
 			
 			// aapt resource value: 0x7f0c0013
 			public const int overflow_spinner = 2131492883;
@@ -492,92 +492,95 @@ namespace TasksSimplified
 			// aapt resource value: 0x7f0c0016
 			public const int widget_home_logo = 2131492886;
 			
-			// aapt resource value: 0x7f0c0018
-			public const int widget_line_1 = 2131492888;
-			
-			// aapt resource value: 0x7f0c002a
-			public const int widget_line_10 = 2131492906;
-			
-			// aapt resource value: 0x7f0c002c
-			public const int widget_line_11 = 2131492908;
-			
-			// aapt resource value: 0x7f0c002e
-			public const int widget_line_12 = 2131492910;
-			
-			// aapt resource value: 0x7f0c0030
-			public const int widget_line_13 = 2131492912;
-			
-			// aapt resource value: 0x7f0c0032
-			public const int widget_line_14 = 2131492914;
-			
-			// aapt resource value: 0x7f0c001a
-			public const int widget_line_2 = 2131492890;
-			
-			// aapt resource value: 0x7f0c001c
-			public const int widget_line_3 = 2131492892;
-			
-			// aapt resource value: 0x7f0c001e
-			public const int widget_line_4 = 2131492894;
-			
-			// aapt resource value: 0x7f0c0020
-			public const int widget_line_5 = 2131492896;
-			
-			// aapt resource value: 0x7f0c0022
-			public const int widget_line_6 = 2131492898;
-			
-			// aapt resource value: 0x7f0c0024
-			public const int widget_line_7 = 2131492900;
-			
-			// aapt resource value: 0x7f0c0026
-			public const int widget_line_8 = 2131492902;
-			
-			// aapt resource value: 0x7f0c0028
-			public const int widget_line_9 = 2131492904;
-			
-			// aapt resource value: 0x7f0c0017
-			public const int widget_task_1 = 2131492887;
-			
-			// aapt resource value: 0x7f0c0029
-			public const int widget_task_10 = 2131492905;
+			// aapt resource value: 0x7f0c0019
+			public const int widget_line_1 = 2131492889;
 			
 			// aapt resource value: 0x7f0c002b
-			public const int widget_task_11 = 2131492907;
+			public const int widget_line_10 = 2131492907;
 			
 			// aapt resource value: 0x7f0c002d
-			public const int widget_task_12 = 2131492909;
+			public const int widget_line_11 = 2131492909;
 			
 			// aapt resource value: 0x7f0c002f
-			public const int widget_task_13 = 2131492911;
+			public const int widget_line_12 = 2131492911;
 			
 			// aapt resource value: 0x7f0c0031
-			public const int widget_task_14 = 2131492913;
+			public const int widget_line_13 = 2131492913;
 			
 			// aapt resource value: 0x7f0c0033
-			public const int widget_task_15 = 2131492915;
-			
-			// aapt resource value: 0x7f0c0019
-			public const int widget_task_2 = 2131492889;
+			public const int widget_line_14 = 2131492915;
 			
 			// aapt resource value: 0x7f0c001b
-			public const int widget_task_3 = 2131492891;
+			public const int widget_line_2 = 2131492891;
 			
 			// aapt resource value: 0x7f0c001d
-			public const int widget_task_4 = 2131492893;
+			public const int widget_line_3 = 2131492893;
 			
 			// aapt resource value: 0x7f0c001f
-			public const int widget_task_5 = 2131492895;
+			public const int widget_line_4 = 2131492895;
 			
 			// aapt resource value: 0x7f0c0021
-			public const int widget_task_6 = 2131492897;
+			public const int widget_line_5 = 2131492897;
 			
 			// aapt resource value: 0x7f0c0023
-			public const int widget_task_7 = 2131492899;
+			public const int widget_line_6 = 2131492899;
 			
 			// aapt resource value: 0x7f0c0025
-			public const int widget_task_8 = 2131492901;
+			public const int widget_line_7 = 2131492901;
 			
 			// aapt resource value: 0x7f0c0027
-			public const int widget_task_9 = 2131492903;
+			public const int widget_line_8 = 2131492903;
+			
+			// aapt resource value: 0x7f0c0029
+			public const int widget_line_9 = 2131492905;
+			
+			// aapt resource value: 0x7f0c0017
+			public const int widget_main_area = 2131492887;
+			
+			// aapt resource value: 0x7f0c0018
+			public const int widget_task_1 = 2131492888;
+			
+			// aapt resource value: 0x7f0c002a
+			public const int widget_task_10 = 2131492906;
+			
+			// aapt resource value: 0x7f0c002c
+			public const int widget_task_11 = 2131492908;
+			
+			// aapt resource value: 0x7f0c002e
+			public const int widget_task_12 = 2131492910;
+			
+			// aapt resource value: 0x7f0c0030
+			public const int widget_task_13 = 2131492912;
+			
+			// aapt resource value: 0x7f0c0032
+			public const int widget_task_14 = 2131492914;
+			
+			// aapt resource value: 0x7f0c0034
+			public const int widget_task_15 = 2131492916;
+			
+			// aapt resource value: 0x7f0c001a
+			public const int widget_task_2 = 2131492890;
+			
+			// aapt resource value: 0x7f0c001c
+			public const int widget_task_3 = 2131492892;
+			
+			// aapt resource value: 0x7f0c001e
+			public const int widget_task_4 = 2131492894;
+			
+			// aapt resource value: 0x7f0c0020
+			public const int widget_task_5 = 2131492896;
+			
+			// aapt resource value: 0x7f0c0022
+			public const int widget_task_6 = 2131492898;
+			
+			// aapt resource value: 0x7f0c0024
+			public const int widget_task_7 = 2131492900;
+			
+			// aapt resource value: 0x7f0c0026
+			public const int widget_task_8 = 2131492902;
+			
+			// aapt resource value: 0x7f0c0028
+			public const int widget_task_9 = 2131492904;
 			
 			// aapt resource value: 0x7f0c0015
 			public const int widget_top_action_bar = 2131492885;

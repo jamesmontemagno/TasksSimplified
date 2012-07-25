@@ -275,6 +275,7 @@
     <AndroidResource Include="Resources\Drawable-mdpi\ic_action_overflow.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_overflow_dark.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_overflow.png" />
+    <AndroidResource Include="Resources\Values-ro\Strings.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

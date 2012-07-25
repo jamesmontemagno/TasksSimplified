@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="VersionNumber">2.2.0.0</string>
+  <string name="VersionNumber">2.3.0.0</string>
     <string name="actionbar_activity_not_found">Activity not found, this is no good.</string>
     <string name="ApplicationName">Tasks Simplified</string>
     <string name="loading">Loading...</string>
@@ -67,5 +67,5 @@
   <string name="support">Tasks Simplified Support</string>
 
   <string name="update_title">Tasks Simplified Updated</string>
-  <string name="update_message">Welcome to the lastest version of Tasks Simplified. First off we are now completely FREE!! In this update we have simplified the themes which you can set under Settings. Enjoy! -Motz</string>
+  <string name="update_message">Welcome to 2.3.0.0! We have come a long way. In this update there are just a few tweaks and bug fixes to make your tasks even more simplified. And Romanian Localization! Enjoy! -Motz</string>
 </resources>

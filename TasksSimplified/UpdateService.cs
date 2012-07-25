@@ -63,8 +63,16 @@ namespace TasksSimplified
                 var launchAppIntent = new Intent(this, typeof (MainActivity));
                 launchAppIntent.AddFlags(ActivityFlags.SingleTop);
                 launchAppIntent.AddFlags(ActivityFlags.ClearTop);
+                launchAppIntent.PutExtra("CameFromWidget", true);
                 var pendingIntent = PendingIntent.GetActivity(context, 0, launchAppIntent, 0);
                 updateViews.SetOnClickPendingIntent(Resource.Id.widget_top_action_bar, pendingIntent);
+
+                var launchAppIntent2 = new Intent(this, typeof(MainActivity));
+                launchAppIntent2.AddFlags(ActivityFlags.SingleTop);
+                launchAppIntent2.AddFlags(ActivityFlags.ClearTop);
+                var pendingIntent2 = PendingIntent.GetActivity(context, 0, launchAppIntent, 0);
+                updateViews.SetOnClickPendingIntent(Resource.Id.widget_main_area, pendingIntent2);
+
 
                 var newTasks = new List<string>();
                 var newTasksChecked = new List<bool>();
